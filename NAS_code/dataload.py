@@ -34,7 +34,7 @@ def num_classes_in_feature():
 
 
 def dataload():
-	kwargs = {'root': '../dataset_dxc', 'download': True }
+	kwargs = {'root': '../../dataset_dxc', 'download': True }
 	print('\n===> Preparing {} dataset...'.format(args.dataset))
 
 	if args.dataset == 'mnist':

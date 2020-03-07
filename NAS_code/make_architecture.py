@@ -20,9 +20,9 @@ class architecture(nn.Module):
 		self.features = nn.Sequential(
 			self._make_layer())
 
-		
 		kwargs = {'in_planes': self.in_feature*size_cfg[-1],
 				  'out_planes': self.num_classes }
+
 		self.classifier = BlockFactory('fc', downSample = False, **kwargs)  # FC
 			
 
@@ -30,16 +30,13 @@ class architecture(nn.Module):
 
 	def _make_layer(self):
 		layers = []
-
 		for lyr_idx, num in enumerate(self.block_cfg):
-			
+
 			kwargs = {'in_planes': self.size_cfg[lyr_idx],
-					 'out_planes': self.size_cfg[lyr_idx+1]	
-					 }
+					 'out_planes': self.size_cfg[lyr_idx+1]	}
 
 			layers.append(BlockFactory(num, self.ds_cfg[lyr_idx], **kwargs))
-					
-		
+
 		return nn.Sequential(*layers)
 
 
@@ -47,5 +44,4 @@ class architecture(nn.Module):
 		x = self.features(x)
 		x = x.view(x.size(0), -1)
 		out = self.classifier(x)
-
 		return out
