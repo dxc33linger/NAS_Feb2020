@@ -10,23 +10,23 @@ if os.path.exists('../../results'):
     shutil.rmtree('../../results')
 os.mkdir('../../results')
 
-if os.path.exists('../../log_files'):
-    shutil.rmtree('../../log_files')
-os.mkdir('../../log_files')
 
 i=0
 
-
 for num_module in [3]:
-	for max_block in [1, 3, 5]:
-						
-		command_tmp = 'python main.py --dataset cifar10 --num_epoch 90  --num_module ' + str(num_module) + ' --max_block '+str(max_block)
-		
-		print('command:\n', command_tmp)
+	for cfg in [1,2,3]:
+		for alpha in [0.01, 0.1, 1]:
 
-		os.system(command_tmp)
-		i = i+1
-		scio.savemat('../../results/tuning_'+str(i)+'_finished.mat', {'num_module': num_module, 'max_block': max_block})
+			# if not os.path.exists('../../results/alpha{}_maxBlock{}'.format(alpha, cfg)):
+			# 	os.mkdir('../../results/alpha{}_maxBlock{}'.format(alpha, cfg ))
+
+			command_tmp = 'python main.py --mode continual --dataset cifar10 --num_epoch 80  --num_module ' + str(num_module) + ' --cfg '+str(cfg) + ' --alpha '+str(alpha)
+
+			print('command:\n', command_tmp)
+
+			os.system(command_tmp)
+			i = i+1
+			scio.savemat('../../results/tuning_{}_finished.mat'.format(i), {'num_module': num_module, 'cfg': cfg})
 
 
 

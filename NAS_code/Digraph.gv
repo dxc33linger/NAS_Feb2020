@@ -1,0 +1,60 @@
+digraph {
+	graph [size="12,12"]
+	node [align=left fontsize=12 height=0.2 ranksep=0.1 shape=box style=filled]
+	139844409646832 [label=AddmmBackward fillcolor=darkolivegreen1]
+	139845793829216 -> 139844409646832
+	139845793829216 [label="module.classifier.blocks.0.bias
+ (10)" fillcolor=lightblue]
+	139845793829160 -> 139844409646832
+	139845793829160 [label=ViewBackward]
+	139844409348224 -> 139845793829160
+	139844409348224 [label=ThresholdBackward1]
+	139844409348336 -> 139844409348224
+	139844409348336 [label=CudnnBatchNormBackward]
+	139844409348728 -> 139844409348336
+	139844409348728 [label=CudnnConvolutionBackward]
+	139844409349344 -> 139844409348728
+	139844409349344 [label=ReluBackward0]
+	139844409350016 -> 139844409349344
+	139844409350016 [label=CudnnBatchNormBackward]
+	139844409350240 -> 139844409350016
+	139844409350240 [label=CudnnConvolutionBackward]
+	139844409351472 -> 139844409350240
+	139844409351472 [label=ReluBackward0]
+	139844409351696 -> 139844409351472
+	139844409351696 [label=CudnnBatchNormBackward]
+	139844409643752 -> 139844409351696
+	139844409643752 [label=ThnnConvDepthwise2DBackward]
+	139844409643360 -> 139844409643752
+	139844409643360 [label="module.features.0.0.conv1.weight
+ (3, 1, 3, 3)" fillcolor=lightblue]
+	139844409643808 -> 139844409351696
+	139844409643808 [label="module.features.0.0.bn1.weight
+ (3)" fillcolor=lightblue]
+	139844409643528 -> 139844409351696
+	139844409643528 [label="module.features.0.0.bn1.bias
+ (3)" fillcolor=lightblue]
+	139844409351584 -> 139844409350240
+	139844409351584 [label="module.features.0.0.conv2.weight
+ (512, 3, 1, 1)" fillcolor=lightblue]
+	139844409350408 -> 139844409350016
+	139844409350408 [label="module.features.0.0.bn2.weight
+ (512)" fillcolor=lightblue]
+	139844409350576 -> 139844409350016
+	139844409350576 [label="module.features.0.0.bn2.bias
+ (512)" fillcolor=lightblue]
+	139844409349512 -> 139844409348728
+	139844409349512 [label="module.features.0.1.blocks.0.weight
+ (32, 512, 3, 3)" fillcolor=lightblue]
+	139844409348896 -> 139844409348336
+	139844409348896 [label="module.features.0.1.blocks.1.weight
+ (32)" fillcolor=lightblue]
+	139844409349008 -> 139844409348336
+	139844409349008 [label="module.features.0.1.blocks.1.bias
+ (32)" fillcolor=lightblue]
+	139844432489552 -> 139844409646832
+	139844432489552 [label=TBackward]
+	139844409643584 -> 139844432489552
+	139844409643584 [label="module.classifier.blocks.0.weight
+ (10, 8192)" fillcolor=lightblue]
+}

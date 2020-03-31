@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 from torchvision.models import AlexNet
 
 
-model = torch.load('../results/saved_model_cfg[1, 3, 1, 1, 2, 5, 4, 4, 3, 1, 5, 1, 5, 1, 5, 6]')
+model = torch.load('../../results/sigma0.01/final_model_cfg[0, 5]_acc0.036')
 
 
 x = torch.randn(1, 3, 32, 32).requires_grad_(False)

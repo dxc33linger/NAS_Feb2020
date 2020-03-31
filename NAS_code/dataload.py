@@ -69,8 +69,8 @@ def dataload():
 		testset = datasets.CIFAR10(train=False, transform=transform_test, **kwargs)
 	
 		full_training = 50000		
-		n_training_samples = int(50000 / args.K * (args.K-1))
-		n_val_samples = int(50000 / args.K)
+		n_training_samples = int(full_training / args.K * (args.K-1))
+		n_val_samples = int(full_training / args.K)
 	
 
 	elif args.dataset == 'cifar100':
@@ -90,8 +90,8 @@ def dataload():
 		testset = datasets.CIFAR100(train=False, transform=transform_test, **kwargs)
 
 		full_training = 50000		
-		n_training_samples = int(50000 / args.K * (args.K-1))
-		n_val_samples = int(50000 / args.K)
+		n_training_samples = int(full_training / args.K * (args.K-1))
+		n_val_samples = int(full_training / args.K)
 
 
 	elif args.dataset == 'SVHN':
@@ -108,8 +108,6 @@ def dataload():
 		])			    
 		trainset = datasets.SVHN(root='./dataset_dxc', split='train', download=True, transform=transform_train)
 		testset = datasets.SVHN(root='./dataset_dxc', split='test', download=True, transform=transform_test)
-		# # trainset = datasets.SVHN(root='./dataset_SVHN_dxc', split='extra', download=True, transform=transform_train)
-
 
 		# 73257 26032 531131
 		full_training = 73257
@@ -123,10 +121,9 @@ def dataload():
 	if args.CV is True:
 		train_sampler = sampler.SubsetRandomSampler(range(n_training_samples))
 		val_sampler =  sampler.SubsetRandomSampler(range(n_training_samples, n_training_samples+n_val_samples))
-		valloader =	DataLoader(trainset, batch_size=args.batch_size, shuffle=False,  num_workers=2, sampler=val_sampler, drop_last=True)	
-	else: 
+		valloader =	DataLoader(trainset, batch_size=args.batch_size, shuffle=False,  num_workers=2, sampler=val_sampler, drop_last=True)
+	else:
 		train_sampler =  sampler.SubsetRandomSampler(range(full_training))
-
 
 	trainloader = DataLoader(trainset, batch_size=args.batch_size, shuffle=False, num_workers=2, sampler=train_sampler, drop_last=True)		
 	testloader = DataLoader(testset, batch_size=args.batch_size, shuffle=True, num_workers=2, drop_last=True)
@@ -134,4 +131,4 @@ def dataload():
 
 
 	print('===> Dataset {} is ready.\n'.format(args.dataset))
-	return trainloader, testloader, valloader
+	return trainloader, testloader
