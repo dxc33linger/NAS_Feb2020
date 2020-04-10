@@ -1,0 +1,1517 @@
+2019-08-25 15:06:06,031   ---------------------------------------------------------------------------------------------
+2019-08-25 15:06:06,031                              script.py                                             
+2019-08-25 15:06:06,031   ---------------------------------------------------------------------------------------------
+2019-08-25 15:06:06,031   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet34 --x=-0.5:1.5:401 --dir_type states --model_file cifar10/trained_nets/resnet34_sgd_lr=0.1_bs=128_model_epoch70.t7 --plot
+
+2019-08-25 15:50:59,941   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet34 --x=-1:1:51 --model_file cifar10/trained_nets/resnet34_sgd_lr=0.1_bs=128_model_epoch70.t7 --dir_type weights --xnorm filter --xignore biasbn --plot
+
+2019-08-25 15:57:02,570   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet34 --x=-1:1:51 --y=-1:1:51 --model_file cifar10/trained_nets/resnet34_sgd_lr=0.1_bs=128_model_epoch70.t7 --dir_type weights --xnorm filter --xignore biasbn --ynorm filter --yignore biasbn  --plot
+
+2019-08-25 20:53:50,629   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet34_noshort --x=-0.5:1.5:401 --dir_type states --model_file cifar10/trained_nets/resnet34_noshort_sgd_lr=0.1_bs=128_model_epoch70.t7 --plot
+
+2019-08-25 21:36:45,911   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet34_noshort --x=-1:1:51 --model_file cifar10/trained_nets/resnet34_noshort_sgd_lr=0.1_bs=128_model_epoch70.t7 --dir_type weights --xnorm filter --xignore biasbn --plot
+
+2019-08-25 21:42:28,331   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet34_noshort --x=-1:1:51 --y=-1:1:51 --model_file cifar10/trained_nets/resnet34_noshort_sgd_lr=0.1_bs=128_model_epoch70.t7 --dir_type weights --xnorm filter --xignore biasbn --ynorm filter --yignore biasbn  --plot
+
+2019-08-26 02:19:19,246   command: python plot_2D.py --surf_file resnet34_sgd_lr=0.1_bs=128_model_epoch70_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss
+
+2019-08-26 02:19:19,247   command: python h52vtp.py --surf_file resnet34_sgd_lr=0.1_bs=128_model_epoch70_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss --zmax  10 --log
+
+2019-08-26 02:19:19,248   command: python plot_2D.py --surf_file resnet34_noshort_sgd_lr=0.1_bs=128_model_epoch70_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss
+
+2019-08-26 02:19:19,248   command: python h52vtp.py --surf_file resnet34_noshort_sgd_lr=0.1_bs=128_model_epoch70_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss --zmax  10 --log
+
+2019-08-26 15:45:31,340   ---------------------------------------------------------------------------------------------
+2019-08-26 15:45:31,340                              script.py                                             
+2019-08-26 15:45:31,340   ---------------------------------------------------------------------------------------------
+2019-08-26 15:45:31,340   command: python plot_2D.py --surf_file cifar10/trained_nets/resnet34_sgd_lr=0.1_bs=128_model_epoch70_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss
+
+2019-08-26 15:45:31,340   command: python h52vtp.py --surf_file cifar10/trained_nets/resnet34_sgd_lr=0.1_bs=128_model_epoch70_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss --zmax  10 --log
+
+2019-08-26 15:45:31,341   command: python plot_2D.py --surf_file cifar10/trained_nets/resnet34_noshort_sgd_lr=0.1_bs=128_model_epoch70_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss
+
+2019-08-26 15:45:31,341   command: python h52vtp.py --surf_file cifar10/trained_nets/resnet34_noshort_sgd_lr=0.1_bs=128_model_epoch70_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss --zmax  10 --log
+
+2019-08-26 15:46:13,453   ---------------------------------------------------------------------------------------------
+2019-08-26 15:46:13,453                              script.py                                             
+2019-08-26 15:46:13,454   ---------------------------------------------------------------------------------------------
+2019-08-26 15:46:13,454   command: python plot_2D.py --surf_file cifar10/trained_nets/resnet34_sgd_lr=0.1_bs=128_model_epoch70_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5 --surf_name train_loss
+
+2019-08-26 15:46:13,454   command: python h52vtp.py --surf_file cifar10/trained_nets/resnet34_sgd_lr=0.1_bs=128_model_epoch70_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5 --surf_name train_loss --zmax  10 --log
+
+2019-08-26 15:46:13,454   command: python plot_2D.py --surf_file cifar10/trained_nets/resnet34_noshort_sgd_lr=0.1_bs=128_model_epoch70_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5 --surf_name train_loss
+
+2019-08-26 15:46:13,454   command: python h52vtp.py --surf_file cifar10/trained_nets/resnet34_noshort_sgd_lr=0.1_bs=128_model_epoch70_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5 --surf_name train_loss --zmax  10 --log
+
+2019-08-26 15:51:26,532   ---------------------------------------------------------------------------------------------
+2019-08-26 15:51:26,532                              script.py                                             
+2019-08-26 15:51:26,532   ---------------------------------------------------------------------------------------------
+2019-08-26 15:51:26,532   command: python plot_2D.py --surf_file cifar10/trained_nets/resnet34_sgd_lr=0.1_bs=128_model_epoch70.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5 --surf_name train_loss
+
+2019-08-26 15:51:26,533   command: python h52vtp.py --surf_file cifar10/trained_nets/resnet34_sgd_lr=0.1_bs=128_model_epoch70.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5 --surf_name train_loss --zmax  10 --log
+
+2019-08-26 15:51:26,533   command: python plot_2D.py --surf_file cifar10/trained_nets/resnet34_noshort_sgd_lr=0.1_bs=128_model_epoch70.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5 --surf_name train_loss
+
+2019-08-26 15:51:26,533   command: python h52vtp.py --surf_file cifar10/trained_nets/resnet34_noshort_sgd_lr=0.1_bs=128_model_epoch70.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5 --surf_name train_loss --zmax  10 --log
+
+2019-08-26 15:52:06,758   ---------------------------------------------------------------------------------------------
+2019-08-26 15:52:06,758                              script.py                                             
+2019-08-26 15:52:06,758   ---------------------------------------------------------------------------------------------
+2019-08-26 15:52:06,758   command: python plot_2D.py --surf_file cifar10/trained_nets/resnet34_sgd_lr=0.1_bs=128_model_epoch70.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss
+
+2019-08-26 15:52:06,759   command: python h52vtp.py --surf_file cifar10/trained_nets/resnet34_sgd_lr=0.1_bs=128_model_epoch70.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss --zmax  10 --log
+
+2019-08-26 15:52:06,759   command: python plot_2D.py --surf_file cifar10/trained_nets/resnet34_noshort_sgd_lr=0.1_bs=128_model_epoch70.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss
+
+2019-08-26 15:52:06,759   command: python h52vtp.py --surf_file cifar10/trained_nets/resnet34_noshort_sgd_lr=0.1_bs=128_model_epoch70.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss --zmax  10 --log
+
+2019-08-26 15:53:27,573   ---------------------------------------------------------------------------------------------
+2019-08-26 15:53:27,573                              script.py                                             
+2019-08-26 15:53:27,573   ---------------------------------------------------------------------------------------------
+2019-08-26 15:53:27,573   command: python plot_2D.py --surf_file cifar10/trained_nets/resnet34_noshort_sgd_lr=0.1_bs=128_model_epoch70.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5 --surf_name train_loss
+
+2019-08-26 15:53:27,573   command: python h52vtp.py --surf_file cifar10/trained_nets/resnet34_noshort_sgd_lr=0.1_bs=128_model_epoch70.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5 --surf_name train_loss --zmax  10 --log
+
+2019-08-26 15:53:41,992   ---------------------------------------------------------------------------------------------
+2019-08-26 15:53:41,992                              script.py                                             
+2019-08-26 15:53:41,992   ---------------------------------------------------------------------------------------------
+2019-08-26 15:53:41,992   command: python h52vtp.py --surf_file cifar10/trained_nets/resnet34_noshort_sgd_lr=0.1_bs=128_model_epoch70.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5 --surf_name train_loss --zmax  10 --log
+
+2019-08-26 15:54:00,571   ---------------------------------------------------------------------------------------------
+2019-08-26 15:54:00,572                              script.py                                             
+2019-08-26 15:54:00,572   ---------------------------------------------------------------------------------------------
+2019-08-26 15:54:00,572   command: python h52vtp.py --surf_file cifar10/trained_nets/resnet34_noshort_sgd_lr=0.1_bs=128_model_epoch70.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5 --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,953   ---------------------------------------------------------------------------------------------
+2019-08-26 16:01:26,953                              script.py                                             
+2019-08-26 16:01:26,953   ---------------------------------------------------------------------------------------------
+2019-08-26 16:01:26,953   command: python h52vtp.py --surf_file cifar10/trained_nets/r --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,954   command: python h52vtp.py --surf_file cifar10/trained_nets/e --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,954   command: python h52vtp.py --surf_file cifar10/trained_nets/s --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,954   command: python h52vtp.py --surf_file cifar10/trained_nets/n --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,954   command: python h52vtp.py --surf_file cifar10/trained_nets/e --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,954   command: python h52vtp.py --surf_file cifar10/trained_nets/t --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,954   command: python h52vtp.py --surf_file cifar10/trained_nets/3 --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,954   command: python h52vtp.py --surf_file cifar10/trained_nets/4 --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,954   command: python h52vtp.py --surf_file cifar10/trained_nets/_ --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,954   command: python h52vtp.py --surf_file cifar10/trained_nets/n --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,954   command: python h52vtp.py --surf_file cifar10/trained_nets/o --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,954   command: python h52vtp.py --surf_file cifar10/trained_nets/s --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,954   command: python h52vtp.py --surf_file cifar10/trained_nets/h --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,954   command: python h52vtp.py --surf_file cifar10/trained_nets/o --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,954   command: python h52vtp.py --surf_file cifar10/trained_nets/r --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,954   command: python h52vtp.py --surf_file cifar10/trained_nets/t --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,954   command: python h52vtp.py --surf_file cifar10/trained_nets/_ --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,954   command: python h52vtp.py --surf_file cifar10/trained_nets/s --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,954   command: python h52vtp.py --surf_file cifar10/trained_nets/g --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,954   command: python h52vtp.py --surf_file cifar10/trained_nets/d --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,954   command: python h52vtp.py --surf_file cifar10/trained_nets/_ --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,954   command: python h52vtp.py --surf_file cifar10/trained_nets/l --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,954   command: python h52vtp.py --surf_file cifar10/trained_nets/r --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,954   command: python h52vtp.py --surf_file cifar10/trained_nets/= --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,954   command: python h52vtp.py --surf_file cifar10/trained_nets/0 --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,954   command: python h52vtp.py --surf_file cifar10/trained_nets/. --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,954   command: python h52vtp.py --surf_file cifar10/trained_nets/1 --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,954   command: python h52vtp.py --surf_file cifar10/trained_nets/_ --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,954   command: python h52vtp.py --surf_file cifar10/trained_nets/b --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,955   command: python h52vtp.py --surf_file cifar10/trained_nets/s --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,955   command: python h52vtp.py --surf_file cifar10/trained_nets/= --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,955   command: python h52vtp.py --surf_file cifar10/trained_nets/1 --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,955   command: python h52vtp.py --surf_file cifar10/trained_nets/2 --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,955   command: python h52vtp.py --surf_file cifar10/trained_nets/8 --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,955   command: python h52vtp.py --surf_file cifar10/trained_nets/_ --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,955   command: python h52vtp.py --surf_file cifar10/trained_nets/m --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,955   command: python h52vtp.py --surf_file cifar10/trained_nets/o --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,955   command: python h52vtp.py --surf_file cifar10/trained_nets/d --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,955   command: python h52vtp.py --surf_file cifar10/trained_nets/e --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,955   command: python h52vtp.py --surf_file cifar10/trained_nets/l --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,955   command: python h52vtp.py --surf_file cifar10/trained_nets/_ --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,955   command: python h52vtp.py --surf_file cifar10/trained_nets/e --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,955   command: python h52vtp.py --surf_file cifar10/trained_nets/p --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,955   command: python h52vtp.py --surf_file cifar10/trained_nets/o --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,955   command: python h52vtp.py --surf_file cifar10/trained_nets/c --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,955   command: python h52vtp.py --surf_file cifar10/trained_nets/h --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,955   command: python h52vtp.py --surf_file cifar10/trained_nets/7 --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,955   command: python h52vtp.py --surf_file cifar10/trained_nets/0 --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,955   command: python h52vtp.py --surf_file cifar10/trained_nets/. --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,955   command: python h52vtp.py --surf_file cifar10/trained_nets/t --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,955   command: python h52vtp.py --surf_file cifar10/trained_nets/7 --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,955   command: python h52vtp.py --surf_file cifar10/trained_nets/_ --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,955   command: python h52vtp.py --surf_file cifar10/trained_nets/w --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,955   command: python h52vtp.py --surf_file cifar10/trained_nets/e --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,955   command: python h52vtp.py --surf_file cifar10/trained_nets/i --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,955   command: python h52vtp.py --surf_file cifar10/trained_nets/g --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,955   command: python h52vtp.py --surf_file cifar10/trained_nets/h --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,955   command: python h52vtp.py --surf_file cifar10/trained_nets/t --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,956   command: python h52vtp.py --surf_file cifar10/trained_nets/s --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,956   command: python h52vtp.py --surf_file cifar10/trained_nets/_ --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,956   command: python h52vtp.py --surf_file cifar10/trained_nets/x --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,956   command: python h52vtp.py --surf_file cifar10/trained_nets/i --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,956   command: python h52vtp.py --surf_file cifar10/trained_nets/g --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,956   command: python h52vtp.py --surf_file cifar10/trained_nets/n --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,956   command: python h52vtp.py --surf_file cifar10/trained_nets/o --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,956   command: python h52vtp.py --surf_file cifar10/trained_nets/r --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,956   command: python h52vtp.py --surf_file cifar10/trained_nets/e --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,956   command: python h52vtp.py --surf_file cifar10/trained_nets/= --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,956   command: python h52vtp.py --surf_file cifar10/trained_nets/b --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,956   command: python h52vtp.py --surf_file cifar10/trained_nets/i --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,956   command: python h52vtp.py --surf_file cifar10/trained_nets/a --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,956   command: python h52vtp.py --surf_file cifar10/trained_nets/s --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,956   command: python h52vtp.py --surf_file cifar10/trained_nets/b --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,956   command: python h52vtp.py --surf_file cifar10/trained_nets/n --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,956   command: python h52vtp.py --surf_file cifar10/trained_nets/_ --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,956   command: python h52vtp.py --surf_file cifar10/trained_nets/x --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,956   command: python h52vtp.py --surf_file cifar10/trained_nets/n --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,956   command: python h52vtp.py --surf_file cifar10/trained_nets/o --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,956   command: python h52vtp.py --surf_file cifar10/trained_nets/r --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,956   command: python h52vtp.py --surf_file cifar10/trained_nets/m --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,956   command: python h52vtp.py --surf_file cifar10/trained_nets/= --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,956   command: python h52vtp.py --surf_file cifar10/trained_nets/f --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,956   command: python h52vtp.py --surf_file cifar10/trained_nets/i --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,956   command: python h52vtp.py --surf_file cifar10/trained_nets/l --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,956   command: python h52vtp.py --surf_file cifar10/trained_nets/t --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,956   command: python h52vtp.py --surf_file cifar10/trained_nets/e --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,956   command: python h52vtp.py --surf_file cifar10/trained_nets/r --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,956   command: python h52vtp.py --surf_file cifar10/trained_nets/_ --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,957   command: python h52vtp.py --surf_file cifar10/trained_nets/y --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,957   command: python h52vtp.py --surf_file cifar10/trained_nets/i --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,957   command: python h52vtp.py --surf_file cifar10/trained_nets/g --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,957   command: python h52vtp.py --surf_file cifar10/trained_nets/n --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,957   command: python h52vtp.py --surf_file cifar10/trained_nets/o --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,957   command: python h52vtp.py --surf_file cifar10/trained_nets/r --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,957   command: python h52vtp.py --surf_file cifar10/trained_nets/e --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,957   command: python h52vtp.py --surf_file cifar10/trained_nets/= --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,957   command: python h52vtp.py --surf_file cifar10/trained_nets/b --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,957   command: python h52vtp.py --surf_file cifar10/trained_nets/i --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,957   command: python h52vtp.py --surf_file cifar10/trained_nets/a --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,957   command: python h52vtp.py --surf_file cifar10/trained_nets/s --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,957   command: python h52vtp.py --surf_file cifar10/trained_nets/b --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,957   command: python h52vtp.py --surf_file cifar10/trained_nets/n --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,957   command: python h52vtp.py --surf_file cifar10/trained_nets/_ --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,957   command: python h52vtp.py --surf_file cifar10/trained_nets/y --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,957   command: python h52vtp.py --surf_file cifar10/trained_nets/n --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,957   command: python h52vtp.py --surf_file cifar10/trained_nets/o --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,957   command: python h52vtp.py --surf_file cifar10/trained_nets/r --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,957   command: python h52vtp.py --surf_file cifar10/trained_nets/m --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,957   command: python h52vtp.py --surf_file cifar10/trained_nets/= --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,957   command: python h52vtp.py --surf_file cifar10/trained_nets/f --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,957   command: python h52vtp.py --surf_file cifar10/trained_nets/i --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,957   command: python h52vtp.py --surf_file cifar10/trained_nets/l --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,957   command: python h52vtp.py --surf_file cifar10/trained_nets/t --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,957   command: python h52vtp.py --surf_file cifar10/trained_nets/e --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,957   command: python h52vtp.py --surf_file cifar10/trained_nets/r --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,957   command: python h52vtp.py --surf_file cifar10/trained_nets/. --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,957   command: python h52vtp.py --surf_file cifar10/trained_nets/h --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,957   command: python h52vtp.py --surf_file cifar10/trained_nets/5 --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,958   command: python h52vtp.py --surf_file cifar10/trained_nets/_ --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,958   command: python h52vtp.py --surf_file cifar10/trained_nets/[ --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,958   command: python h52vtp.py --surf_file cifar10/trained_nets/- --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,958   command: python h52vtp.py --surf_file cifar10/trained_nets/1 --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,958   command: python h52vtp.py --surf_file cifar10/trained_nets/. --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,958   command: python h52vtp.py --surf_file cifar10/trained_nets/0 --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,958   command: python h52vtp.py --surf_file cifar10/trained_nets/, --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,958   command: python h52vtp.py --surf_file cifar10/trained_nets/1 --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,958   command: python h52vtp.py --surf_file cifar10/trained_nets/. --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,958   command: python h52vtp.py --surf_file cifar10/trained_nets/0 --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,958   command: python h52vtp.py --surf_file cifar10/trained_nets/, --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,958   command: python h52vtp.py --surf_file cifar10/trained_nets/5 --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,958   command: python h52vtp.py --surf_file cifar10/trained_nets/1 --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,958   command: python h52vtp.py --surf_file cifar10/trained_nets/] --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,958   command: python h52vtp.py --surf_file cifar10/trained_nets/x --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,958   command: python h52vtp.py --surf_file cifar10/trained_nets/[ --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,958   command: python h52vtp.py --surf_file cifar10/trained_nets/- --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,958   command: python h52vtp.py --surf_file cifar10/trained_nets/1 --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,958   command: python h52vtp.py --surf_file cifar10/trained_nets/. --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,958   command: python h52vtp.py --surf_file cifar10/trained_nets/0 --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,958   command: python h52vtp.py --surf_file cifar10/trained_nets/, --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,958   command: python h52vtp.py --surf_file cifar10/trained_nets/1 --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,958   command: python h52vtp.py --surf_file cifar10/trained_nets/. --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,958   command: python h52vtp.py --surf_file cifar10/trained_nets/0 --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,958   command: python h52vtp.py --surf_file cifar10/trained_nets/, --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,958   command: python h52vtp.py --surf_file cifar10/trained_nets/5 --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,958   command: python h52vtp.py --surf_file cifar10/trained_nets/1 --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,958   command: python h52vtp.py --surf_file cifar10/trained_nets/] --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,958   command: python h52vtp.py --surf_file cifar10/trained_nets/. --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,958   command: python h52vtp.py --surf_file cifar10/trained_nets/h --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:26,959   command: python h52vtp.py --surf_file cifar10/trained_nets/5 --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:01:59,992   ---------------------------------------------------------------------------------------------
+2019-08-26 16:01:59,993                              script.py                                             
+2019-08-26 16:01:59,993   ---------------------------------------------------------------------------------------------
+2019-08-26 16:01:59,993   command: python h52vtp.py --surf_file cifar10/trained_nets/resnet34_noshort_sgd_lr=0.1_bs=128_model_epoch70.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss --zmax  10 --log
+
+2019-08-26 16:05:57,405   ---------------------------------------------------------------------------------------------
+2019-08-26 16:05:57,406                              script.py                                             
+2019-08-26 16:05:57,406   ---------------------------------------------------------------------------------------------
+2019-08-26 16:06:14,663   ---------------------------------------------------------------------------------------------
+2019-08-26 16:06:14,663                              script.py                                             
+2019-08-26 16:06:14,663   ---------------------------------------------------------------------------------------------
+2019-08-26 16:06:29,225   ---------------------------------------------------------------------------------------------
+2019-08-26 16:06:29,225                              script.py                                             
+2019-08-26 16:06:29,225   ---------------------------------------------------------------------------------------------
+2019-08-26 16:06:46,661   ---------------------------------------------------------------------------------------------
+2019-08-26 16:06:46,661                              script.py                                             
+2019-08-26 16:06:46,661   ---------------------------------------------------------------------------------------------
+2019-08-26 16:07:04,625   ---------------------------------------------------------------------------------------------
+2019-08-26 16:07:04,626                              script.py                                             
+2019-08-26 16:07:04,626   ---------------------------------------------------------------------------------------------
+2019-08-26 16:07:20,948   ---------------------------------------------------------------------------------------------
+2019-08-26 16:07:20,948                              script.py                                             
+2019-08-26 16:07:20,948   ---------------------------------------------------------------------------------------------
+2019-08-26 16:08:46,686   ---------------------------------------------------------------------------------------------
+2019-08-26 16:08:46,686                              script.py                                             
+2019-08-26 16:08:46,686   ---------------------------------------------------------------------------------------------
+2019-08-26 16:09:26,139   ---------------------------------------------------------------------------------------------
+2019-08-26 16:09:26,139                              script.py                                             
+2019-08-26 16:09:26,139   ---------------------------------------------------------------------------------------------
+2019-08-27 22:58:18,940   ---------------------------------------------------------------------------------------------
+2019-08-27 22:58:18,941                              script.py                                             
+2019-08-27 22:58:18,941   ---------------------------------------------------------------------------------------------
+2019-08-27 22:58:18,941   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet34 --x=-0.5:1.5:401 --dir_type states --model_file cifar10/trained_nets/resnet34_sgd_lr=0.1_bs=128_model_epoch19.t7 --plot
+
+2019-08-27 23:48:06,664   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet34 --x=-1:1:51 --model_file cifar10/trained_nets/resnet34_sgd_lr=0.1_bs=128_model_epoch19.t7 --dir_type weights --xnorm filter --xignore biasbn --plot
+
+2019-08-27 23:55:06,614   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet34 --x=-1:1:51 --y=-1:1:51 --model_file cifar10/trained_nets/resnet34_sgd_lr=0.1_bs=128_model_epoch19.t7 --dir_type weights --xnorm filter --xignore biasbn --ynorm filter --yignore biasbn  --plot
+
+2019-08-28 00:07:17,876   ---------------------------------------------------------------------------------------------
+2019-08-28 00:07:17,876                              script.py                                             
+2019-08-28 00:07:17,876   ---------------------------------------------------------------------------------------------
+2019-08-28 00:07:17,876   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet34 --x=-0.5:1.5:401 --dir_type states --model_file cifar10/trained_nets/resnet34_noshort_sgd_lr=0.1_bs=128_model_epoch19.t7 --plot
+
+2019-08-28 00:07:21,598   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet34 --x=-1:1:51 --model_file cifar10/trained_nets/resnet34_noshort_sgd_lr=0.1_bs=128_model_epoch19.t7 --dir_type weights --xnorm filter --xignore biasbn --plot
+
+2019-08-28 00:07:24,005   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet34 --x=-1:1:51 --y=-1:1:51 --model_file cifar10/trained_nets/resnet34_noshort_sgd_lr=0.1_bs=128_model_epoch19.t7 --dir_type weights --xnorm filter --xignore biasbn --ynorm filter --yignore biasbn  --plot
+
+2019-08-28 00:07:24,320   command: python plot_2D.py --surf_file cifar10/trained_nets/resnet34_noshort_sgd_lr=0.1_bs=128_model_epoch19.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss
+
+2019-08-28 00:07:24,554   command: python h52vtp.py --surf_file cifar10/trained_nets/resnet34_noshort_sgd_lr=0.1_bs=128_model_epoch19.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss --zmax  10 --log
+
+2019-08-28 00:07:34,338   ---------------------------------------------------------------------------------------------
+2019-08-28 00:07:34,339                              script.py                                             
+2019-08-28 00:07:34,339   ---------------------------------------------------------------------------------------------
+2019-08-28 00:07:34,339   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet34 --x=-0.5:1.5:401 --dir_type states --model_file cifar10/trained_nets/resnet34_noshort_sgd_lr=0.1_bs=128_model_epoch19.t7 --plot
+
+2019-08-28 00:07:37,003   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet34 --x=-1:1:51 --model_file cifar10/trained_nets/resnet34_noshort_sgd_lr=0.1_bs=128_model_epoch19.t7 --dir_type weights --xnorm filter --xignore biasbn --plot
+
+2019-08-28 00:07:39,641   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet34 --x=-1:1:51 --y=-1:1:51 --model_file cifar10/trained_nets/resnet34_noshort_sgd_lr=0.1_bs=128_model_epoch19.t7 --dir_type weights --xnorm filter --xignore biasbn --ynorm filter --yignore biasbn  --plot
+
+2019-08-28 00:07:41,875   command: python plot_2D.py --surf_file cifar10/trained_nets/resnet34_noshort_sgd_lr=0.1_bs=128_model_epoch19.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss
+
+2019-08-28 00:07:42,123   command: python h52vtp.py --surf_file cifar10/trained_nets/resnet34_noshort_sgd_lr=0.1_bs=128_model_epoch19.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss --zmax  10 --log
+
+2019-08-28 04:53:53,973   command: python plot_2D.py --surf_file cifar10/trained_nets/resnet34_sgd_lr=0.1_bs=128_model_epoch19.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss
+
+2019-08-28 04:53:55,971   command: python h52vtp.py --surf_file cifar10/trained_nets/resnet34_sgd_lr=0.1_bs=128_model_epoch19.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss --zmax  10 --log
+
+2019-08-28 10:07:23,780   ---------------------------------------------------------------------------------------------
+2019-08-28 10:07:23,780                              script.py                                             
+2019-08-28 10:07:23,780   ---------------------------------------------------------------------------------------------
+2019-08-28 10:07:23,780   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet34 --x=-0.5:1.5:401 --dir_type states --model_file cifar10/trained_nets/resnet34_noshort_sgd_lr=0.1_bs=128_model_epoch19.t7 --plot
+
+2019-08-28 10:07:28,376   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet34 --x=-1:1:51 --model_file cifar10/trained_nets/resnet34_noshort_sgd_lr=0.1_bs=128_model_epoch19.t7 --dir_type weights --xnorm filter --xignore biasbn --plot
+
+2019-08-28 10:07:34,145   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet34 --x=-1:1:51 --y=-1:1:51 --model_file cifar10/trained_nets/resnet34_noshort_sgd_lr=0.1_bs=128_model_epoch19.t7 --dir_type weights --xnorm filter --xignore biasbn --ynorm filter --yignore biasbn  --plot
+
+2019-08-28 10:07:38,760   command: python plot_2D.py --surf_file cifar10/trained_nets/resnet34_noshort_sgd_lr=0.1_bs=128_model_epoch19.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss
+
+2019-08-28 10:07:39,387   command: python h52vtp.py --surf_file cifar10/trained_nets/resnet34_noshort_sgd_lr=0.1_bs=128_model_epoch19.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss --zmax  10 --log
+
+2019-08-28 12:05:01,996   ---------------------------------------------------------------------------------------------
+2019-08-28 12:05:01,996                              script.py                                             
+2019-08-28 12:05:01,996   ---------------------------------------------------------------------------------------------
+2019-08-28 12:05:01,997   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet34 --x=-0.5:1.5:401 --dir_type states --model_file cifar10/trained_nets/resnet34_noshort_sgd_lr=0.1_bs=128_model_epoch19.t7 --plot
+
+2019-08-28 12:05:06,688   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet34 --x=-1:1:51 --model_file cifar10/trained_nets/resnet34_noshort_sgd_lr=0.1_bs=128_model_epoch19.t7 --dir_type weights --xnorm filter --xignore biasbn --plot
+
+2019-08-28 12:05:11,231   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet34 --x=-1:1:51 --y=-1:1:51 --model_file cifar10/trained_nets/resnet34_noshort_sgd_lr=0.1_bs=128_model_epoch19.t7 --dir_type weights --xnorm filter --xignore biasbn --ynorm filter --yignore biasbn  --plot
+
+2019-08-28 12:05:15,839   command: python plot_2D.py --surf_file cifar10/trained_nets/resnet34_noshort_sgd_lr=0.1_bs=128_model_epoch19.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss
+
+2019-08-28 12:05:16,492   command: python h52vtp.py --surf_file cifar10/trained_nets/resnet34_noshort_sgd_lr=0.1_bs=128_model_epoch19.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss --zmax  10 --log
+
+2019-08-28 12:05:50,033   ---------------------------------------------------------------------------------------------
+2019-08-28 12:05:50,033                              script.py                                             
+2019-08-28 12:05:50,033   ---------------------------------------------------------------------------------------------
+2019-08-28 12:05:50,033   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet34 --x=-0.5:1.5:401 --dir_type states --model_file cifar10/trained_nets/resnet34_noshort_sgd_lr=0.1_bs=128_opt_state_epoch19.t7 --plot
+
+2019-08-28 12:05:54,628   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet34 --x=-1:1:51 --model_file cifar10/trained_nets/resnet34_noshort_sgd_lr=0.1_bs=128_opt_state_epoch19.t7 --dir_type weights --xnorm filter --xignore biasbn --plot
+
+2019-08-28 12:05:57,235   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet34 --x=-1:1:51 --y=-1:1:51 --model_file cifar10/trained_nets/resnet34_noshort_sgd_lr=0.1_bs=128_opt_state_epoch19.t7 --dir_type weights --xnorm filter --xignore biasbn --ynorm filter --yignore biasbn  --plot
+
+2019-08-28 12:05:58,553   command: python plot_2D.py --surf_file cifar10/trained_nets/resnet34_noshort_sgd_lr=0.1_bs=128_opt_state_epoch19.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss
+
+2019-08-28 12:05:58,595   command: python h52vtp.py --surf_file cifar10/trained_nets/resnet34_noshort_sgd_lr=0.1_bs=128_opt_state_epoch19.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss --zmax  10 --log
+
+2019-08-28 12:06:19,160   ---------------------------------------------------------------------------------------------
+2019-08-28 12:06:19,160                              script.py                                             
+2019-08-28 12:06:19,160   ---------------------------------------------------------------------------------------------
+2019-08-28 12:06:19,160   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet34 --x=-0.5:1.5:401 --dir_type states --model_file cifar10/trained_nets/resnet34_noshort_sgd_lr=0.1_bs=128_model_epoch19.t7 --plot
+
+2019-08-28 12:06:23,989   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet34 --x=-1:1:51 --model_file cifar10/trained_nets/resnet34_noshort_sgd_lr=0.1_bs=128_model_epoch19.t7 --dir_type weights --xnorm filter --xignore biasbn --plot
+
+2019-08-28 12:06:28,565   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet34 --x=-1:1:51 --y=-1:1:51 --model_file cifar10/trained_nets/resnet34_noshort_sgd_lr=0.1_bs=128_model_epoch19.t7 --dir_type weights --xnorm filter --xignore biasbn --ynorm filter --yignore biasbn  --plot
+
+2019-08-28 12:06:33,811   command: python plot_2D.py --surf_file cifar10/trained_nets/resnet34_noshort_sgd_lr=0.1_bs=128_model_epoch19.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss
+
+2019-08-28 12:06:34,034   command: python h52vtp.py --surf_file cifar10/trained_nets/resnet34_noshort_sgd_lr=0.1_bs=128_model_epoch19.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss --zmax  10 --log
+
+2019-08-28 12:06:59,863   ---------------------------------------------------------------------------------------------
+2019-08-28 12:06:59,863                              script.py                                             
+2019-08-28 12:06:59,864   ---------------------------------------------------------------------------------------------
+2019-08-28 12:06:59,864   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet34_noshort --x=-0.5:1.5:401 --dir_type states --model_file cifar10/trained_nets/resnet34_noshort_sgd_lr=0.1_bs=128_model_epoch19.t7 --plot
+
+2019-08-28 12:49:53,107   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet34_noshort --x=-1:1:51 --model_file cifar10/trained_nets/resnet34_noshort_sgd_lr=0.1_bs=128_model_epoch19.t7 --dir_type weights --xnorm filter --xignore biasbn --plot
+
+2019-08-28 12:55:35,014   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet34_noshort --x=-1:1:51 --y=-1:1:51 --model_file cifar10/trained_nets/resnet34_noshort_sgd_lr=0.1_bs=128_model_epoch19.t7 --dir_type weights --xnorm filter --xignore biasbn --ynorm filter --yignore biasbn  --plot
+
+2019-08-28 17:32:37,637   command: python plot_2D.py --surf_file cifar10/trained_nets/resnet34_noshort_sgd_lr=0.1_bs=128_model_epoch19.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss
+
+2019-08-28 17:32:39,711   command: python h52vtp.py --surf_file cifar10/trained_nets/resnet34_noshort_sgd_lr=0.1_bs=128_model_epoch19.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss --zmax  10 --log
+
+2019-08-28 22:21:57,105   ---------------------------------------------------------------------------------------------
+2019-08-28 22:21:57,105                              script.py                                             
+2019-08-28 22:21:57,105   ---------------------------------------------------------------------------------------------
+2019-08-28 22:21:57,105   command: python plot_2D.py --surf_file cifar10/trained_nets/resnet34_noshort_sgd_lr=0.1_bs=128_model_epoch70.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss
+
+2019-08-28 22:21:59,307   command: python h52vtp.py --surf_file cifar10/trained_nets/resnet34_noshort_sgd_lr=0.1_bs=128_model_epoch70.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss --zmax  10 --log
+
+2019-08-28 22:21:59,537   command: python plot_2D.py --surf_file cifar10/trained_nets/resnet34_noshort_sgd_lr=0.1_bs=128_model_epoch70.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss
+
+2019-08-28 22:22:01,714   command: python h52vtp.py --surf_file cifar10/trained_nets/resnet34_noshort_sgd_lr=0.1_bs=128_model_epoch70.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss --zmax  10 --log
+
+2019-08-28 22:24:05,793   ---------------------------------------------------------------------------------------------
+2019-08-28 22:24:05,793                              script.py                                             
+2019-08-28 22:24:05,793   ---------------------------------------------------------------------------------------------
+2019-08-28 22:24:05,793   command: python plot_2D.py --surf_file cifar10/trained_nets/resnet34_noshort_sgd_lr=0.1_bs=128_model_epoch70.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss
+
+2019-08-28 22:24:07,785   command: python h52vtp.py --surf_file cifar10/trained_nets/resnet34_noshort_sgd_lr=0.1_bs=128_model_epoch70.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss --zmax  10 --log
+
+2019-08-28 22:24:07,998   command: python plot_2D.py --surf_file cifar10/trained_nets/resnet34_sgd_lr=0.1_bs=128_model_epoch70.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss
+
+2019-08-28 22:24:10,008   command: python h52vtp.py --surf_file cifar10/trained_nets/resnet34_sgd_lr=0.1_bs=128_model_epoch70.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss --zmax  10 --log
+
+2019-09-07 18:50:12,035   ---------------------------------------------------------------------------------------------
+2019-09-07 18:50:12,035                              script.py                                             
+2019-09-07 18:50:12,035   ---------------------------------------------------------------------------------------------
+2019-09-07 18:50:12,035   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet34 --x=-0.5:1.5:401 --dir_type states --model_file cifar10/trained_nets/resnet34_lr=0.1_bs=128_model_epoch0.t7 --plot
+
+2019-09-07 19:49:30,129   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet34 --x=-1:1:51 --model_file cifar10/trained_nets/resnet34_lr=0.1_bs=128_model_epoch0.t7 --dir_type weights --xnorm filter --xignore biasbn --plot
+
+2019-09-07 19:58:16,861   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet34 --x=-1:1:51 --y=-1:1:51 --model_file cifar10/trained_nets/resnet34_lr=0.1_bs=128_model_epoch0.t7 --dir_type weights --xnorm filter --xignore biasbn --ynorm filter --yignore biasbn  --plot
+
+2019-09-07 23:47:25,748   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet34 --x=-0.5:1.5:401 --dir_type states --model_file cifar10/trained_nets/resnet34_lr=0.1_bs=128_model_epoch3.t7 --plot
+
+2019-09-07 23:47:25,962   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet34 --x=-1:1:51 --model_file cifar10/trained_nets/resnet34_lr=0.1_bs=128_model_epoch3.t7 --dir_type weights --xnorm filter --xignore biasbn --plot
+
+2019-09-07 23:47:26,184   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet34 --x=-1:1:51 --y=-1:1:51 --model_file cifar10/trained_nets/resnet34_lr=0.1_bs=128_model_epoch3.t7 --dir_type weights --xnorm filter --xignore biasbn --ynorm filter --yignore biasbn  --plot
+
+2019-09-07 23:47:26,389   command: python plot_2D.py --surf_file cifar10/trained_nets/resnet34_lr=0.1_bs=128_model_epoch0.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss
+
+2019-09-07 23:47:26,421   command: python h52vtp.py --surf_file cifar10/trained_nets/resnet34_lr=0.1_bs=128_model_epoch0.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss --zmax  10 --log
+
+2019-09-07 23:47:26,618   command: python plot_2D.py --surf_file cifar10/trained_nets/resnet34_lr=0.1_bs=128_model_epoch3.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss
+
+2019-09-07 23:47:26,805   command: python h52vtp.py --surf_file cifar10/trained_nets/resnet34_lr=0.1_bs=128_model_epoch3.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss --zmax  10 --log
+
+2019-09-07 23:52:48,563   ---------------------------------------------------------------------------------------------
+2019-09-07 23:52:48,563                              script.py                                             
+2019-09-07 23:52:48,563   ---------------------------------------------------------------------------------------------
+2019-09-07 23:52:48,563   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet56 --x=-0.5:1.5:401 --dir_type states --model_file cifar10/trained_nets/resnet56_lr=0.1_bs=128_model_epoch99.t7 --plot
+
+2019-09-07 23:53:06,954   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet56 --x=-1:1:51 --model_file cifar10/trained_nets/resnet56_lr=0.1_bs=128_model_epoch99.t7 --dir_type weights --xnorm filter --xignore biasbn --plot
+
+2019-09-07 23:53:07,321   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet56 --x=-1:1:51 --y=-1:1:51 --model_file cifar10/trained_nets/resnet56_lr=0.1_bs=128_model_epoch99.t7 --dir_type weights --xnorm filter --xignore biasbn --ynorm filter --yignore biasbn  --plot
+
+2019-09-07 23:53:07,560   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet56_noshort --x=-0.5:1.5:401 --dir_type states --model_file cifar10/trained_nets/resnet56_noshort_lr=0.1_bs=128_model_epoch99.t7 --plot
+
+2019-09-07 23:53:07,810   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet56_noshort --x=-1:1:51 --model_file cifar10/trained_nets/resnet56_noshort_lr=0.1_bs=128_model_epoch99.t7 --dir_type weights --xnorm filter --xignore biasbn --plot
+
+2019-09-07 23:53:07,851   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet56_noshort --x=-1:1:51 --y=-1:1:51 --model_file cifar10/trained_nets/resnet56_noshort_lr=0.1_bs=128_model_epoch99.t7 --dir_type weights --xnorm filter --xignore biasbn --ynorm filter --yignore biasbn  --plot
+
+2019-09-07 23:53:08,203   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model vgg11 --x=-0.5:1.5:401 --dir_type states --model_file cifar10/trained_nets/vgg11_lr=0.1_bs=128_model_epoch199.t7 --plot
+
+2019-09-07 23:53:08,575   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model vgg11 --x=-1:1:51 --model_file cifar10/trained_nets/vgg11_lr=0.1_bs=128_model_epoch199.t7 --dir_type weights --xnorm filter --xignore biasbn --plot
+
+2019-09-07 23:53:08,955   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model vgg11 --x=-1:1:51 --y=-1:1:51 --model_file cifar10/trained_nets/vgg11_lr=0.1_bs=128_model_epoch199.t7 --dir_type weights --xnorm filter --xignore biasbn --ynorm filter --yignore biasbn  --plot
+
+2019-09-07 23:53:09,341   command: python plot_2D.py --surf_file cifar10/trained_nets/resnet56_lr=0.1_bs=128_model_epoch99.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss
+
+2019-09-07 23:53:09,547   command: python h52vtp.py --surf_file cifar10/trained_nets/resnet56_lr=0.1_bs=128_model_epoch99.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss --zmax  10 --log
+
+2019-09-07 23:53:09,730   command: python plot_2D.py --surf_file cifar10/trained_nets/resnet56_noshort_lr=0.1_bs=128_model_epoch99.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss
+
+2019-09-07 23:53:09,930   command: python h52vtp.py --surf_file cifar10/trained_nets/resnet56_noshort_lr=0.1_bs=128_model_epoch99.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss --zmax  10 --log
+
+2019-09-07 23:53:10,102   command: python plot_2D.py --surf_file cifar10/trained_nets/vgg11_lr=0.1_bs=128_model_epoch199.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss
+
+2019-09-07 23:53:10,321   command: python h52vtp.py --surf_file cifar10/trained_nets/vgg11_lr=0.1_bs=128_model_epoch199.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss --zmax  10 --log
+
+2019-09-07 23:54:06,262   ---------------------------------------------------------------------------------------------
+2019-09-07 23:54:06,262                              script.py                                             
+2019-09-07 23:54:06,262   ---------------------------------------------------------------------------------------------
+2019-09-07 23:54:06,262   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet56 --x=-0.5:1.5:401 --dir_type states --model_file cifar10/trained_nets/resnet56_lr=0.1_bs=128_model_epoch99.t7 --plot
+
+2019-09-08 00:44:55,339   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet56 --x=-1:1:51 --model_file cifar10/trained_nets/resnet56_lr=0.1_bs=128_model_epoch99.t7 --dir_type weights --xnorm filter --xignore biasbn --plot
+
+2019-09-08 00:51:37,833   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet56 --x=-1:1:51 --y=-1:1:51 --model_file cifar10/trained_nets/resnet56_lr=0.1_bs=128_model_epoch99.t7 --dir_type weights --xnorm filter --xignore biasbn --ynorm filter --yignore biasbn  --plot
+
+2019-09-08 05:20:32,007   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet56_noshort --x=-0.5:1.5:401 --dir_type states --model_file cifar10/trained_nets/resnet56_noshort_lr=0.1_bs=128_model_epoch199.t7 --plot
+
+2019-09-08 05:57:35,552   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet56_noshort --x=-1:1:51 --model_file cifar10/trained_nets/resnet56_noshort_lr=0.1_bs=128_model_epoch199.t7 --dir_type weights --xnorm filter --xignore biasbn --plot
+
+2019-09-08 06:02:28,601   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet56_noshort --x=-1:1:51 --y=-1:1:51 --model_file cifar10/trained_nets/resnet56_noshort_lr=0.1_bs=128_model_epoch199.t7 --dir_type weights --xnorm filter --xignore biasbn --ynorm filter --yignore biasbn  --plot
+
+2019-09-08 09:58:55,051   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model vgg11 --x=-0.5:1.5:401 --dir_type states --model_file cifar10/trained_nets/vgg11_lr=0.1_bs=128_model_epoch199.t7 --plot
+
+2019-09-08 09:58:59,573   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model vgg11 --x=-1:1:51 --model_file cifar10/trained_nets/vgg11_lr=0.1_bs=128_model_epoch199.t7 --dir_type weights --xnorm filter --xignore biasbn --plot
+
+2019-09-08 09:59:04,053   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model vgg11 --x=-1:1:51 --y=-1:1:51 --model_file cifar10/trained_nets/vgg11_lr=0.1_bs=128_model_epoch199.t7 --dir_type weights --xnorm filter --xignore biasbn --ynorm filter --yignore biasbn  --plot
+
+2019-09-08 09:59:08,641   command: python plot_2D.py --surf_file cifar10/trained_nets/resnet56_lr=0.1_bs=128_model_epoch99.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss
+
+2019-09-08 09:59:10,844   command: python h52vtp.py --surf_file cifar10/trained_nets/resnet56_lr=0.1_bs=128_model_epoch99.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss --zmax  10 --log
+
+2019-09-08 09:59:11,100   command: python plot_2D.py --surf_file cifar10/trained_nets/resnet56_noshort_lr=0.1_bs=128_model_epoch199.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss
+
+2019-09-08 09:59:13,352   command: python h52vtp.py --surf_file cifar10/trained_nets/resnet56_noshort_lr=0.1_bs=128_model_epoch199.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss --zmax  10 --log
+
+2019-09-08 09:59:13,573   command: python plot_2D.py --surf_file cifar10/trained_nets/vgg11_lr=0.1_bs=128_model_epoch199.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss
+
+2019-09-08 09:59:14,187   command: python h52vtp.py --surf_file cifar10/trained_nets/vgg11_lr=0.1_bs=128_model_epoch199.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss --zmax  10 --log
+
+2019-09-09 13:22:00,018   ---------------------------------------------------------------------------------------------
+2019-09-09 13:22:00,018                              script.py                                             
+2019-09-09 13:22:00,018   ---------------------------------------------------------------------------------------------
+2019-09-09 13:22:00,018   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model vgg11 --x=-0.5:1.5:401 --dir_type states --model_file cifar10/trained_nets/vgg11_lr=0.1_bs=128_model_epoch199.t7 --plot
+
+2019-09-09 13:22:04,475   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model vgg11 --x=-1:1:51 --model_file cifar10/trained_nets/vgg11_lr=0.1_bs=128_model_epoch199.t7 --dir_type weights --xnorm filter --xignore biasbn --plot
+
+2019-09-09 13:22:08,954   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model vgg11 --x=-1:1:51 --y=-1:1:51 --model_file cifar10/trained_nets/vgg11_lr=0.1_bs=128_model_epoch199.t7 --dir_type weights --xnorm filter --xignore biasbn --ynorm filter --yignore biasbn  --plot
+
+2019-09-09 13:22:13,494   command: python plot_2D.py --surf_file cifar10/trained_nets/vgg11_lr=0.1_bs=128_model_epoch199.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss
+
+2019-09-09 13:22:14,132   command: python h52vtp.py --surf_file cifar10/trained_nets/vgg11_lr=0.1_bs=128_model_epoch199.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss --zmax  10 --log
+
+2019-09-09 13:23:17,853   ---------------------------------------------------------------------------------------------
+2019-09-09 13:23:17,854                              script.py                                             
+2019-09-09 13:23:17,854   ---------------------------------------------------------------------------------------------
+2019-09-09 13:23:17,854   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model vgg11 --x=-0.5:1.5:401 --dir_type states --model_file cifar10/trained_nets/vgg11_lr=0.1_bs=128_model_epoch199.t7 --plot
+
+2019-09-09 13:23:22,251   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model vgg11 --x=-1:1:51 --model_file cifar10/trained_nets/vgg11_lr=0.1_bs=128_model_epoch199.t7 --dir_type weights --xnorm filter --xignore biasbn --plot
+
+2019-09-09 13:23:26,612   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model vgg11 --x=-1:1:51 --y=-1:1:51 --model_file cifar10/trained_nets/vgg11_lr=0.1_bs=128_model_epoch199.t7 --dir_type weights --xnorm filter --xignore biasbn --ynorm filter --yignore biasbn  --plot
+
+2019-09-09 13:23:30,980   command: python plot_2D.py --surf_file cifar10/trained_nets/vgg11_lr=0.1_bs=128_model_epoch199.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss
+
+2019-09-09 13:23:31,625   command: python h52vtp.py --surf_file cifar10/trained_nets/vgg11_lr=0.1_bs=128_model_epoch199.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss --zmax  10 --log
+
+2019-09-09 13:25:10,821   ---------------------------------------------------------------------------------------------
+2019-09-09 13:25:10,822                              script.py                                             
+2019-09-09 13:25:10,822   ---------------------------------------------------------------------------------------------
+2019-09-09 13:25:10,822   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model vgg11 --x=-0.5:1.5:401 --dir_type states --model_file cifar10/trained_nets/vgg11_lr=0.1_bs=128_model_epoch199.t7 --plot
+
+2019-09-09 13:25:11,309   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model vgg11 --x=-1:1:51 --model_file cifar10/trained_nets/vgg11_lr=0.1_bs=128_model_epoch199.t7 --dir_type weights --xnorm filter --xignore biasbn --plot
+
+2019-09-09 13:25:11,785   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model vgg11 --x=-1:1:51 --y=-1:1:51 --model_file cifar10/trained_nets/vgg11_lr=0.1_bs=128_model_epoch199.t7 --dir_type weights --xnorm filter --xignore biasbn --ynorm filter --yignore biasbn  --plot
+
+2019-09-09 13:25:12,238   command: python plot_2D.py --surf_file cifar10/trained_nets/vgg11_lr=0.1_bs=128_model_epoch199.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss
+
+2019-09-09 13:25:12,864   command: python h52vtp.py --surf_file cifar10/trained_nets/vgg11_lr=0.1_bs=128_model_epoch199.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss --zmax  10 --log
+
+2019-09-09 13:26:22,269   ---------------------------------------------------------------------------------------------
+2019-09-09 13:26:22,269                              script.py                                             
+2019-09-09 13:26:22,269   ---------------------------------------------------------------------------------------------
+2019-09-09 13:26:22,269   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model vgg11 --x=-0.5:1.5:401 --dir_type states --model_file cifar10/trained_nets/vgg11_lr=0.1_bs=128_model_epoch199.t7 --plot
+
+2019-09-09 13:26:22,754   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model vgg11 --x=-1:1:51 --model_file cifar10/trained_nets/vgg11_lr=0.1_bs=128_model_epoch199.t7 --dir_type weights --xnorm filter --xignore biasbn --plot
+
+2019-09-09 13:26:23,222   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model vgg11 --x=-1:1:51 --y=-1:1:51 --model_file cifar10/trained_nets/vgg11_lr=0.1_bs=128_model_epoch199.t7 --dir_type weights --xnorm filter --xignore biasbn --ynorm filter --yignore biasbn  --plot
+
+2019-09-09 13:26:23,721   command: python plot_2D.py --surf_file cifar10/trained_nets/vgg11_lr=0.1_bs=128_model_epoch199.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss
+
+2019-09-09 13:26:24,360   command: python h52vtp.py --surf_file cifar10/trained_nets/vgg11_lr=0.1_bs=128_model_epoch199.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss --zmax  10 --log
+
+2019-09-09 19:11:33,202   ---------------------------------------------------------------------------------------------
+2019-09-09 19:11:33,202                              script.py                                             
+2019-09-09 19:11:33,202   ---------------------------------------------------------------------------------------------
+2019-09-09 19:11:33,202   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model densenet121 --x=-0.5:1.5:401 --dir_type states --model_file cifar10/trained_nets/densenet121_lr=0.1_bs=64_model_epoch199.t7 --plot
+
+2019-09-09 19:11:33,689   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model densenet121 --x=-1:1:51 --model_file cifar10/trained_nets/densenet121_lr=0.1_bs=64_model_epoch199.t7 --dir_type weights --xnorm filter --xignore biasbn --plot
+
+2019-09-09 19:11:34,128   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model densenet121 --x=-1:1:51 --y=-1:1:51 --model_file cifar10/trained_nets/densenet121_lr=0.1_bs=64_model_epoch199.t7 --dir_type weights --xnorm filter --xignore biasbn --ynorm filter --yignore biasbn  --plot
+
+2019-09-09 19:11:34,578   command: python plot_2D.py --surf_file cifar10/trained_nets/densenet121_lr=0.1_bs=64_model_epoch199.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss
+
+2019-09-09 19:11:35,207   command: python h52vtp.py --surf_file cifar10/trained_nets/densenet121_lr=0.1_bs=64_model_epoch199.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss --zmax  10 --log
+
+2019-09-09 19:20:09,749   ---------------------------------------------------------------------------------------------
+2019-09-09 19:20:09,750                              script.py                                             
+2019-09-09 19:20:09,750   ---------------------------------------------------------------------------------------------
+2019-09-09 19:20:09,750   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model densenet121 --x=-0.5:1.5:401 --dir_type states --model_file cifar10/trained_nets/densenet121_lr=0.1_bs=64_model_epoch199.t7 --plot
+
+2019-09-09 19:20:10,220   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model densenet121 --x=-1:1:51 --model_file cifar10/trained_nets/densenet121_lr=0.1_bs=64_model_epoch199.t7 --dir_type weights --xnorm filter --xignore biasbn --plot
+
+2019-09-09 19:20:10,681   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model densenet121 --x=-1:1:51 --y=-1:1:51 --model_file cifar10/trained_nets/densenet121_lr=0.1_bs=64_model_epoch199.t7 --dir_type weights --xnorm filter --xignore biasbn --ynorm filter --yignore biasbn  --plot
+
+2019-09-09 19:20:11,136   command: python plot_2D.py --surf_file cifar10/trained_nets/densenet121_lr=0.1_bs=64_model_epoch199.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss
+
+2019-09-09 19:20:11,769   command: python h52vtp.py --surf_file cifar10/trained_nets/densenet121_lr=0.1_bs=64_model_epoch199.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss --zmax  10 --log
+
+2019-09-09 19:21:25,082   ---------------------------------------------------------------------------------------------
+2019-09-09 19:21:25,082                              script.py                                             
+2019-09-09 19:21:25,082   ---------------------------------------------------------------------------------------------
+2019-09-09 19:21:25,082   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model densenet121 --x=-0.5:1.5:401 --dir_type states --model_file cifar10/trained_nets/densenet121_lr=0.1_bs=64_model_epoch199.t7 --plot
+
+2019-09-09 19:21:25,555   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model densenet121 --x=-1:1:51 --model_file cifar10/trained_nets/densenet121_lr=0.1_bs=64_model_epoch199.t7 --dir_type weights --xnorm filter --xignore biasbn --plot
+
+2019-09-09 19:21:26,022   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model densenet121 --x=-1:1:51 --y=-1:1:51 --model_file cifar10/trained_nets/densenet121_lr=0.1_bs=64_model_epoch199.t7 --dir_type weights --xnorm filter --xignore biasbn --ynorm filter --yignore biasbn  --plot
+
+2019-09-09 19:21:26,474   command: python plot_2D.py --surf_file cifar10/trained_nets/densenet121_lr=0.1_bs=64_model_epoch199.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss
+
+2019-09-09 19:21:27,099   command: python h52vtp.py --surf_file cifar10/trained_nets/densenet121_lr=0.1_bs=64_model_epoch199.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss --zmax  10 --log
+
+2019-09-09 19:22:23,747   ---------------------------------------------------------------------------------------------
+2019-09-09 19:22:23,747                              script.py                                             
+2019-09-09 19:22:23,747   ---------------------------------------------------------------------------------------------
+2019-09-09 19:22:23,747   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model densenet121 --x=-0.5:1.5:401 --dir_type states --model_file cifar10/trained_nets/densenet121_lr=0.1_bs=64_model_epoch199.t7 --plot
+
+2019-09-09 19:22:24,221   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model densenet121 --x=-1:1:51 --model_file cifar10/trained_nets/densenet121_lr=0.1_bs=64_model_epoch199.t7 --dir_type weights --xnorm filter --xignore biasbn --plot
+
+2019-09-09 19:22:24,680   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model densenet121 --x=-1:1:51 --y=-1:1:51 --model_file cifar10/trained_nets/densenet121_lr=0.1_bs=64_model_epoch199.t7 --dir_type weights --xnorm filter --xignore biasbn --ynorm filter --yignore biasbn  --plot
+
+2019-09-09 19:22:25,131   command: python plot_2D.py --surf_file cifar10/trained_nets/densenet121_lr=0.1_bs=64_model_epoch199.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss
+
+2019-09-09 19:22:25,776   command: python h52vtp.py --surf_file cifar10/trained_nets/densenet121_lr=0.1_bs=64_model_epoch199.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss --zmax  10 --log
+
+2019-09-09 19:26:15,966   ---------------------------------------------------------------------------------------------
+2019-09-09 19:26:15,966                              script.py                                             
+2019-09-09 19:26:15,966   ---------------------------------------------------------------------------------------------
+2019-09-09 19:26:15,966   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model densenet121 --x=-0.5:1.5:401 --dir_type states --model_file cifar10/trained_nets/densenet121_lr=0.1_bs=64_model_epoch199.t7 --plot
+
+2019-09-09 19:26:16,435   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model densenet121 --x=-1:1:51 --model_file cifar10/trained_nets/densenet121_lr=0.1_bs=64_model_epoch199.t7 --dir_type weights --xnorm filter --xignore biasbn --plot
+
+2019-09-09 19:26:16,876   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model densenet121 --x=-1:1:51 --y=-1:1:51 --model_file cifar10/trained_nets/densenet121_lr=0.1_bs=64_model_epoch199.t7 --dir_type weights --xnorm filter --xignore biasbn --ynorm filter --yignore biasbn  --plot
+
+2019-09-09 19:26:17,324   command: python plot_2D.py --surf_file cifar10/trained_nets/densenet121_lr=0.1_bs=64_model_epoch199.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss
+
+2019-09-09 19:26:17,970   command: python h52vtp.py --surf_file cifar10/trained_nets/densenet121_lr=0.1_bs=64_model_epoch199.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss --zmax  10 --log
+
+2019-09-09 19:26:44,485   ---------------------------------------------------------------------------------------------
+2019-09-09 19:26:44,486                              script.py                                             
+2019-09-09 19:26:44,486   ---------------------------------------------------------------------------------------------
+2019-09-09 19:26:44,486   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model densenet121 --x=-0.5:1.5:401 --dir_type states --model_file cifar10/trained_nets/densenet121_lr=0.1_bs=64_model_epoch199.t7 --plot
+
+2019-09-09 19:26:44,955   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model densenet121 --x=-1:1:51 --model_file cifar10/trained_nets/densenet121_lr=0.1_bs=64_model_epoch199.t7 --dir_type weights --xnorm filter --xignore biasbn --plot
+
+2019-09-09 19:26:45,397   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model densenet121 --x=-1:1:51 --y=-1:1:51 --model_file cifar10/trained_nets/densenet121_lr=0.1_bs=64_model_epoch199.t7 --dir_type weights --xnorm filter --xignore biasbn --ynorm filter --yignore biasbn  --plot
+
+2019-09-09 19:26:45,844   command: python plot_2D.py --surf_file cifar10/trained_nets/densenet121_lr=0.1_bs=64_model_epoch199.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss
+
+2019-09-09 19:26:46,486   command: python h52vtp.py --surf_file cifar10/trained_nets/densenet121_lr=0.1_bs=64_model_epoch199.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss --zmax  10 --log
+
+2019-09-09 19:27:39,786   ---------------------------------------------------------------------------------------------
+2019-09-09 19:27:39,787                              script.py                                             
+2019-09-09 19:27:39,787   ---------------------------------------------------------------------------------------------
+2019-09-09 19:27:39,787   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model densenet121 --x=-0.5:1.5:401 --dir_type states --model_file cifar10/trained_nets/densenet121_lr=0.1_bs=64_model_epoch199.t7 --plot
+
+2019-09-09 21:24:36,921   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model densenet121 --x=-1:1:51 --model_file cifar10/trained_nets/densenet121_lr=0.1_bs=64_model_epoch199.t7 --dir_type weights --xnorm filter --xignore biasbn --plot
+
+2019-09-09 21:39:00,285   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model densenet121 --x=-1:1:51 --y=-1:1:51 --model_file cifar10/trained_nets/densenet121_lr=0.1_bs=64_model_epoch199.t7 --dir_type weights --xnorm filter --xignore biasbn --ynorm filter --yignore biasbn  --plot
+
+2019-09-11 20:44:50,783   command: python plot_2D.py --surf_file cifar10/trained_nets/densenet121_lr=0.1_bs=64_model_epoch199.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss
+
+2019-09-11 20:44:51,000   command: python h52vtp.py --surf_file cifar10/trained_nets/densenet121_lr=0.1_bs=64_model_epoch199.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss --zmax  10 --log
+
+2019-09-11 20:45:18,274   ---------------------------------------------------------------------------------------------
+2019-09-11 20:45:18,275                              script.py                                             
+2019-09-11 20:45:18,275   ---------------------------------------------------------------------------------------------
+2019-09-11 20:45:18,275   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model densenet121 --x=-1:1:51 --y=-1:1:51 --model_file cifar10/trained_nets/densenet121_lr=0.1_bs=64_model_epoch199.t7 --dir_type weights --xnorm filter --xignore biasbn --ynorm filter --yignore biasbn  --plot
+
+2019-09-11 20:49:06,857   command: python plot_2D.py --surf_file cifar10/trained_nets/densenet121_lr=0.1_bs=64_model_epoch199.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss
+
+2019-09-11 20:49:07,089   command: python h52vtp.py --surf_file cifar10/trained_nets/densenet121_lr=0.1_bs=64_model_epoch199.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss --zmax  10 --log
+
+2019-09-11 20:50:48,650   ---------------------------------------------------------------------------------------------
+2019-09-11 20:50:48,650                              script.py                                             
+2019-09-11 20:50:48,650   ---------------------------------------------------------------------------------------------
+2019-09-11 20:50:48,650   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model densenet121 --x=-1:1:51 --y=-1:1:51 --model_file cifar10/trained_nets/densenet121_lr=0.1_bs=64_model_epoch199.t7 --dir_type weights --xnorm filter --xignore biasbn --ynorm filter --yignore biasbn  --plot --batch_size 64
+
+2019-09-11 20:55:59,648   ---------------------------------------------------------------------------------------------
+2019-09-11 20:55:59,648                              script.py                                             
+2019-09-11 20:55:59,648   ---------------------------------------------------------------------------------------------
+2019-09-11 20:55:59,648   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet18 --x=-1:1:51 --y=-1:1:51 --model_file cifar10/trained_nets/resnet18_lr=0.1_bs=64_model_epoch99.t7 --dir_type weights --xnorm filter --xignore biasbn --ynorm filter --yignore biasbn  --plot --batch_size 64
+
+2019-09-11 20:57:05,882   ---------------------------------------------------------------------------------------------
+2019-09-11 20:57:05,882                              script.py                                             
+2019-09-11 20:57:05,882   ---------------------------------------------------------------------------------------------
+2019-09-11 20:57:05,883   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet18 --x=-0.5:1.5:401 --dir_type states --model_file cifar10/trained_nets/resnet18_lr=0.1_bs=64_model_epoch99.t7 --plot --batch_size 64
+
+2019-09-12 10:48:09,733   ---------------------------------------------------------------------------------------------
+2019-09-12 10:48:09,757                              script.py                                             
+2019-09-12 10:48:09,758   ---------------------------------------------------------------------------------------------
+2019-09-12 10:48:09,758   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model densenet121 --x=-1:1:51 --y=-1:1:51 --model_file cifar10/trained_nets/densenet121_lr=0.1_bs=64_model_epoch199.t7 --dir_type weights --xnorm filter --xignore biasbn --ynorm filter --yignore biasbn  --plot --batch_size 64
+
+2019-09-13 02:05:08,786   command: python plot_2D.py --surf_file cifar10/trained_nets/densenet121_lr=0.1_bs=64_model_epoch199.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --batch_size 64 --surf_name train_loss --batch_size 64
+
+2019-09-13 02:05:09,463   command: python plot_2D.py --surf_file cifar10/trained_nets/densenet121_lr=0.1_bs=64_model_epoch199.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --batch_size 64 --surf_name train_loss --batch_size 64
+
+2019-09-13 02:05:09,463   command: python h52vtp.py --surf_file cifar10/trained_nets/densenet121_lr=0.1_bs=64_model_epoch199.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --batch_size 64 --surf_name train_loss --zmax  10 --log --batch_size 64
+
+2019-09-13 09:56:37,468   ---------------------------------------------------------------------------------------------
+2019-09-13 09:56:37,468                              script.py                                             
+2019-09-13 09:56:37,468   ---------------------------------------------------------------------------------------------
+2019-09-13 09:56:37,468   command: python plot_2D.py --surf_file cifar10/trained_nets/densenet121_lr=0.1_bs=64_model_epoch199.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss
+
+2019-09-13 09:56:39,555   command: python h52vtp.py --surf_file cifar10/trained_nets/densenet121_lr=0.1_bs=64_model_epoch199.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss --zmax  10 --log
+
+2019-09-14 13:04:58,133   ---------------------------------------------------------------------------------------------
+2019-09-14 13:04:58,157                              script.py                                             
+2019-09-14 13:04:58,157   ---------------------------------------------------------------------------------------------
+2019-09-14 13:04:58,158   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet110 --x=-0.5:1.5:401 --dir_type states --model_file cifar10/trained_nets/resnet110_lr=0.1_bs=64_model_epoch79.t7 --plot --batch_size 64
+
+2019-09-14 13:05:03,928   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet110 --x=-1:1:51 --model_file cifar10/trained_nets/resnet110_lr=0.1_bs=64_model_epoch79.t7 --dir_type weights --xnorm filter --xignore biasbn --plot --batch_size 64
+
+2019-09-14 13:05:07,864   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet110 --x=-1:1:51 --y=-1:1:51 --model_file cifar10/trained_nets/resnet110_lr=0.1_bs=64_model_epoch79.t7 --dir_type weights --xnorm filter --xignore biasbn --ynorm filter --yignore biasbn  --plot --batch_size 64
+
+2019-09-14 13:05:11,746   command: python plot_2D.py --surf_file cifar10/trained_nets/resnet110_lr=0.1_bs=64_model_epoch79.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss
+
+2019-09-14 13:05:12,399   command: python h52vtp.py --surf_file cifar10/trained_nets/resnet110_lr=0.1_bs=64_model_epoch79.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss --zmax  10 --log
+
+2019-09-14 13:05:12,626   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet20 --x=-0.5:1.5:401 --dir_type states --model_file cifar10/trained_nets/resnet20_lr=0.1_bs=64_model_epoch59.t7 --plot --batch_size 64
+
+2019-09-14 13:05:16,368   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet20 --x=-1:1:51 --model_file cifar10/trained_nets/resnet20_lr=0.1_bs=64_model_epoch59.t7 --dir_type weights --xnorm filter --xignore biasbn --plot --batch_size 64
+
+2019-09-14 13:05:20,277   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet20 --x=-1:1:51 --y=-1:1:51 --model_file cifar10/trained_nets/resnet20_lr=0.1_bs=64_model_epoch59.t7 --dir_type weights --xnorm filter --xignore biasbn --ynorm filter --yignore biasbn  --plot --batch_size 64
+
+2019-09-14 13:05:24,037   command: python plot_2D.py --surf_file cifar10/trained_nets/resnet20_lr=0.1_bs=64_model_epoch59.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss
+
+2019-09-14 13:05:24,682   command: python h52vtp.py --surf_file cifar10/trained_nets/resnet20_lr=0.1_bs=64_model_epoch59.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss --zmax  10 --log
+
+2019-09-14 13:05:24,897   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet20_noshort --x=-0.5:1.5:401 --dir_type states --model_file cifar10/trained_nets/resnet20_noshort_lr=0.1_bs=64_model_epoch119.t7 --plot --batch_size 64
+
+2019-09-14 13:05:28,180   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet20_noshort --x=-1:1:51 --model_file cifar10/trained_nets/resnet20_noshort_lr=0.1_bs=64_model_epoch119.t7 --dir_type weights --xnorm filter --xignore biasbn --plot --batch_size 64
+
+2019-09-14 13:05:32,134   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet20_noshort --x=-1:1:51 --y=-1:1:51 --model_file cifar10/trained_nets/resnet20_noshort_lr=0.1_bs=64_model_epoch119.t7 --dir_type weights --xnorm filter --xignore biasbn --ynorm filter --yignore biasbn  --plot --batch_size 64
+
+2019-09-14 13:05:35,993   command: python plot_2D.py --surf_file cifar10/trained_nets/resnet20_noshort_lr=0.1_bs=64_model_epoch119.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss
+
+2019-09-14 13:05:36,642   command: python h52vtp.py --surf_file cifar10/trained_nets/resnet20_noshort_lr=0.1_bs=64_model_epoch119.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss --zmax  10 --log
+
+2019-09-14 13:05:36,854   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet110_noshort --x=-0.5:1.5:401 --dir_type states --model_file cifar10/trained_nets/resnet110_noshort_lr=0.1_bs=64_model_epoch149.t7 --plot --batch_size 64
+
+2019-09-14 13:05:38,967   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet110_noshort --x=-1:1:51 --model_file cifar10/trained_nets/resnet110_noshort_lr=0.1_bs=64_model_epoch149.t7 --dir_type weights --xnorm filter --xignore biasbn --plot --batch_size 64
+
+2019-09-14 13:05:40,254   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet110_noshort --x=-1:1:51 --y=-1:1:51 --model_file cifar10/trained_nets/resnet110_noshort_lr=0.1_bs=64_model_epoch149.t7 --dir_type weights --xnorm filter --xignore biasbn --ynorm filter --yignore biasbn  --plot --batch_size 64
+
+2019-09-14 13:05:40,519   command: python plot_2D.py --surf_file cifar10/trained_nets/resnet110_noshort_lr=0.1_bs=64_model_epoch149.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss
+
+2019-09-14 13:05:40,814   command: python h52vtp.py --surf_file cifar10/trained_nets/resnet110_noshort_lr=0.1_bs=64_model_epoch149.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss --zmax  10 --log
+
+2019-09-14 13:08:23,575   ---------------------------------------------------------------------------------------------
+2019-09-14 13:08:23,575                              script.py                                             
+2019-09-14 13:08:23,575   ---------------------------------------------------------------------------------------------
+2019-09-14 13:08:23,576   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet110 --x=-0.5:1.5:401 --dir_type states --model_file cifar10/trained_nets/resnet110_lr=0.1_bs=64_model_epoch79.t7 --plot --batch_size 64
+
+2019-09-14 15:00:58,405   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet110 --x=-1:1:51 --model_file cifar10/trained_nets/resnet110_lr=0.1_bs=64_model_epoch79.t7 --dir_type weights --xnorm filter --xignore biasbn --plot --batch_size 64
+
+2019-09-14 15:14:42,604   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet110 --x=-1:1:51 --y=-1:1:51 --model_file cifar10/trained_nets/resnet110_lr=0.1_bs=64_model_epoch79.t7 --dir_type weights --xnorm filter --xignore biasbn --ynorm filter --yignore biasbn  --plot --batch_size 64
+
+2019-09-15 02:57:10,649   command: python plot_2D.py --surf_file cifar10/trained_nets/resnet110_lr=0.1_bs=64_model_epoch79.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss
+
+2019-09-15 02:57:12,696   command: python h52vtp.py --surf_file cifar10/trained_nets/resnet110_lr=0.1_bs=64_model_epoch79.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss --zmax  10 --log
+
+2019-09-15 02:57:12,917   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet20 --x=-0.5:1.5:401 --dir_type states --model_file cifar10/trained_nets/resnet20_lr=0.1_bs=64_model_epoch59.t7 --plot --batch_size 64
+
+2019-09-15 03:37:49,414   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet20 --x=-1:1:51 --model_file cifar10/trained_nets/resnet20_lr=0.1_bs=64_model_epoch59.t7 --dir_type weights --xnorm filter --xignore biasbn --plot --batch_size 64
+
+2019-09-15 03:43:07,221   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet20 --x=-1:1:51 --y=-1:1:51 --model_file cifar10/trained_nets/resnet20_lr=0.1_bs=64_model_epoch59.t7 --dir_type weights --xnorm filter --xignore biasbn --ynorm filter --yignore biasbn  --plot --batch_size 64
+
+2019-09-15 08:07:24,213   command: python plot_2D.py --surf_file cifar10/trained_nets/resnet20_lr=0.1_bs=64_model_epoch59.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss
+
+2019-09-15 08:07:26,283   command: python h52vtp.py --surf_file cifar10/trained_nets/resnet20_lr=0.1_bs=64_model_epoch59.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss --zmax  10 --log
+
+2019-09-15 08:07:26,503   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet20_noshort --x=-0.5:1.5:401 --dir_type states --model_file cifar10/trained_nets/resnet20_noshort_lr=0.1_bs=64_model_epoch119.t7 --plot --batch_size 64
+
+2019-09-15 08:48:32,742   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet20_noshort --x=-1:1:51 --model_file cifar10/trained_nets/resnet20_noshort_lr=0.1_bs=64_model_epoch119.t7 --dir_type weights --xnorm filter --xignore biasbn --plot --batch_size 64
+
+2019-09-15 08:54:04,592   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet20_noshort --x=-1:1:51 --y=-1:1:51 --model_file cifar10/trained_nets/resnet20_noshort_lr=0.1_bs=64_model_epoch119.t7 --dir_type weights --xnorm filter --xignore biasbn --ynorm filter --yignore biasbn  --plot --batch_size 64
+
+2019-09-15 13:16:29,583   command: python plot_2D.py --surf_file cifar10/trained_nets/resnet20_noshort_lr=0.1_bs=64_model_epoch119.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss
+
+2019-09-15 13:16:31,651   command: python h52vtp.py --surf_file cifar10/trained_nets/resnet20_noshort_lr=0.1_bs=64_model_epoch119.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss --zmax  10 --log
+
+2019-09-15 13:16:31,879   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet110_noshort --x=-0.5:1.5:401 --dir_type states --model_file cifar10/trained_nets/resnet110_noshort_lr=0.1_bs=64_model_epoch149.t7 --plot --batch_size 64
+
+2019-09-15 14:58:24,032   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet110_noshort --x=-1:1:51 --model_file cifar10/trained_nets/resnet110_noshort_lr=0.1_bs=64_model_epoch149.t7 --dir_type weights --xnorm filter --xignore biasbn --plot --batch_size 64
+
+2019-09-15 15:11:26,008   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet110_noshort --x=-1:1:51 --y=-1:1:51 --model_file cifar10/trained_nets/resnet110_noshort_lr=0.1_bs=64_model_epoch149.t7 --dir_type weights --xnorm filter --xignore biasbn --ynorm filter --yignore biasbn  --plot --batch_size 64
+
+2019-09-16 02:10:05,611   command: python plot_2D.py --surf_file cifar10/trained_nets/resnet110_noshort_lr=0.1_bs=64_model_epoch149.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss
+
+2019-09-16 02:10:07,584   command: python h52vtp.py --surf_file cifar10/trained_nets/resnet110_noshort_lr=0.1_bs=64_model_epoch149.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss --zmax  10 --log
+
+2019-09-28 14:58:37,972   ---------------------------------------------------------------------------------------------
+2019-09-28 14:58:37,990                              script.py                                             
+2019-09-28 14:58:37,991   ---------------------------------------------------------------------------------------------
+2019-09-28 14:58:49,634   ---------------------------------------------------------------------------------------------
+2019-09-28 14:58:49,634                              script.py                                             
+2019-09-28 14:58:49,634   ---------------------------------------------------------------------------------------------
+2019-09-28 14:58:49,634   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model d --x=-0.5:1.5:401 --dir_type states --model_file cifar10/trained_nets/resnet20_lr=0.1_bs=64_model_epoch60.t7 --plot --batch_size 64
+
+2019-09-28 14:58:56,186   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model d --x=-1:1:51 --model_file cifar10/trained_nets/resnet20_lr=0.1_bs=64_model_epoch60.t7 --dir_type weights --xnorm filter --xignore biasbn --plot --batch_size 64
+
+2019-09-28 14:58:57,603   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model d --x=-1:1:51 --y=-1:1:51 --model_file cifar10/trained_nets/resnet20_lr=0.1_bs=64_model_epoch60.t7 --dir_type weights --xnorm filter --xignore biasbn --ynorm filter --yignore biasbn  --plot --batch_size 64
+
+2019-09-28 14:58:57,962   command: python plot_2D.py --surf_file cifar10/trained_nets/resnet20_lr=0.1_bs=64_model_epoch60.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss
+
+2019-09-28 14:58:58,153   command: python h52vtp.py --surf_file cifar10/trained_nets/resnet20_lr=0.1_bs=64_model_epoch60.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss --zmax  10 --log
+
+2019-09-28 14:58:58,313   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model e --x=-0.5:1.5:401 --dir_type states --model_file cifar10/trained_nets/resnet20_noshort_lr=0.1_bs=64_model_epoch120.t7 --plot --batch_size 64
+
+2019-09-28 14:58:58,648   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model e --x=-1:1:51 --model_file cifar10/trained_nets/resnet20_noshort_lr=0.1_bs=64_model_epoch120.t7 --dir_type weights --xnorm filter --xignore biasbn --plot --batch_size 64
+
+2019-09-28 14:59:00,240   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model e --x=-1:1:51 --y=-1:1:51 --model_file cifar10/trained_nets/resnet20_noshort_lr=0.1_bs=64_model_epoch120.t7 --dir_type weights --xnorm filter --xignore biasbn --ynorm filter --yignore biasbn  --plot --batch_size 64
+
+2019-09-28 14:59:04,198   command: python plot_2D.py --surf_file cifar10/trained_nets/resnet20_noshort_lr=0.1_bs=64_model_epoch120.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss
+
+2019-09-28 14:59:04,451   command: python h52vtp.py --surf_file cifar10/trained_nets/resnet20_noshort_lr=0.1_bs=64_model_epoch120.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss --zmax  10 --log
+
+2019-09-28 14:59:04,726   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model n --x=-0.5:1.5:401 --dir_type states --model_file cifar10/trained_nets/resnet56_noshort_lr=0.1_bs=64_model_epoch150.t7 --plot --batch_size 64
+
+2019-09-28 14:59:04,979   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model n --x=-1:1:51 --model_file cifar10/trained_nets/resnet56_noshort_lr=0.1_bs=64_model_epoch150.t7 --dir_type weights --xnorm filter --xignore biasbn --plot --batch_size 64
+
+2019-09-28 14:59:05,364   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model n --x=-1:1:51 --y=-1:1:51 --model_file cifar10/trained_nets/resnet56_noshort_lr=0.1_bs=64_model_epoch150.t7 --dir_type weights --xnorm filter --xignore biasbn --ynorm filter --yignore biasbn  --plot --batch_size 64
+
+2019-09-28 14:59:05,797   command: python plot_2D.py --surf_file cifar10/trained_nets/resnet56_noshort_lr=0.1_bs=64_model_epoch150.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss
+
+2019-09-28 14:59:06,356   command: python h52vtp.py --surf_file cifar10/trained_nets/resnet56_noshort_lr=0.1_bs=64_model_epoch150.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss --zmax  10 --log
+
+2019-09-28 14:59:06,475   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model s --x=-0.5:1.5:401 --dir_type states --model_file cifar10/trained_nets/resnet56_lr=0.1_bs=64_model_epoch80.t7 --plot --batch_size 64
+
+2019-09-28 14:59:06,794   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model s --x=-1:1:51 --model_file cifar10/trained_nets/resnet56_lr=0.1_bs=64_model_epoch80.t7 --dir_type weights --xnorm filter --xignore biasbn --plot --batch_size 64
+
+2019-09-28 14:59:07,159   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model s --x=-1:1:51 --y=-1:1:51 --model_file cifar10/trained_nets/resnet56_lr=0.1_bs=64_model_epoch80.t7 --dir_type weights --xnorm filter --xignore biasbn --ynorm filter --yignore biasbn  --plot --batch_size 64
+
+2019-09-28 14:59:07,483   command: python plot_2D.py --surf_file cifar10/trained_nets/resnet56_lr=0.1_bs=64_model_epoch80.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss
+
+2019-09-28 14:59:07,775   command: python h52vtp.py --surf_file cifar10/trained_nets/resnet56_lr=0.1_bs=64_model_epoch80.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss --zmax  10 --log
+
+2019-09-28 14:59:07,816   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model e --x=-0.5:1.5:401 --dir_type states --model_file cifar10/trained_nets/densenet121_lr=0.1_bs=64_model_epoch125.t7 --plot --batch_size 64
+
+2019-09-28 14:59:08,181   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model e --x=-1:1:51 --model_file cifar10/trained_nets/densenet121_lr=0.1_bs=64_model_epoch125.t7 --dir_type weights --xnorm filter --xignore biasbn --plot --batch_size 64
+
+2019-09-28 14:59:08,540   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model e --x=-1:1:51 --y=-1:1:51 --model_file cifar10/trained_nets/densenet121_lr=0.1_bs=64_model_epoch125.t7 --dir_type weights --xnorm filter --xignore biasbn --ynorm filter --yignore biasbn  --plot --batch_size 64
+
+2019-09-28 14:59:08,950   command: python plot_2D.py --surf_file cifar10/trained_nets/densenet121_lr=0.1_bs=64_model_epoch125.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss
+
+2019-09-28 14:59:09,190   command: python h52vtp.py --surf_file cifar10/trained_nets/densenet121_lr=0.1_bs=64_model_epoch125.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss --zmax  10 --log
+
+2019-09-28 14:59:13,567   ---------------------------------------------------------------------------------------------
+2019-09-28 14:59:13,567                              script.py                                             
+2019-09-28 14:59:13,567   ---------------------------------------------------------------------------------------------
+2019-09-28 14:59:13,567   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model d --x=-0.5:1.5:401 --dir_type states --model_file cifar10/trained_nets/resnet20_lr=0.1_bs=64_model_epoch59.t7 --plot --batch_size 64
+
+2019-09-28 14:59:18,010   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model d --x=-1:1:51 --model_file cifar10/trained_nets/resnet20_lr=0.1_bs=64_model_epoch59.t7 --dir_type weights --xnorm filter --xignore biasbn --plot --batch_size 64
+
+2019-09-28 14:59:19,233   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model d --x=-1:1:51 --y=-1:1:51 --model_file cifar10/trained_nets/resnet20_lr=0.1_bs=64_model_epoch59.t7 --dir_type weights --xnorm filter --xignore biasbn --ynorm filter --yignore biasbn  --plot --batch_size 64
+
+2019-09-28 14:59:19,610   command: python plot_2D.py --surf_file cifar10/trained_nets/resnet20_lr=0.1_bs=64_model_epoch59.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss
+
+2019-09-28 14:59:19,837   command: python h52vtp.py --surf_file cifar10/trained_nets/resnet20_lr=0.1_bs=64_model_epoch59.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss --zmax  10 --log
+
+2019-09-28 14:59:20,057   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model e --x=-0.5:1.5:401 --dir_type states --model_file cifar10/trained_nets/resnet20_noshort_lr=0.1_bs=64_model_epoch119.t7 --plot --batch_size 64
+
+2019-09-28 14:59:20,523   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model e --x=-1:1:51 --model_file cifar10/trained_nets/resnet20_noshort_lr=0.1_bs=64_model_epoch119.t7 --dir_type weights --xnorm filter --xignore biasbn --plot --batch_size 64
+
+2019-09-28 14:59:20,889   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model e --x=-1:1:51 --y=-1:1:51 --model_file cifar10/trained_nets/resnet20_noshort_lr=0.1_bs=64_model_epoch119.t7 --dir_type weights --xnorm filter --xignore biasbn --ynorm filter --yignore biasbn  --plot --batch_size 64
+
+2019-09-28 14:59:21,264   command: python plot_2D.py --surf_file cifar10/trained_nets/resnet20_noshort_lr=0.1_bs=64_model_epoch119.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss
+
+2019-09-28 14:59:21,745   command: python h52vtp.py --surf_file cifar10/trained_nets/resnet20_noshort_lr=0.1_bs=64_model_epoch119.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss --zmax  10 --log
+
+2019-09-28 14:59:21,845   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model n --x=-0.5:1.5:401 --dir_type states --model_file cifar10/trained_nets/resnet56_noshort_lr=0.1_bs=64_model_epoch149.t7 --plot --batch_size 64
+
+2019-09-28 14:59:22,343   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model n --x=-1:1:51 --model_file cifar10/trained_nets/resnet56_noshort_lr=0.1_bs=64_model_epoch149.t7 --dir_type weights --xnorm filter --xignore biasbn --plot --batch_size 64
+
+2019-09-28 14:59:22,782   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model n --x=-1:1:51 --y=-1:1:51 --model_file cifar10/trained_nets/resnet56_noshort_lr=0.1_bs=64_model_epoch149.t7 --dir_type weights --xnorm filter --xignore biasbn --ynorm filter --yignore biasbn  --plot --batch_size 64
+
+2019-09-28 14:59:23,135   command: python plot_2D.py --surf_file cifar10/trained_nets/resnet56_noshort_lr=0.1_bs=64_model_epoch149.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss
+
+2019-09-28 14:59:23,407   command: python h52vtp.py --surf_file cifar10/trained_nets/resnet56_noshort_lr=0.1_bs=64_model_epoch149.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss --zmax  10 --log
+
+2019-09-28 14:59:23,531   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model s --x=-0.5:1.5:401 --dir_type states --model_file cifar10/trained_nets/resnet56_lr=0.1_bs=64_model_epoch79.t7 --plot --batch_size 64
+
+2019-09-28 14:59:23,915   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model s --x=-1:1:51 --model_file cifar10/trained_nets/resnet56_lr=0.1_bs=64_model_epoch79.t7 --dir_type weights --xnorm filter --xignore biasbn --plot --batch_size 64
+
+2019-09-28 14:59:24,310   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model s --x=-1:1:51 --y=-1:1:51 --model_file cifar10/trained_nets/resnet56_lr=0.1_bs=64_model_epoch79.t7 --dir_type weights --xnorm filter --xignore biasbn --ynorm filter --yignore biasbn  --plot --batch_size 64
+
+2019-09-28 14:59:24,714   command: python plot_2D.py --surf_file cifar10/trained_nets/resnet56_lr=0.1_bs=64_model_epoch79.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss
+
+2019-09-28 14:59:25,057   command: python h52vtp.py --surf_file cifar10/trained_nets/resnet56_lr=0.1_bs=64_model_epoch79.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss --zmax  10 --log
+
+2019-09-28 14:59:25,139   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model e --x=-0.5:1.5:401 --dir_type states --model_file cifar10/trained_nets/densenet121_lr=0.1_bs=64_model_epoch124.t7 --plot --batch_size 64
+
+2019-09-28 14:59:25,550   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model e --x=-1:1:51 --model_file cifar10/trained_nets/densenet121_lr=0.1_bs=64_model_epoch124.t7 --dir_type weights --xnorm filter --xignore biasbn --plot --batch_size 64
+
+2019-09-28 14:59:25,978   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model e --x=-1:1:51 --y=-1:1:51 --model_file cifar10/trained_nets/densenet121_lr=0.1_bs=64_model_epoch124.t7 --dir_type weights --xnorm filter --xignore biasbn --ynorm filter --yignore biasbn  --plot --batch_size 64
+
+2019-09-28 14:59:26,360   command: python plot_2D.py --surf_file cifar10/trained_nets/densenet121_lr=0.1_bs=64_model_epoch124.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss
+
+2019-09-28 14:59:26,577   command: python h52vtp.py --surf_file cifar10/trained_nets/densenet121_lr=0.1_bs=64_model_epoch124.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss --zmax  10 --log
+
+2019-09-28 15:00:03,676   ---------------------------------------------------------------------------------------------
+2019-09-28 15:00:03,676                              script.py                                             
+2019-09-28 15:00:03,676   ---------------------------------------------------------------------------------------------
+2019-09-28 15:00:03,676   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model d --x=-0.5:1.5:401 --dir_type states --model_file cifar10/trained_nets/resnet20_lr=0.1_bs=64_model_epoch59.t7 --plot --batch_size 64
+
+2019-09-28 15:00:08,157   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model e --x=-0.5:1.5:401 --dir_type states --model_file cifar10/trained_nets/resnet20_noshort_lr=0.1_bs=64_model_epoch119.t7 --plot --batch_size 64
+
+2019-09-28 15:00:12,564   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model n --x=-0.5:1.5:401 --dir_type states --model_file cifar10/trained_nets/resnet56_noshort_lr=0.1_bs=64_model_epoch149.t7 --plot --batch_size 64
+
+2019-09-28 15:00:17,148   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model s --x=-0.5:1.5:401 --dir_type states --model_file cifar10/trained_nets/resnet56_lr=0.1_bs=64_model_epoch79.t7 --plot --batch_size 64
+
+2019-09-28 15:00:21,748   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model e --x=-0.5:1.5:401 --dir_type states --model_file cifar10/trained_nets/densenet121_lr=0.1_bs=64_model_epoch124.t7 --plot --batch_size 64
+
+2019-09-28 15:01:59,306   ---------------------------------------------------------------------------------------------
+2019-09-28 15:01:59,306                              script.py                                             
+2019-09-28 15:01:59,306   ---------------------------------------------------------------------------------------------
+2019-09-28 15:01:59,306   ['resnet20_lr=0.1_bs=64_model_epoch59', 'resnet20_noshort_lr=0.1_bs=64_model_epoch119', 'resnet56_noshort_lr=0.1_bs=64_model_epoch149', 'resnet56_lr=0.1_bs=64_model_epoch79', 'densenet121_lr=0.1_bs=64_model_epoch124']
+2019-09-28 15:01:59,306   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model d --x=-0.5:1.5:401 --dir_type states --model_file cifar10/trained_nets/resnet20_lr=0.1_bs=64_model_epoch59.t7 --plot --batch_size 64
+
+2019-09-28 15:02:03,913   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model e --x=-0.5:1.5:401 --dir_type states --model_file cifar10/trained_nets/resnet20_noshort_lr=0.1_bs=64_model_epoch119.t7 --plot --batch_size 64
+
+2019-09-28 15:02:08,351   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model n --x=-0.5:1.5:401 --dir_type states --model_file cifar10/trained_nets/resnet56_noshort_lr=0.1_bs=64_model_epoch149.t7 --plot --batch_size 64
+
+2019-09-28 15:02:12,805   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model s --x=-0.5:1.5:401 --dir_type states --model_file cifar10/trained_nets/resnet56_lr=0.1_bs=64_model_epoch79.t7 --plot --batch_size 64
+
+2019-09-28 15:02:17,234   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model e --x=-0.5:1.5:401 --dir_type states --model_file cifar10/trained_nets/densenet121_lr=0.1_bs=64_model_epoch124.t7 --plot --batch_size 64
+
+2019-09-28 15:05:08,067   ---------------------------------------------------------------------------------------------
+2019-09-28 15:05:08,067                              script.py                                             
+2019-09-28 15:05:08,067   ---------------------------------------------------------------------------------------------
+2019-09-28 15:05:08,067   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet20 --x=-0.5:1.5:401 --dir_type states --model_file cifar10/trained_nets/resnet20_lr=0.1_bs=64_model_epoch59.t7 --plot --batch_size 64
+
+2019-09-28 15:28:53,266   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet20 --x=-1:1:51 --model_file cifar10/trained_nets/resnet20_lr=0.1_bs=64_model_epoch59.t7 --dir_type weights --xnorm filter --xignore biasbn --plot --batch_size 64
+
+2019-09-28 15:34:13,480   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet20 --x=-1:1:51 --y=-1:1:51 --model_file cifar10/trained_nets/resnet20_lr=0.1_bs=64_model_epoch59.t7 --dir_type weights --xnorm filter --xignore biasbn --ynorm filter --yignore biasbn  --plot --batch_size 64
+
+2019-09-28 19:57:40,456   command: python plot_2D.py --surf_file cifar10/trained_nets/resnet20_lr=0.1_bs=64_model_epoch59.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss
+
+2019-09-28 19:57:45,376   command: python h52vtp.py --surf_file cifar10/trained_nets/resnet20_lr=0.1_bs=64_model_epoch59.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss --zmax  10 --log
+
+2019-09-28 19:57:45,584   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet20_noshort --x=-0.5:1.5:401 --dir_type states --model_file cifar10/trained_nets/resnet20_noshort_lr=0.1_bs=64_model_epoch119.t7 --plot --batch_size 64
+
+2019-09-28 20:38:47,659   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet20_noshort --x=-1:1:51 --model_file cifar10/trained_nets/resnet20_noshort_lr=0.1_bs=64_model_epoch119.t7 --dir_type weights --xnorm filter --xignore biasbn --plot --batch_size 64
+
+2019-09-28 20:44:07,505   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet20_noshort --x=-1:1:51 --y=-1:1:51 --model_file cifar10/trained_nets/resnet20_noshort_lr=0.1_bs=64_model_epoch119.t7 --dir_type weights --xnorm filter --xignore biasbn --ynorm filter --yignore biasbn  --plot --batch_size 64
+
+2019-09-29 01:05:52,805   command: python plot_2D.py --surf_file cifar10/trained_nets/resnet20_noshort_lr=0.1_bs=64_model_epoch119.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss
+
+2019-09-29 01:05:53,486   command: python h52vtp.py --surf_file cifar10/trained_nets/resnet20_noshort_lr=0.1_bs=64_model_epoch119.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss --zmax  10 --log
+
+2019-09-29 01:05:53,710   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet56_noshort --x=-0.5:1.5:401 --dir_type states --model_file cifar10/trained_nets/resnet56_noshort_lr=0.1_bs=64_model_epoch149.t7 --plot --batch_size 64
+
+2019-09-29 02:10:18,755   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet56_noshort --x=-1:1:51 --model_file cifar10/trained_nets/resnet56_noshort_lr=0.1_bs=64_model_epoch149.t7 --dir_type weights --xnorm filter --xignore biasbn --plot --batch_size 64
+
+2019-09-29 02:18:37,605   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet56_noshort --x=-1:1:51 --y=-1:1:51 --model_file cifar10/trained_nets/resnet56_noshort_lr=0.1_bs=64_model_epoch149.t7 --dir_type weights --xnorm filter --xignore biasbn --ynorm filter --yignore biasbn  --plot --batch_size 64
+
+2019-09-29 09:16:06,881   command: python plot_2D.py --surf_file cifar10/trained_nets/resnet56_noshort_lr=0.1_bs=64_model_epoch149.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss
+
+2019-09-29 09:16:07,574   command: python h52vtp.py --surf_file cifar10/trained_nets/resnet56_noshort_lr=0.1_bs=64_model_epoch149.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss --zmax  10 --log
+
+2019-09-29 09:16:07,803   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet56 --x=-0.5:1.5:401 --dir_type states --model_file cifar10/trained_nets/resnet56_lr=0.1_bs=64_model_epoch79.t7 --plot --batch_size 64
+
+2019-09-29 10:23:53,925   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet56 --x=-1:1:51 --model_file cifar10/trained_nets/resnet56_lr=0.1_bs=64_model_epoch79.t7 --dir_type weights --xnorm filter --xignore biasbn --plot --batch_size 64
+
+2019-09-29 10:32:33,477   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet56 --x=-1:1:51 --y=-1:1:51 --model_file cifar10/trained_nets/resnet56_lr=0.1_bs=64_model_epoch79.t7 --dir_type weights --xnorm filter --xignore biasbn --ynorm filter --yignore biasbn  --plot --batch_size 64
+
+2019-09-29 17:52:14,677   command: python plot_2D.py --surf_file cifar10/trained_nets/resnet56_lr=0.1_bs=64_model_epoch79.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss
+
+2019-09-29 17:52:15,374   command: python h52vtp.py --surf_file cifar10/trained_nets/resnet56_lr=0.1_bs=64_model_epoch79.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss --zmax  10 --log
+
+2019-09-29 17:52:15,605   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model densenet121 --x=-0.5:1.5:401 --dir_type states --model_file cifar10/trained_nets/densenet121_lr=0.1_bs=64_model_epoch124.t7 --plot --batch_size 64
+
+2019-09-29 20:13:46,908   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model densenet121 --x=-1:1:51 --model_file cifar10/trained_nets/densenet121_lr=0.1_bs=64_model_epoch124.t7 --dir_type weights --xnorm filter --xignore biasbn --plot --batch_size 64
+
+2019-09-29 20:32:10,048   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model densenet121 --x=-1:1:51 --y=-1:1:51 --model_file cifar10/trained_nets/densenet121_lr=0.1_bs=64_model_epoch124.t7 --dir_type weights --xnorm filter --xignore biasbn --ynorm filter --yignore biasbn  --plot --batch_size 64
+
+2019-09-30 11:47:25,174   command: python plot_2D.py --surf_file cifar10/trained_nets/densenet121_lr=0.1_bs=64_model_epoch124.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss
+
+2019-09-30 11:47:25,852   command: python h52vtp.py --surf_file cifar10/trained_nets/densenet121_lr=0.1_bs=64_model_epoch124.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss --zmax  10 --log
+
+2019-09-30 14:42:31,959   ---------------------------------------------------------------------------------------------
+2019-09-30 14:42:31,959                              script.py                                             
+2019-09-30 14:42:31,959   ---------------------------------------------------------------------------------------------
+2019-09-30 14:42:31,959   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet20 --x=-0.5:1.5:401 --dir_type states --model_file cifar10/trained_nets/resnet20_lr=0.1_bs=64_model_epoch59.t7 --plot --batch_size 64
+
+2019-09-30 14:42:33,856   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet20 --x=-1:1:51 --model_file cifar10/trained_nets/resnet20_lr=0.1_bs=64_model_epoch59.t7 --dir_type weights --xnorm filter --xignore biasbn --plot --batch_size 64
+
+2019-09-30 14:42:34,062   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet20 --x=-1:1:51 --y=-1:1:51 --model_file cifar10/trained_nets/resnet20_lr=0.1_bs=64_model_epoch59.t7 --dir_type weights --xnorm filter --xignore biasbn --ynorm filter --yignore biasbn  --plot --batch_size 64
+
+2019-09-30 14:42:34,749   command: python plot_2D.py --surf_file cifar10/trained_nets/resnet20_lr=0.1_bs=64_model_epoch59.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss
+
+2019-09-30 14:42:34,986   command: python h52vtp.py --surf_file cifar10/trained_nets/resnet20_lr=0.1_bs=64_model_epoch59.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss --zmax  10 --log
+
+2019-09-30 14:42:35,151   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet20_noshort --x=-0.5:1.5:401 --dir_type states --model_file cifar10/trained_nets/resnet20_noshort_lr=0.1_bs=64_model_epoch119.t7 --plot --batch_size 64
+
+2019-09-30 14:42:35,929   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet20_noshort --x=-1:1:51 --model_file cifar10/trained_nets/resnet20_noshort_lr=0.1_bs=64_model_epoch119.t7 --dir_type weights --xnorm filter --xignore biasbn --plot --batch_size 64
+
+2019-09-30 14:42:36,217   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet20_noshort --x=-1:1:51 --y=-1:1:51 --model_file cifar10/trained_nets/resnet20_noshort_lr=0.1_bs=64_model_epoch119.t7 --dir_type weights --xnorm filter --xignore biasbn --ynorm filter --yignore biasbn  --plot --batch_size 64
+
+2019-09-30 14:42:36,587   command: python plot_2D.py --surf_file cifar10/trained_nets/resnet20_noshort_lr=0.1_bs=64_model_epoch119.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss
+
+2019-09-30 14:42:36,812   command: python h52vtp.py --surf_file cifar10/trained_nets/resnet20_noshort_lr=0.1_bs=64_model_epoch119.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss --zmax  10 --log
+
+2019-09-30 14:42:37,015   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet56 --x=-0.5:1.5:401 --dir_type states --model_file cifar10/trained_nets/resnet56_lr=0.1_bs=64_model_epoch79.t7 --plot --batch_size 64
+
+2019-09-30 14:42:37,375   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet56 --x=-1:1:51 --model_file cifar10/trained_nets/resnet56_lr=0.1_bs=64_model_epoch79.t7 --dir_type weights --xnorm filter --xignore biasbn --plot --batch_size 64
+
+2019-09-30 14:42:37,761   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet56 --x=-1:1:51 --y=-1:1:51 --model_file cifar10/trained_nets/resnet56_lr=0.1_bs=64_model_epoch79.t7 --dir_type weights --xnorm filter --xignore biasbn --ynorm filter --yignore biasbn  --plot --batch_size 64
+
+2019-09-30 14:42:38,125   command: python plot_2D.py --surf_file cifar10/trained_nets/resnet56_lr=0.1_bs=64_model_epoch79.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss
+
+2019-09-30 14:42:38,360   command: python h52vtp.py --surf_file cifar10/trained_nets/resnet56_lr=0.1_bs=64_model_epoch79.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss --zmax  10 --log
+
+2019-09-30 14:42:38,596   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet56_noshort --x=-0.5:1.5:401 --dir_type states --model_file cifar10/trained_nets/resnet56_noshort_lr=0.1_bs=64_model_epoch149.t7 --plot --batch_size 64
+
+2019-09-30 14:42:38,929   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet56_noshort --x=-1:1:51 --model_file cifar10/trained_nets/resnet56_noshort_lr=0.1_bs=64_model_epoch149.t7 --dir_type weights --xnorm filter --xignore biasbn --plot --batch_size 64
+
+2019-09-30 14:42:39,327   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet56_noshort --x=-1:1:51 --y=-1:1:51 --model_file cifar10/trained_nets/resnet56_noshort_lr=0.1_bs=64_model_epoch149.t7 --dir_type weights --xnorm filter --xignore biasbn --ynorm filter --yignore biasbn  --plot --batch_size 64
+
+2019-09-30 14:42:39,703   command: python plot_2D.py --surf_file cifar10/trained_nets/resnet56_noshort_lr=0.1_bs=64_model_epoch149.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss
+
+2019-09-30 14:42:39,934   command: python h52vtp.py --surf_file cifar10/trained_nets/resnet56_noshort_lr=0.1_bs=64_model_epoch149.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss --zmax  10 --log
+
+2019-09-30 14:42:40,130   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model densenet121 --x=-0.5:1.5:401 --dir_type states --model_file cifar10/trained_nets/densenet121_lr=0.1_bs=64_model_epoch124.t7 --plot --batch_size 64
+
+2019-09-30 14:42:40,475   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model densenet121 --x=-1:1:51 --model_file cifar10/trained_nets/densenet121_lr=0.1_bs=64_model_epoch124.t7 --dir_type weights --xnorm filter --xignore biasbn --plot --batch_size 64
+
+2019-09-30 14:42:40,860   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model densenet121 --x=-1:1:51 --y=-1:1:51 --model_file cifar10/trained_nets/densenet121_lr=0.1_bs=64_model_epoch124.t7 --dir_type weights --xnorm filter --xignore biasbn --ynorm filter --yignore biasbn  --plot --batch_size 64
+
+2019-09-30 14:42:41,246   command: python plot_2D.py --surf_file cifar10/trained_nets/densenet121_lr=0.1_bs=64_model_epoch124.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss
+
+2019-09-30 14:42:41,503   command: python h52vtp.py --surf_file cifar10/trained_nets/densenet121_lr=0.1_bs=64_model_epoch124.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss --zmax  10 --log
+
+2019-10-01 10:54:56,360   ---------------------------------------------------------------------------------------------
+2019-10-01 10:54:56,360                              script.py                                             
+2019-10-01 10:54:56,360   ---------------------------------------------------------------------------------------------
+2019-10-01 10:54:56,360   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet20 --x=-0.5:1.5:401 --dir_type states --model_file cifar10/trained_nets/resnet20_lr=0.1_bs=64_model_epoch59.t7 --plot --batch_size 64
+
+2019-10-01 10:54:56,825   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet20 --x=-1:1:51 --model_file cifar10/trained_nets/resnet20_lr=0.1_bs=64_model_epoch59.t7 --dir_type weights --xnorm filter --xignore biasbn --plot --batch_size 64
+
+2019-10-01 10:54:57,288   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet20 --x=-1:1:51 --y=-1:1:51 --model_file cifar10/trained_nets/resnet20_lr=0.1_bs=64_model_epoch59.t7 --dir_type weights --xnorm filter --xignore biasbn --ynorm filter --yignore biasbn  --plot --batch_size 64
+
+2019-10-01 10:54:57,742   command: python plot_2D.py --surf_file cifar10/trained_nets/resnet20_lr=0.1_bs=64_model_epoch59.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss
+
+2019-10-01 10:54:58,362   command: python h52vtp.py --surf_file cifar10/trained_nets/resnet20_lr=0.1_bs=64_model_epoch59.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss --zmax  10 --log
+
+2019-10-01 10:54:58,585   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet20_noshort --x=-0.5:1.5:401 --dir_type states --model_file cifar10/trained_nets/resnet20_noshort_lr=0.1_bs=64_model_epoch119.t7 --plot --batch_size 64
+
+2019-10-01 10:54:59,087   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet20_noshort --x=-1:1:51 --model_file cifar10/trained_nets/resnet20_noshort_lr=0.1_bs=64_model_epoch119.t7 --dir_type weights --xnorm filter --xignore biasbn --plot --batch_size 64
+
+2019-10-01 10:54:59,549   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet20_noshort --x=-1:1:51 --y=-1:1:51 --model_file cifar10/trained_nets/resnet20_noshort_lr=0.1_bs=64_model_epoch119.t7 --dir_type weights --xnorm filter --xignore biasbn --ynorm filter --yignore biasbn  --plot --batch_size 64
+
+2019-10-01 10:55:00,006   command: python plot_2D.py --surf_file cifar10/trained_nets/resnet20_noshort_lr=0.1_bs=64_model_epoch119.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss
+
+2019-10-01 10:55:00,623   command: python h52vtp.py --surf_file cifar10/trained_nets/resnet20_noshort_lr=0.1_bs=64_model_epoch119.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss --zmax  10 --log
+
+2019-10-01 10:55:00,824   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet56 --x=-0.5:1.5:401 --dir_type states --model_file cifar10/trained_nets/resnet56_lr=0.1_bs=64_model_epoch79.t7 --plot --batch_size 64
+
+2019-10-01 10:55:01,294   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet56 --x=-1:1:51 --model_file cifar10/trained_nets/resnet56_lr=0.1_bs=64_model_epoch79.t7 --dir_type weights --xnorm filter --xignore biasbn --plot --batch_size 64
+
+2019-10-01 10:55:01,739   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet56 --x=-1:1:51 --y=-1:1:51 --model_file cifar10/trained_nets/resnet56_lr=0.1_bs=64_model_epoch79.t7 --dir_type weights --xnorm filter --xignore biasbn --ynorm filter --yignore biasbn  --plot --batch_size 64
+
+2019-10-01 10:55:02,193   command: python plot_2D.py --surf_file cifar10/trained_nets/resnet56_lr=0.1_bs=64_model_epoch79.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss
+
+2019-10-01 10:55:02,802   command: python h52vtp.py --surf_file cifar10/trained_nets/resnet56_lr=0.1_bs=64_model_epoch79.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss --zmax  10 --log
+
+2019-10-01 10:55:03,008   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet56_noshort --x=-0.5:1.5:401 --dir_type states --model_file cifar10/trained_nets/resnet56_noshort_lr=0.1_bs=64_model_epoch149.t7 --plot --batch_size 64
+
+2019-10-01 10:55:03,468   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet56_noshort --x=-1:1:51 --model_file cifar10/trained_nets/resnet56_noshort_lr=0.1_bs=64_model_epoch149.t7 --dir_type weights --xnorm filter --xignore biasbn --plot --batch_size 64
+
+2019-10-01 10:55:03,909   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet56_noshort --x=-1:1:51 --y=-1:1:51 --model_file cifar10/trained_nets/resnet56_noshort_lr=0.1_bs=64_model_epoch149.t7 --dir_type weights --xnorm filter --xignore biasbn --ynorm filter --yignore biasbn  --plot --batch_size 64
+
+2019-10-01 10:55:04,354   command: python plot_2D.py --surf_file cifar10/trained_nets/resnet56_noshort_lr=0.1_bs=64_model_epoch149.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss
+
+2019-10-01 10:55:04,968   command: python h52vtp.py --surf_file cifar10/trained_nets/resnet56_noshort_lr=0.1_bs=64_model_epoch149.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss --zmax  10 --log
+
+2019-10-01 10:55:05,172   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model densenet121 --x=-0.5:1.5:401 --dir_type states --model_file cifar10/trained_nets/densenet121_lr=0.1_bs=64_model_epoch124.t7 --plot --batch_size 64
+
+2019-10-01 10:55:05,658   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model densenet121 --x=-1:1:51 --model_file cifar10/trained_nets/densenet121_lr=0.1_bs=64_model_epoch124.t7 --dir_type weights --xnorm filter --xignore biasbn --plot --batch_size 64
+
+2019-10-01 10:55:06,115   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model densenet121 --x=-1:1:51 --y=-1:1:51 --model_file cifar10/trained_nets/densenet121_lr=0.1_bs=64_model_epoch124.t7 --dir_type weights --xnorm filter --xignore biasbn --ynorm filter --yignore biasbn  --plot --batch_size 64
+
+2019-10-01 10:55:06,570   command: python plot_2D.py --surf_file cifar10/trained_nets/densenet121_lr=0.1_bs=64_model_epoch124.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss
+
+2019-10-01 10:55:07,184   command: python h52vtp.py --surf_file cifar10/trained_nets/densenet121_lr=0.1_bs=64_model_epoch124.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss --zmax  10 --log
+
+2019-10-01 10:55:15,767   ---------------------------------------------------------------------------------------------
+2019-10-01 10:55:15,767                              script.py                                             
+2019-10-01 10:55:15,767   ---------------------------------------------------------------------------------------------
+2019-10-01 10:55:15,767   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet20 --x=-0.5:1.5:401 --dir_type states --model_file cifar10/trained_nets/resnet20_lr=0.1_bs=64_model_epoch59.t7 --plot --batch_size 64
+
+2019-10-01 11:49:55,374   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet20 --x=-1:1:51 --model_file cifar10/trained_nets/resnet20_lr=0.1_bs=64_model_epoch59.t7 --dir_type weights --xnorm filter --xignore biasbn --plot --batch_size 64
+
+2019-10-01 11:57:12,559   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet20 --x=-1:1:51 --y=-1:1:51 --model_file cifar10/trained_nets/resnet20_lr=0.1_bs=64_model_epoch59.t7 --dir_type weights --xnorm filter --xignore biasbn --ynorm filter --yignore biasbn  --plot --batch_size 64
+
+2019-10-01 17:52:01,006   command: python plot_2D.py --surf_file cifar10/trained_nets/resnet20_lr=0.1_bs=64_model_epoch59.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss
+
+2019-10-01 17:52:02,817   command: python h52vtp.py --surf_file cifar10/trained_nets/resnet20_lr=0.1_bs=64_model_epoch59.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss --zmax  10 --log
+
+2019-10-01 17:52:03,042   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet20_noshort --x=-0.5:1.5:401 --dir_type states --model_file cifar10/trained_nets/resnet20_noshort_lr=0.1_bs=64_model_epoch119.t7 --plot --batch_size 64
+
+2019-10-01 18:45:17,673   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet20_noshort --x=-1:1:51 --model_file cifar10/trained_nets/resnet20_noshort_lr=0.1_bs=64_model_epoch119.t7 --dir_type weights --xnorm filter --xignore biasbn --plot --batch_size 64
+
+2019-10-01 18:52:13,842   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet20_noshort --x=-1:1:51 --y=-1:1:51 --model_file cifar10/trained_nets/resnet20_noshort_lr=0.1_bs=64_model_epoch119.t7 --dir_type weights --xnorm filter --xignore biasbn --ynorm filter --yignore biasbn  --plot --batch_size 64
+
+2019-10-02 00:36:36,831   command: python plot_2D.py --surf_file cifar10/trained_nets/resnet20_noshort_lr=0.1_bs=64_model_epoch119.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss
+
+2019-10-02 00:36:38,620   command: python h52vtp.py --surf_file cifar10/trained_nets/resnet20_noshort_lr=0.1_bs=64_model_epoch119.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss --zmax  10 --log
+
+2019-10-02 00:36:38,834   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet56 --x=-0.5:1.5:401 --dir_type states --model_file cifar10/trained_nets/resnet56_lr=0.1_bs=64_model_epoch79.t7 --plot --batch_size 64
+
+2019-10-02 02:13:45,946   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet56 --x=-1:1:51 --model_file cifar10/trained_nets/resnet56_lr=0.1_bs=64_model_epoch79.t7 --dir_type weights --xnorm filter --xignore biasbn --plot --batch_size 64
+
+2019-10-02 02:26:23,849   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet56 --x=-1:1:51 --y=-1:1:51 --model_file cifar10/trained_nets/resnet56_lr=0.1_bs=64_model_epoch79.t7 --dir_type weights --xnorm filter --xignore biasbn --ynorm filter --yignore biasbn  --plot --batch_size 64
+
+2019-10-02 12:53:49,652   command: python plot_2D.py --surf_file cifar10/trained_nets/resnet56_lr=0.1_bs=64_model_epoch79.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss
+
+2019-10-02 12:53:51,461   command: python h52vtp.py --surf_file cifar10/trained_nets/resnet56_lr=0.1_bs=64_model_epoch79.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss --zmax  10 --log
+
+2019-10-02 12:53:51,669   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet56_noshort --x=-0.5:1.5:401 --dir_type states --model_file cifar10/trained_nets/resnet56_noshort_lr=0.1_bs=64_model_epoch149.t7 --plot --batch_size 64
+
+2019-10-02 20:27:25,051   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet56_noshort --x=-1:1:51 --model_file cifar10/trained_nets/resnet56_noshort_lr=0.1_bs=64_model_epoch149.t7 --dir_type weights --xnorm filter --xignore biasbn --plot --batch_size 64
+
+2019-10-02 20:27:25,465   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet56_noshort --x=-1:1:51 --y=-1:1:51 --model_file cifar10/trained_nets/resnet56_noshort_lr=0.1_bs=64_model_epoch149.t7 --dir_type weights --xnorm filter --xignore biasbn --ynorm filter --yignore biasbn  --plot --batch_size 64
+
+2019-10-02 20:27:26,768   command: python plot_2D.py --surf_file cifar10/trained_nets/resnet56_noshort_lr=0.1_bs=64_model_epoch149.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss
+
+2019-10-02 20:27:27,406   command: python h52vtp.py --surf_file cifar10/trained_nets/resnet56_noshort_lr=0.1_bs=64_model_epoch149.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss --zmax  10 --log
+
+2019-10-02 20:27:27,620   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model densenet121 --x=-0.5:1.5:401 --dir_type states --model_file cifar10/trained_nets/densenet121_lr=0.1_bs=64_model_epoch124.t7 --plot --batch_size 64
+
+2019-10-02 20:27:29,554   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model densenet121 --x=-1:1:51 --model_file cifar10/trained_nets/densenet121_lr=0.1_bs=64_model_epoch124.t7 --dir_type weights --xnorm filter --xignore biasbn --plot --batch_size 64
+
+2019-10-02 20:27:29,987   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model densenet121 --x=-1:1:51 --y=-1:1:51 --model_file cifar10/trained_nets/densenet121_lr=0.1_bs=64_model_epoch124.t7 --dir_type weights --xnorm filter --xignore biasbn --ynorm filter --yignore biasbn  --plot --batch_size 64
+
+2019-10-02 20:27:30,356   command: python plot_2D.py --surf_file cifar10/trained_nets/densenet121_lr=0.1_bs=64_model_epoch124.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss
+
+2019-10-02 20:27:30,614   command: python h52vtp.py --surf_file cifar10/trained_nets/densenet121_lr=0.1_bs=64_model_epoch124.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss --zmax  10 --log
+
+2019-10-02 20:29:10,962   ---------------------------------------------------------------------------------------------
+2019-10-02 20:29:10,962                              script.py                                             
+2019-10-02 20:29:10,962   ---------------------------------------------------------------------------------------------
+2019-10-02 20:29:10,962   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet56_noshort --x=-0.5:1.5:401 --dir_type states --model_file cifar10/trained_nets/resnet56_noshort_lr=0.1_bs=64_model_epoch149.t7 --plot --batch_size 64
+
+2019-10-02 23:24:48,158   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet56_noshort --x=-1:1:51 --model_file cifar10/trained_nets/resnet56_noshort_lr=0.1_bs=64_model_epoch149.t7 --dir_type weights --xnorm filter --xignore biasbn --plot --batch_size 64
+
+2019-10-03 07:02:49,349   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet56_noshort --x=-1:1:51 --y=-1:1:51 --model_file cifar10/trained_nets/resnet56_noshort_lr=0.1_bs=64_model_epoch149.t7 --dir_type weights --xnorm filter --xignore biasbn --ynorm filter --yignore biasbn  --plot --batch_size 64
+
+2019-10-03 14:47:24,170   ---------------------------------------------------------------------------------------------
+2019-10-03 14:47:24,192                              script.py                                             
+2019-10-03 14:47:24,192   ---------------------------------------------------------------------------------------------
+2019-10-03 14:47:24,192   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet56_noshort --x=-0.5:1.5:401 --dir_type states --model_file cifar10/trained_nets/resnet56_noshort_lr=0.1_bs=64_model_epoch149.t7 --plot --batch_size 64
+
+2019-10-03 16:19:21,026   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet56_noshort --x=-1:1:51 --model_file cifar10/trained_nets/resnet56_noshort_lr=0.1_bs=64_model_epoch149.t7 --dir_type weights --xnorm filter --xignore biasbn --plot --batch_size 64
+
+2019-10-03 22:27:12,105   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet56_noshort --x=-1:1:51 --y=-1:1:51 --model_file cifar10/trained_nets/resnet56_noshort_lr=0.1_bs=64_model_epoch149.t7 --dir_type weights --xnorm filter --xignore biasbn --ynorm filter --yignore biasbn  --plot --batch_size 64
+
+2019-10-04 01:15:24,708   ---------------------------------------------------------------------------------------------
+2019-10-04 01:15:24,708                              script.py                                             
+2019-10-04 01:15:24,708   ---------------------------------------------------------------------------------------------
+2019-10-04 01:15:24,708   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet56_noshort --x=-0.5:1.5:401 --dir_type states --model_file cifar10/trained_nets/resnet56_noshort_lr=0.1_bs=64_model_epoch149.t7 --plot --batch_size 64
+
+2019-10-04 03:06:54,365   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet56_noshort --x=-1:1:51 --model_file cifar10/trained_nets/resnet56_noshort_lr=0.1_bs=64_model_epoch149.t7 --dir_type weights --xnorm filter --xignore biasbn --plot --batch_size 64
+
+2019-10-04 04:25:34,526   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet56_noshort --x=-1:1:51 --y=-1:1:51 --model_file cifar10/trained_nets/resnet56_noshort_lr=0.1_bs=64_model_epoch149.t7 --dir_type weights --xnorm filter --xignore biasbn --ynorm filter --yignore biasbn  --plot --batch_size 64
+
+2019-10-04 05:51:27,398   command: python plot_2D.py --surf_file cifar10/trained_nets/resnet56_noshort_lr=0.1_bs=64_model_epoch149.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss
+
+2019-10-04 05:51:31,410   command: python h52vtp.py --surf_file cifar10/trained_nets/resnet56_noshort_lr=0.1_bs=64_model_epoch149.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss --zmax  10 --log
+
+2019-10-04 05:51:31,612   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model densenet121 --x=-0.5:1.5:401 --dir_type states --model_file cifar10/trained_nets/densenet121_lr=0.1_bs=64_model_epoch124.t7 --plot --batch_size 64
+
+2019-10-04 06:51:27,585   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model densenet121 --x=-1:1:51 --model_file cifar10/trained_nets/densenet121_lr=0.1_bs=64_model_epoch124.t7 --dir_type weights --xnorm filter --xignore biasbn --plot --batch_size 64
+
+2019-10-04 12:52:56,802   ---------------------------------------------------------------------------------------------
+2019-10-04 12:52:56,803                              script.py                                             
+2019-10-04 12:52:56,803   ---------------------------------------------------------------------------------------------
+2019-10-04 12:52:56,803   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet56_noshort --x=-1:1:51 --y=-1:1:51 --model_file cifar10/trained_nets/resnet56_noshort_lr=0.1_bs=64_model_epoch149.t7 --dir_type weights --xnorm filter --xignore biasbn --ynorm filter --yignore biasbn  --plot --batch_size 64
+
+2019-10-04 23:29:23,191   command: python plot_2D.py --surf_file cifar10/trained_nets/resnet56_noshort_lr=0.1_bs=64_model_epoch149.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss
+
+2019-10-04 23:29:24,990   command: python h52vtp.py --surf_file cifar10/trained_nets/resnet56_noshort_lr=0.1_bs=64_model_epoch149.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss --zmax  10 --log
+
+2019-10-05 12:40:22,123   ---------------------------------------------------------------------------------------------
+2019-10-05 12:40:22,123                              script.py                                             
+2019-10-05 12:40:22,123   ---------------------------------------------------------------------------------------------
+2019-10-05 12:40:22,123   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model densenet121 --x=-0.5:1.5:401 --dir_type states --model_file cifar10/trained_nets/densenet121_lr=0.1_bs=64_model_epoch124.t7 --plot --batch_size 64
+
+2019-10-05 16:38:54,117   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model densenet121 --x=-1:1:51 --model_file cifar10/trained_nets/densenet121_lr=0.1_bs=64_model_epoch124.t7 --dir_type weights --xnorm filter --xignore biasbn --plot --batch_size 64
+
+2019-10-05 17:09:53,235   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model densenet121 --x=-1:1:51 --y=-1:1:51 --model_file cifar10/trained_nets/densenet121_lr=0.1_bs=64_model_epoch124.t7 --dir_type weights --xnorm filter --xignore biasbn --ynorm filter --yignore biasbn  --plot --batch_size 64
+
+2019-10-06 18:54:09,729   command: python plot_2D.py --surf_file cifar10/trained_nets/densenet121_lr=0.1_bs=64_model_epoch124.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss
+
+2019-10-06 18:54:11,507   command: python h52vtp.py --surf_file cifar10/trained_nets/densenet121_lr=0.1_bs=64_model_epoch124.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss --zmax  10 --log
+
+2019-10-12 22:49:02,606   ---------------------------------------------------------------------------------------------
+2019-10-12 22:49:02,606                              script.py                                             
+2019-10-12 22:49:02,606   ---------------------------------------------------------------------------------------------
+2019-10-12 22:49:02,606   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet20 --x=-0.5:1.5:401 --dir_type states --model_file cifar10/trained_nets/resnet20_lr=0.1_bs=64_model_epoch59.t7 --plot --batch_size 64
+
+2019-10-12 22:49:39,269   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet20 --x=-1:1:51 --model_file cifar10/trained_nets/resnet20_lr=0.1_bs=64_model_epoch59.t7 --dir_type weights --xnorm filter --xignore biasbn --plot --batch_size 64
+
+2019-10-12 22:50:15,816   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet20 --x=-1:1:51 --y=-1:1:51 --model_file cifar10/trained_nets/resnet20_lr=0.1_bs=64_model_epoch59.t7 --dir_type weights --xnorm filter --xignore biasbn --ynorm filter --yignore biasbn  --plot --batch_size 64
+
+2019-10-12 22:50:52,299   command: python plot_2D.py --surf_file cifar10/trained_nets/resnet20_lr=0.1_bs=64_model_epoch59.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss
+
+2019-10-12 22:50:52,939   command: python h52vtp.py --surf_file cifar10/trained_nets/resnet20_lr=0.1_bs=64_model_epoch59.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss --zmax  10 --log
+
+2019-10-12 22:50:53,136   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet20_noshort --x=-0.5:1.5:401 --dir_type states --model_file cifar10/trained_nets/resnet20_noshort_lr=0.1_bs=64_model_epoch119.t7 --plot --batch_size 64
+
+2019-10-12 22:51:30,769   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet20_noshort --x=-1:1:51 --model_file cifar10/trained_nets/resnet20_noshort_lr=0.1_bs=64_model_epoch119.t7 --dir_type weights --xnorm filter --xignore biasbn --plot --batch_size 64
+
+2019-10-12 22:52:07,409   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet20_noshort --x=-1:1:51 --y=-1:1:51 --model_file cifar10/trained_nets/resnet20_noshort_lr=0.1_bs=64_model_epoch119.t7 --dir_type weights --xnorm filter --xignore biasbn --ynorm filter --yignore biasbn  --plot --batch_size 64
+
+2019-10-12 22:52:43,952   command: python plot_2D.py --surf_file cifar10/trained_nets/resnet20_noshort_lr=0.1_bs=64_model_epoch119.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss
+
+2019-10-12 22:52:44,592   command: python h52vtp.py --surf_file cifar10/trained_nets/resnet20_noshort_lr=0.1_bs=64_model_epoch119.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss --zmax  10 --log
+
+2019-10-12 22:52:44,787   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet56 --x=-0.5:1.5:401 --dir_type states --model_file cifar10/trained_nets/resnet56_lr=0.1_bs=64_model_epoch79.t7 --plot --batch_size 64
+
+2019-10-12 22:53:21,512   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet56 --x=-1:1:51 --model_file cifar10/trained_nets/resnet56_lr=0.1_bs=64_model_epoch79.t7 --dir_type weights --xnorm filter --xignore biasbn --plot --batch_size 64
+
+2019-10-12 22:53:58,147   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet56 --x=-1:1:51 --y=-1:1:51 --model_file cifar10/trained_nets/resnet56_lr=0.1_bs=64_model_epoch79.t7 --dir_type weights --xnorm filter --xignore biasbn --ynorm filter --yignore biasbn  --plot --batch_size 64
+
+2019-10-12 22:54:34,792   command: python plot_2D.py --surf_file cifar10/trained_nets/resnet56_lr=0.1_bs=64_model_epoch79.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss
+
+2019-10-12 22:54:35,413   command: python h52vtp.py --surf_file cifar10/trained_nets/resnet56_lr=0.1_bs=64_model_epoch79.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss --zmax  10 --log
+
+2019-10-12 22:54:35,613   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet56_noshort --x=-0.5:1.5:401 --dir_type states --model_file cifar10/trained_nets/resnet56_noshort_lr=0.1_bs=64_model_epoch149.t7 --plot --batch_size 64
+
+2019-10-12 22:55:12,396   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet56_noshort --x=-1:1:51 --model_file cifar10/trained_nets/resnet56_noshort_lr=0.1_bs=64_model_epoch149.t7 --dir_type weights --xnorm filter --xignore biasbn --plot --batch_size 64
+
+2019-10-12 22:55:49,102   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet56_noshort --x=-1:1:51 --y=-1:1:51 --model_file cifar10/trained_nets/resnet56_noshort_lr=0.1_bs=64_model_epoch149.t7 --dir_type weights --xnorm filter --xignore biasbn --ynorm filter --yignore biasbn  --plot --batch_size 64
+
+2019-10-12 22:56:26,623   command: python plot_2D.py --surf_file cifar10/trained_nets/resnet56_noshort_lr=0.1_bs=64_model_epoch149.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss
+
+2019-10-12 22:56:27,252   command: python h52vtp.py --surf_file cifar10/trained_nets/resnet56_noshort_lr=0.1_bs=64_model_epoch149.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss --zmax  10 --log
+
+2019-10-12 22:56:27,456   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model densenet121 --x=-0.5:1.5:401 --dir_type states --model_file cifar10/trained_nets/densenet121_lr=0.1_bs=64_model_epoch124.t7 --plot --batch_size 64
+
+2019-10-13 02:55:14,084   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model densenet121 --x=-1:1:51 --model_file cifar10/trained_nets/densenet121_lr=0.1_bs=64_model_epoch124.t7 --dir_type weights --xnorm filter --xignore biasbn --plot --batch_size 64
+
+2019-10-13 03:26:10,364   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model densenet121 --x=-1:1:51 --y=-1:1:51 --model_file cifar10/trained_nets/densenet121_lr=0.1_bs=64_model_epoch124.t7 --dir_type weights --xnorm filter --xignore biasbn --ynorm filter --yignore biasbn  --plot --batch_size 64
+
+2019-10-14 05:10:22,985   command: python plot_2D.py --surf_file cifar10/trained_nets/densenet121_lr=0.1_bs=64_model_epoch124.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss
+
+2019-10-14 05:10:24,773   command: python h52vtp.py --surf_file cifar10/trained_nets/densenet121_lr=0.1_bs=64_model_epoch124.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss --zmax  10 --log
+
+2019-10-15 10:29:36,089   ---------------------------------------------------------------------------------------------
+2019-10-15 10:29:36,111                              script.py                                             
+2019-10-15 10:29:36,111   ---------------------------------------------------------------------------------------------
+2019-10-15 10:29:36,111   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet20 --x=-0.5:1.5:401 --dir_type states --model_file cifar10/trained_nets/resnet20_lr=0.1_bs=64_model_epoch59.t7 --plot --batch_size 64
+
+2019-10-15 10:29:48,619   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet20 --x=-1:1:51 --model_file cifar10/trained_nets/resnet20_lr=0.1_bs=64_model_epoch59.t7 --dir_type weights --xnorm filter --xignore biasbn --plot --batch_size 64
+
+2019-10-15 10:29:53,092   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet20 --x=-1:1:51 --y=-1:1:51 --model_file cifar10/trained_nets/resnet20_lr=0.1_bs=64_model_epoch59.t7 --dir_type weights --xnorm filter --xignore biasbn --ynorm filter --yignore biasbn  --plot --batch_size 64
+
+2019-10-15 10:29:57,658   command: python plot_2D.py --surf_file cifar10/trained_nets/resnet20_lr=0.1_bs=64_model_epoch59.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss
+
+2019-10-15 10:29:58,336   command: python h52vtp.py --surf_file cifar10/trained_nets/resnet20_lr=0.1_bs=64_model_epoch59.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss --zmax  10 --log
+
+2019-10-15 10:29:58,573   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet20_noshort --x=-0.5:1.5:401 --dir_type states --model_file cifar10/trained_nets/resnet20_noshort_lr=0.1_bs=64_model_epoch119.t7 --plot --batch_size 64
+
+2019-10-15 10:30:03,253   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet20_noshort --x=-1:1:51 --model_file cifar10/trained_nets/resnet20_noshort_lr=0.1_bs=64_model_epoch119.t7 --dir_type weights --xnorm filter --xignore biasbn --plot --batch_size 64
+
+2019-10-15 10:30:07,727   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet20_noshort --x=-1:1:51 --y=-1:1:51 --model_file cifar10/trained_nets/resnet20_noshort_lr=0.1_bs=64_model_epoch119.t7 --dir_type weights --xnorm filter --xignore biasbn --ynorm filter --yignore biasbn  --plot --batch_size 64
+
+2019-10-15 10:30:12,172   command: python plot_2D.py --surf_file cifar10/trained_nets/resnet20_noshort_lr=0.1_bs=64_model_epoch119.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss
+
+2019-10-15 10:30:12,798   command: python h52vtp.py --surf_file cifar10/trained_nets/resnet20_noshort_lr=0.1_bs=64_model_epoch119.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss --zmax  10 --log
+
+2019-10-15 10:30:12,999   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet56 --x=-0.5:1.5:401 --dir_type states --model_file cifar10/trained_nets/resnet56_lr=0.1_bs=64_model_epoch79.t7 --plot --batch_size 64
+
+2019-10-15 10:30:17,858   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet56 --x=-1:1:51 --model_file cifar10/trained_nets/resnet56_lr=0.1_bs=64_model_epoch79.t7 --dir_type weights --xnorm filter --xignore biasbn --plot --batch_size 64
+
+2019-10-15 10:30:22,360   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet56 --x=-1:1:51 --y=-1:1:51 --model_file cifar10/trained_nets/resnet56_lr=0.1_bs=64_model_epoch79.t7 --dir_type weights --xnorm filter --xignore biasbn --ynorm filter --yignore biasbn  --plot --batch_size 64
+
+2019-10-15 10:30:27,905   command: python plot_2D.py --surf_file cifar10/trained_nets/resnet56_lr=0.1_bs=64_model_epoch79.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss
+
+2019-10-15 10:30:28,547   command: python h52vtp.py --surf_file cifar10/trained_nets/resnet56_lr=0.1_bs=64_model_epoch79.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss --zmax  10 --log
+
+2019-10-15 10:30:28,752   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet56_noshort --x=-0.5:1.5:401 --dir_type states --model_file cifar10/trained_nets/resnet56_noshort_lr=0.1_bs=64_model_epoch149.t7 --plot --batch_size 64
+
+2019-10-15 10:30:33,619   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet56_noshort --x=-1:1:51 --model_file cifar10/trained_nets/resnet56_noshort_lr=0.1_bs=64_model_epoch149.t7 --dir_type weights --xnorm filter --xignore biasbn --plot --batch_size 64
+
+2019-10-15 10:30:38,232   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet56_noshort --x=-1:1:51 --y=-1:1:51 --model_file cifar10/trained_nets/resnet56_noshort_lr=0.1_bs=64_model_epoch149.t7 --dir_type weights --xnorm filter --xignore biasbn --ynorm filter --yignore biasbn  --plot --batch_size 64
+
+2019-10-15 10:30:43,828   command: python plot_2D.py --surf_file cifar10/trained_nets/resnet56_noshort_lr=0.1_bs=64_model_epoch149.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss
+
+2019-10-15 10:30:44,462   command: python h52vtp.py --surf_file cifar10/trained_nets/resnet56_noshort_lr=0.1_bs=64_model_epoch149.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss --zmax  10 --log
+
+2019-10-15 10:30:44,661   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model densenet121 --x=-0.5:1.5:401 --dir_type states --model_file cifar10/trained_nets/densenet121_lr=0.1_bs=64_model_epoch124.t7 --plot --batch_size 64
+
+2019-10-15 12:33:34,443   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model densenet121 --x=-1:1:51 --model_file cifar10/trained_nets/densenet121_lr=0.1_bs=64_model_epoch124.t7 --dir_type weights --xnorm filter --xignore biasbn --plot --batch_size 64
+
+2019-10-15 12:33:41,792   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model densenet121 --x=-1:1:51 --y=-1:1:51 --model_file cifar10/trained_nets/densenet121_lr=0.1_bs=64_model_epoch124.t7 --dir_type weights --xnorm filter --xignore biasbn --ynorm filter --yignore biasbn  --plot --batch_size 64
+
+2019-10-15 12:33:50,989   command: python plot_2D.py --surf_file cifar10/trained_nets/densenet121_lr=0.1_bs=64_model_epoch124.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss
+
+2019-10-15 12:33:52,791   command: python h52vtp.py --surf_file cifar10/trained_nets/densenet121_lr=0.1_bs=64_model_epoch124.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss --zmax  10 --log
+
+2019-10-15 23:52:29,633   ---------------------------------------------------------------------------------------------
+2019-10-15 23:52:29,633                              script.py                                             
+2019-10-15 23:52:29,633   ---------------------------------------------------------------------------------------------
+2019-10-15 23:52:29,633   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet20 --x=-0.5:1.5:401 --dir_type states --model_file cifar10/trained_nets/resnet20_lr=0.1_bs=64_model_epoch59.t7 --plot --batch_size 64
+
+2019-10-15 23:52:34,089   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet20 --x=-1:1:51 --model_file cifar10/trained_nets/resnet20_lr=0.1_bs=64_model_epoch59.t7 --dir_type weights --xnorm filter --xignore biasbn --plot --batch_size 64
+
+2019-10-15 23:52:37,347   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet20 --x=-1:1:51 --y=-1:1:51 --model_file cifar10/trained_nets/resnet20_lr=0.1_bs=64_model_epoch59.t7 --dir_type weights --xnorm filter --xignore biasbn --ynorm filter --yignore biasbn  --plot --batch_size 64
+
+2019-10-15 23:52:37,999   command: python plot_2D.py --surf_file cifar10/trained_nets/resnet20_lr=0.1_bs=64_model_epoch59.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss
+
+2019-10-15 23:52:38,211   command: python h52vtp.py --surf_file cifar10/trained_nets/resnet20_lr=0.1_bs=64_model_epoch59.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss --zmax  10 --log
+
+2019-10-15 23:52:38,366   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet20_noshort --x=-0.5:1.5:401 --dir_type states --model_file cifar10/trained_nets/resnet20_noshort_lr=0.1_bs=64_model_epoch119.t7 --plot --batch_size 64
+
+2019-10-15 23:52:42,774   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet20_noshort --x=-1:1:51 --model_file cifar10/trained_nets/resnet20_noshort_lr=0.1_bs=64_model_epoch119.t7 --dir_type weights --xnorm filter --xignore biasbn --plot --batch_size 64
+
+2019-10-15 23:52:47,505   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet20_noshort --x=-1:1:51 --y=-1:1:51 --model_file cifar10/trained_nets/resnet20_noshort_lr=0.1_bs=64_model_epoch119.t7 --dir_type weights --xnorm filter --xignore biasbn --ynorm filter --yignore biasbn  --plot --batch_size 64
+
+2019-10-15 23:52:51,920   command: python plot_2D.py --surf_file cifar10/trained_nets/resnet20_noshort_lr=0.1_bs=64_model_epoch119.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss
+
+2019-10-15 23:52:52,549   command: python h52vtp.py --surf_file cifar10/trained_nets/resnet20_noshort_lr=0.1_bs=64_model_epoch119.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss --zmax  10 --log
+
+2019-10-15 23:52:52,784   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet56 --x=-0.5:1.5:401 --dir_type states --model_file cifar10/trained_nets/resnet56_lr=0.1_bs=64_model_epoch79.t7 --plot --batch_size 64
+
+2019-10-15 23:52:57,306   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet56 --x=-1:1:51 --model_file cifar10/trained_nets/resnet56_lr=0.1_bs=64_model_epoch79.t7 --dir_type weights --xnorm filter --xignore biasbn --plot --batch_size 64
+
+2019-10-15 23:53:01,822   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet56 --x=-1:1:51 --y=-1:1:51 --model_file cifar10/trained_nets/resnet56_lr=0.1_bs=64_model_epoch79.t7 --dir_type weights --xnorm filter --xignore biasbn --ynorm filter --yignore biasbn  --plot --batch_size 64
+
+2019-10-15 23:53:06,330   command: python plot_2D.py --surf_file cifar10/trained_nets/resnet56_lr=0.1_bs=64_model_epoch79.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss
+
+2019-10-15 23:53:06,944   command: python h52vtp.py --surf_file cifar10/trained_nets/resnet56_lr=0.1_bs=64_model_epoch79.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss --zmax  10 --log
+
+2019-10-15 23:53:07,159   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet56_noshort --x=-0.5:1.5:401 --dir_type states --model_file cifar10/trained_nets/resnet56_noshort_lr=0.1_bs=64_model_epoch149.t7 --plot --batch_size 64
+
+2019-10-15 23:53:11,783   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet56_noshort --x=-1:1:51 --model_file cifar10/trained_nets/resnet56_noshort_lr=0.1_bs=64_model_epoch149.t7 --dir_type weights --xnorm filter --xignore biasbn --plot --batch_size 64
+
+2019-10-15 23:53:16,272   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet56_noshort --x=-1:1:51 --y=-1:1:51 --model_file cifar10/trained_nets/resnet56_noshort_lr=0.1_bs=64_model_epoch149.t7 --dir_type weights --xnorm filter --xignore biasbn --ynorm filter --yignore biasbn  --plot --batch_size 64
+
+2019-10-15 23:53:20,911   command: python plot_2D.py --surf_file cifar10/trained_nets/resnet56_noshort_lr=0.1_bs=64_model_epoch149.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss
+
+2019-10-15 23:53:21,541   command: python h52vtp.py --surf_file cifar10/trained_nets/resnet56_noshort_lr=0.1_bs=64_model_epoch149.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss --zmax  10 --log
+
+2019-10-15 23:53:21,742   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model densenet121 --x=-0.5:1.5:401 --dir_type states --model_file cifar10/trained_nets/densenet121_lr=0.1_bs=64_model_epoch124.t7 --plot --batch_size 64
+
+2019-10-15 23:54:49,302   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model densenet121 --x=-1:1:51 --model_file cifar10/trained_nets/densenet121_lr=0.1_bs=64_model_epoch124.t7 --dir_type weights --xnorm filter --xignore biasbn --plot --batch_size 64
+
+2019-10-15 23:54:49,662   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model densenet121 --x=-1:1:51 --y=-1:1:51 --model_file cifar10/trained_nets/densenet121_lr=0.1_bs=64_model_epoch124.t7 --dir_type weights --xnorm filter --xignore biasbn --ynorm filter --yignore biasbn  --plot --batch_size 64
+
+2019-10-15 23:54:49,870   command: python plot_2D.py --surf_file cifar10/trained_nets/densenet121_lr=0.1_bs=64_model_epoch124.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss
+
+2019-10-15 23:54:50,139   command: python h52vtp.py --surf_file cifar10/trained_nets/densenet121_lr=0.1_bs=64_model_epoch124.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss --zmax  10 --log
+
+2019-10-15 23:54:55,080   ---------------------------------------------------------------------------------------------
+2019-10-15 23:54:55,080                              script.py                                             
+2019-10-15 23:54:55,080   ---------------------------------------------------------------------------------------------
+2019-10-15 23:54:55,080   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet20 --x=-0.5:1.5:401 --dir_type states --model_file cifar10/trained_nets/resnet20_lr=0.1_bs=64_model_epoch59.t7 --plot --batch_size 64
+
+2019-10-16 00:40:44,792   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet20 --x=-1:1:51 --model_file cifar10/trained_nets/resnet20_lr=0.1_bs=64_model_epoch59.t7 --dir_type weights --xnorm filter --xignore biasbn --plot --batch_size 64
+
+2019-10-16 00:46:50,232   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet20 --x=-1:1:51 --y=-1:1:51 --model_file cifar10/trained_nets/resnet20_lr=0.1_bs=64_model_epoch59.t7 --dir_type weights --xnorm filter --xignore biasbn --ynorm filter --yignore biasbn  --plot --batch_size 64
+
+2019-10-16 05:46:00,394   command: python plot_2D.py --surf_file cifar10/trained_nets/resnet20_lr=0.1_bs=64_model_epoch59.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss
+
+2019-10-16 05:46:02,192   command: python h52vtp.py --surf_file cifar10/trained_nets/resnet20_lr=0.1_bs=64_model_epoch59.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss --zmax  10 --log
+
+2019-10-16 05:46:02,416   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet20_noshort --x=-0.5:1.5:401 --dir_type states --model_file cifar10/trained_nets/resnet20_noshort_lr=0.1_bs=64_model_epoch119.t7 --plot --batch_size 64
+
+2019-10-16 06:30:02,602   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet20_noshort --x=-1:1:51 --model_file cifar10/trained_nets/resnet20_noshort_lr=0.1_bs=64_model_epoch119.t7 --dir_type weights --xnorm filter --xignore biasbn --plot --batch_size 64
+
+2019-10-16 06:35:47,949   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet20_noshort --x=-1:1:51 --y=-1:1:51 --model_file cifar10/trained_nets/resnet20_noshort_lr=0.1_bs=64_model_epoch119.t7 --dir_type weights --xnorm filter --xignore biasbn --ynorm filter --yignore biasbn  --plot --batch_size 64
+
+2019-10-16 11:20:45,997   command: python plot_2D.py --surf_file cifar10/trained_nets/resnet20_noshort_lr=0.1_bs=64_model_epoch119.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss
+
+2019-10-16 11:20:47,784   command: python h52vtp.py --surf_file cifar10/trained_nets/resnet20_noshort_lr=0.1_bs=64_model_epoch119.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss --zmax  10 --log
+
+2019-10-16 11:20:47,991   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet56 --x=-0.5:1.5:401 --dir_type states --model_file cifar10/trained_nets/resnet56_lr=0.1_bs=64_model_epoch79.t7 --plot --batch_size 64
+
+2019-10-16 12:41:49,609   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet56 --x=-1:1:51 --model_file cifar10/trained_nets/resnet56_lr=0.1_bs=64_model_epoch79.t7 --dir_type weights --xnorm filter --xignore biasbn --plot --batch_size 64
+
+2019-10-16 12:52:14,506   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet56 --x=-1:1:51 --y=-1:1:51 --model_file cifar10/trained_nets/resnet56_lr=0.1_bs=64_model_epoch79.t7 --dir_type weights --xnorm filter --xignore biasbn --ynorm filter --yignore biasbn  --plot --batch_size 64
+
+2019-10-16 21:37:03,023   command: python plot_2D.py --surf_file cifar10/trained_nets/resnet56_lr=0.1_bs=64_model_epoch79.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss
+
+2019-10-16 21:37:04,813   command: python h52vtp.py --surf_file cifar10/trained_nets/resnet56_lr=0.1_bs=64_model_epoch79.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss --zmax  10 --log
+
+2019-10-16 21:37:05,047   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet56_noshort --x=-0.5:1.5:401 --dir_type states --model_file cifar10/trained_nets/resnet56_noshort_lr=0.1_bs=64_model_epoch149.t7 --plot --batch_size 64
+
+2019-10-16 22:54:15,143   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet56_noshort --x=-1:1:51 --model_file cifar10/trained_nets/resnet56_noshort_lr=0.1_bs=64_model_epoch149.t7 --dir_type weights --xnorm filter --xignore biasbn --plot --batch_size 64
+
+2019-10-16 23:04:08,075   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model resnet56_noshort --x=-1:1:51 --y=-1:1:51 --model_file cifar10/trained_nets/resnet56_noshort_lr=0.1_bs=64_model_epoch149.t7 --dir_type weights --xnorm filter --xignore biasbn --ynorm filter --yignore biasbn  --plot --batch_size 64
+
+2019-10-17 07:23:15,199   command: python plot_2D.py --surf_file cifar10/trained_nets/resnet56_noshort_lr=0.1_bs=64_model_epoch149.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss
+
+2019-10-17 07:23:16,977   command: python h52vtp.py --surf_file cifar10/trained_nets/resnet56_noshort_lr=0.1_bs=64_model_epoch149.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss --zmax  10 --log
+
+2019-10-17 07:23:17,201   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model densenet121 --x=-0.5:1.5:401 --dir_type states --model_file cifar10/trained_nets/densenet121_lr=0.1_bs=64_model_epoch124.t7 --plot --batch_size 64
+
+2019-10-19 12:34:37,685   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model densenet121 --x=-1:1:51 --model_file cifar10/trained_nets/densenet121_lr=0.1_bs=64_model_epoch124.t7 --dir_type weights --xnorm filter --xignore biasbn --plot --batch_size 64
+
+2019-10-19 12:34:38,068   command: mpirun -n 4 python plot_surface.py --mpi --cuda --model densenet121 --x=-1:1:51 --y=-1:1:51 --model_file cifar10/trained_nets/densenet121_lr=0.1_bs=64_model_epoch124.t7 --dir_type weights --xnorm filter --xignore biasbn --ynorm filter --yignore biasbn  --plot --batch_size 64
+
+2019-10-19 12:34:38,437   command: python plot_2D.py --surf_file cifar10/trained_nets/densenet121_lr=0.1_bs=64_model_epoch124.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss
+
+2019-10-19 12:34:38,723   command: python h52vtp.py --surf_file cifar10/trained_nets/densenet121_lr=0.1_bs=64_model_epoch124.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5 --surf_name train_loss --zmax  10 --log
+

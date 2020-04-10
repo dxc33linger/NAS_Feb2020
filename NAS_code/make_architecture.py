@@ -2,7 +2,7 @@ global num_classes
 global in_feature
 import numpy as np
 import torch.nn as nn
-from dataload import *
+from dataload_regular import *
 from block_library import *
 from args import parser
 args = parser.parse_args()
@@ -30,6 +30,7 @@ class architecture(nn.Module):
 
 	def _make_layer(self):
 		layers = []
+
 		for lyr_idx, num in enumerate(self.block_cfg):
 
 			kwargs = {'in_planes': self.size_cfg[lyr_idx],

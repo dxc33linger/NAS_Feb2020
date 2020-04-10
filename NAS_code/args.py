@@ -6,10 +6,10 @@ parser.add_argument("--resume", type=bool, default = False, help='random seed')
 
 # training
 parser.add_argument('--lr', default = 0.1, type=float, help='learning rate')
-parser.add_argument('--lr_step_size', default = 30, type=int, help='learning rate decay step')
+parser.add_argument('--lr_step_size', default = 25, type=int, help='learning rate decay step')
 parser.add_argument('--gamma', default = 0.5, type=float, help='learning rate decay rate')
 parser.add_argument("--batch_size", type=int, default = 128, help='batch size')
-parser.add_argument("--num_epoch", type=int, default = 5, help='training epochs')
+parser.add_argument("--num_epoch", type=int, default = 80, help='training epochs')
 parser.add_argument('--learning_rate_min', type=float, default=0.001, help='min learning rate')
 
 # dataset

@@ -205,7 +205,23 @@ class Block_conv(nn.Module): # plain conv network stride = 1
 		return out
 
 
+class Block_reduction(nn.Module):
+    """
+    Reduce feature map size by factorized pointwise(stride=2).
+    ref: https://github.com/khanrc/pt.darts/blob/48e71375c88772daac376829fb4bfebc4fb78144/models/ops.py#L165
+    """
+    def __init__(self, in_planes, planes, affine=True):
+        super().__init__()
+        self.relu = nn.ReLU()
+        self.conv1 = nn.Conv2d(in_planes, planes // 2, 1, stride=2, padding=0, bias=False)
+        self.conv2 = nn.Conv2d(in_planes, planes // 2, 1, stride=2, padding=0, bias=False)
+        self.bn = nn.BatchNorm2d(planes, affine=affine)
 
+    def forward(self, x):
+        x = self.relu(x)
+        out = torch.cat([self.conv1(x), self.conv2(x[:, :, 1:, 1:])], dim=1)
+        out = self.bn(out)
+        return out
 
 
 
@@ -225,7 +241,7 @@ class Block_fc(nn.Module): # FC
 	def __init__(self, in_planes, num_classes):
 		super(Block_fc, self).__init__()
 		self.blocks = nn.Sequential(             
-			nn.Linear(in_planes, num_classes)\
+			nn.Linear(in_planes, int(1.2*num_classes))
 		)
 	def forward(self, x):
 		out = self.blocks(x) 
