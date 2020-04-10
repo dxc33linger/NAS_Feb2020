@@ -15,21 +15,16 @@ import logging
 
 class NAS(object):
 	def __init__(self):
-
 		self.batch_size = args.batch_size
-
-	
 
 	def initial_network(self, block_cfg, size_cfg, ds_cfg):
 		self.net = architecture(block_cfg, size_cfg, ds_cfg)
 		self.block_cfg = block_cfg
-		print(self.net)
+		logging.info('network %s', self.net)
 		return self.net
 
 	def initialization(self):
-		
 		self.device = 'cuda' if torch.cuda.is_available() else 'cpu'
-
 		self.net = self.net.to(self.device)
 		if self.device == 'cuda':
 			self.net = nn.DataParallel(self.net)

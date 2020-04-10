@@ -13,21 +13,20 @@ os.mkdir('../../results')
 
 i=0
 
-for cfg in [1, 3]:
-	for alpha in [0.25, 0.5]:
-		for experiment in [0]:
+for cfg in [44]:
+	for alpha in [0.2]:
+		for mode in ['continual', 'regular']:
+			for experiment in [0, 1, 2, 3, 4]:
+				if not os.path.exists('../../results/mode_{}'.format(mode)):
+					os.mkdir('../../results/mode_{}'.format(mode))
 
-			num_module = 3
-			# if not os.path.exists('../../results/alpha{}_maxBlock{}'.format(alpha, cfg)):
-			# 	os.mkdir('../../results/alpha{}_maxBlock{}'.format(alpha, cfg ))
+				command_tmp = 'python train.py  --dataset cifar10 --num_epoch 2 --mode ' + str(mode) + ' --cfg '+str(cfg) + ' --alpha '+str(alpha)
 
-			command_tmp = 'python train.py --mode regular --dataset cifar10 --num_epoch 60  --num_module ' + str(num_module) + ' --cfg '+str(cfg) + ' --alpha '+str(alpha)
+				print('command:\n', command_tmp)
 
-			print('command:\n', command_tmp)
-
-			os.system(command_tmp)
-			i = i+1
-			scio.savemat('../../results/tuning_{}_finished.mat'.format(i), {'num_module': num_module, 'cfg': cfg})
+				os.system(command_tmp)
+				i = i+1
+				scio.savemat('../../results/mode_{}/tuning_{}_finished.mat'.format(mode, i), {'alpha': alpha, 'cfg': cfg})
 
 
 

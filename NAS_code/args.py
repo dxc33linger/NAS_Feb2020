@@ -23,7 +23,7 @@ parser.add_argument("--CV", type=bool, default = False,  help="turn on cross-val
 
 # architecture
 parser.add_argument("--num_module", type=int, default = 3, help='Number of meta modules')
-parser.add_argument("--max_block", type=int, default = 3, help='max number of blocks inside a module')
+parser.add_argument("--max_block", type=int, default = 5, help='max number of blocks inside a module')
 parser.add_argument('--alpha', type=float, default = 0.1, help='noise distribution range')
 
 parser.add_argument("--cfg", type=int, default = 1)

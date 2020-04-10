@@ -17,31 +17,25 @@ class architecture(nn.Module):
 		self.ds_cfg = ds_cfg
 		self.num_classes, self.in_feature = num_classes_in_feature()
 
-		self.features = nn.Sequential(
-			self._make_layer())
-
+		kwargs = {'in_planes': 3,
+				  'out_planes': 16}
+		self.head = BlockFactory('head', downSample = False, **kwargs)
+		self.features = nn.Sequential(self._make_layer())
 		kwargs = {'in_planes': self.in_feature*size_cfg[-1],
 				  'out_planes': self.num_classes }
-
 		self.classifier = BlockFactory('fc', downSample = False, **kwargs)  # FC
-			
-
-
 
 	def _make_layer(self):
 		layers = []
-
 		for lyr_idx, num in enumerate(self.block_cfg):
-
 			kwargs = {'in_planes': self.size_cfg[lyr_idx],
 					 'out_planes': self.size_cfg[lyr_idx+1]	}
-
 			layers.append(BlockFactory(num, self.ds_cfg[lyr_idx], **kwargs))
-
 		return nn.Sequential(*layers)
 
 
 	def forward(self, x):
+		x = self.head(x)
 		x = self.features(x)
 		x = x.view(x.size(0), -1)
 		out = self.classifier(x)
