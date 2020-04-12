@@ -10,7 +10,9 @@ if os.path.exists('../../results'):
     shutil.rmtree('../../results')
 os.mkdir('../../results')
 
-
+if os.path.exists('../../loss-landscape/cifar10/trained_nets'):
+	shutil.rmtree('.. /.. / loss - landscape / cifar10 / trained_nets')
+os.mkdir('.. /.. / loss - landscape / cifar10 / trained_nets')
 i=0
 
 for cfg in [1]:

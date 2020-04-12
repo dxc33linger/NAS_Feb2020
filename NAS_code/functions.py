@@ -147,7 +147,7 @@ class NAS(object):
 			'epoch': epoch,
 			'state_dict': self.net.state_dict(),
 			'optimizer_state_dict': self.optimizer.state_dict(),}
-		self.model_file = '../loss-landscape/cifar10/trained_nets/' + self.save_folder + '_epoch' + str(epoch)  + '.t7'
+		self.model_file = '../../loss-landscape/cifar10/trained_nets/' + self.save_folder + '_epoch' + str(epoch)  + '.t7'
 		logging.info('Saving checkpiont to ' + self.model_file)
 		torch.save(state, self.model_file)
 
