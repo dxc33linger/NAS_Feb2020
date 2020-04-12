@@ -11,14 +11,16 @@ import utils
 import logging
 import functions
 import numpy as np
+from block_library import *
 from dataload_regular import *
 from dataload_continual import *
+from make_architecture import *
 import scipy.io as scio
 import torch
+import matplotlib.pyplot as plt
 
 from args import parser
 args = parser.parse_args()
-import matplotlib.pyplot as plt
 
 os.environ["CUDA_VISIBLE_DEVICES"]= args.gpu
 log_format = '%(asctime)s   %(message)s'
@@ -30,58 +32,8 @@ logging.getLogger().addHandler(fh)
 logging.info("\n\n\n - - - - - NAS main.py - - - - - - - ")
 logging.info("args = %s", args)
 
-
-num_block = {'plain': 6,
-			'all': 9}
-
 random.seed(args.seed)
-
-size_cfg = [16]
-block_cfg = []
-ds_cfg = []
-
-for i in range(args.num_module):
-	blocks = np.random.randint(1, args.max_block+1) # number of blocks in a module
-	block_cfg += np.random.randint(0, num_block['plain'], size = blocks).tolist()  # random index from block library
-	ds_cfg += [False]*blocks  # False means
-	size_cfg += (2 ** np.random.randint(4, 8, size=blocks)).tolist()
-
-	if i != args.num_module - 1:
-		block_cfg += [np.random.randint(0, num_block['all'])] # ds_cfg
-		ds_cfg += [True]
-		size_cfg += (2 ** np.random.randint(4, 8, size=1)).tolist()
-
-for idx,x in enumerate(block_cfg):
-	if x in [6, 7, 8]: ## if block is pooling layer, size is same with last layer
-		size_cfg[idx+1] = size_cfg[idx]
-
-#
-# if args.cfg == 1:
-# 	block_cfg = [0, 3, 1, 3, 4, 4, 1, 3, 5, 0, 3, 4, 1]
-# 	size_cfg = [16, 16, 128, 128, 128, 16, 32, 64, 64, 64, 128, 16, 64, 64]
-# 	ds_cfg = [False, False, False, False, True, False, False, False, True, False, False, False, False]
-#
-# elif args.cfg == 2:
-# 	block_cfg = [0, 1, 6, 6, 2, 3, 7, 4, 5]
-# 	size_cfg = [16, 32, 128, 128, 128, 256, 64,  64, 32, 128]
-# 	ds_cfg = [False,  False, False, True, False,  False, True, False, False]
-# elif args.cfg == 3:
-# 	block_cfg = [4, 6, 1, 3, 2, 5, 1, 0]
-# 	size_cfg = [16, 128, 128, 256, 256, 64, 512, 32, 64]
-# 	ds_cfg = [False, True, False, False, True, False, False, False]
-# elif args.cfg == 44:
-# 	block_cfg = [0, 0, 0]
-# 	size_cfg = [16,32,64,128]
-# 	ds_cfg = [True, True, False]
-
-
-logging.info('block_cfg = {} length: {}'.format(block_cfg, len(block_cfg)))
-logging.info(' size_cfg = {} length: {}'.format( size_cfg, len( size_cfg)))
-logging.info('   ds_cfg = {} length: {}\n'.format(   ds_cfg, len(   ds_cfg)))
-
-
 nas = functions.NAS()
-
 logging.info('Current dataset mode: %s', args.mode)
 if args.mode == 'regular': # full dataset
 	trainloader, testloader = dataload()
@@ -97,10 +49,13 @@ elif args.mode == 'continual':  ## continual learning
 		break
 
 
-model = nas.initial_network(block_cfg, size_cfg, ds_cfg)
+param = 5.1
+while param >= 5.0: # disgard network that larger than 5M
+	block_cfg, size_cfg, ds_cfg = make_cfg(args.DNA_SIZE)
+	model = nas.initial_network(block_cfg, size_cfg, ds_cfg)
+	param = utils.count_parameters_in_MB(nas.net)
+	logging.info('param size = {0:.2f}MB'.format(param))
 nas.initialization()
-param = utils.count_parameters_in_MB(nas.net)
-logging.info('param size = {0:.2f}MB'.format(param))
 
 train_acc = np.zeros([1, args.num_epoch])
 test_acc = np.zeros([1, args.num_epoch])
@@ -111,12 +66,13 @@ for epoch in range(args.num_epoch):
 	test_acc[0, epoch] = nas.test(testloader)
 	logging.info('epoch {0} lr {1} ========== train_acc {2:.4f} test_acc {3:.4f}'.format(
 		epoch, nas.current_lr, train_acc[0, epoch], test_acc[0, epoch]))
-
-	if epoch % 10 == 0 or epoch == args.num_epoch - 1:
+	# nas.check_weight()
+	if epoch % 5 == 0 or epoch % 3 == 0 or epoch == args.num_epoch - 1:
 		# add noise and test
 		logging.info('Add Noise within range -{:.5f}, {:.5f}'.format(args.alpha, args.alpha))
 		model_wNoise = nas.add_noise(args.alpha)
 		accuracy_wNoise = nas.test(testloader)
+
 		logging.info('Accuracy changes {:.4f} -> {:.4f} after adding Gaussian noise with alpha={}'.format(test_acc[0, epoch], accuracy_wNoise, args.alpha))
 		accu_wNoise[0, epoch] = accuracy_wNoise
 		scio.savemat('../../results/mode_{}/epoch{}_alpha{}_cfg{}_Acc{:.4f}to{:.4f}.mat'.format(args.mode, epoch, args.alpha, block_cfg, test_acc[0, epoch], accuracy_wNoise),
@@ -126,6 +82,16 @@ for epoch in range(args.num_epoch):
 		nas.load_weight_back()
 		print('Is accuracy the same?', nas.test(testloader))
 
+
+torch.save(nas.net,'../../results/mode_{}/final_model_cfg{}_acc{:.3f}'.format(args.mode, block_cfg, sum(test_acc[0,-5:])/5))
+logging.info('param size = {0:.2f}MB'.format(param))
+scio.savemat('../../results/mode_{}/test_acc{:.3f}_param{:.2f}MB.mat'.format(args.mode, sum(test_acc[0,-5:])/5, param),
+	{'block_cfg':block_cfg, 'ds_cfg':ds_cfg, 'size_cfg': size_cfg,
+	 'lr_step_size': args.lr_step_size,  'lr_gamma': args.gamma, 'seed': args.seed,
+	 'train_acc':train_acc, 'test_acc':test_acc, 'accu_wNoise':accu_wNoise,
+	 'param':param, 'num_epoch': args.num_epoch,
+	  'max_block': args.max_block})
+logging.info('Results saved in ../../results/mode_{}/test_acc{:.3f}_param{:.1f}MB.mat'.format(args.mode, sum(test_acc[0,-5:])/5, param))
 
 x = np.linspace(0, args.num_epoch, args.num_epoch)
 plt.xlabel('Epoch')
@@ -139,14 +105,3 @@ plt.legend(loc='best')
 plt.title('Learning curve\ncfg{}\nds_cfg{}'.format(block_cfg, ds_cfg))
 plt.savefig('../../results/mode_{}/plot_LC_acc{:.3f}_param{:.2f}MB.png'.format(args.mode, sum(test_acc[0,-5:])/5, param))
 # plt.show()
-torch.save(nas.net,'../../results/mode_{}/final_model_cfg{}_acc{:.3f}'.format(args.mode, block_cfg, sum(test_acc[0,-5:])/5))
-
-logging.info('param size = {0:.2f}MB'.format(param))
-scio.savemat('../../results/mode_{}/test_acc{:.3f}_param{:.2f}MB.mat'.format(args.mode, sum(test_acc[0,-5:])/5, param),
-	{'block_cfg':block_cfg, 'ds_cfg':ds_cfg, 'size_cfg': size_cfg,
-	 'lr_step_size': args.lr_step_size,  'lr_gamma': args.gamma, 'seed': args.seed,
-	 'train_acc':train_acc, 'test_acc':test_acc, 'accu_wNoise':accu_wNoise,
-	 'param':param, 'num_epoch': args.num_epoch,
-	 'num_module': args.num_module, 'max_block': args.max_block})
-logging.info('Results saved in ../../results/mode_{}/test_acc{:.3f}_param{:.1f}MB.mat'.format(args.mode, sum(test_acc[0,-5:])/5, param))
-

@@ -150,3 +150,9 @@ class NAS(object):
 		self.model_file = '../loss-landscape/cifar10/trained_nets/' + self.save_folder + '_epoch' + str(epoch)  + '.t7'
 		logging.info('Saving checkpiont to ' + self.model_file)
 		torch.save(state, self.model_file)
+
+
+
+	def check_weight(self):
+		for layer_name, param in self.net.state_dict().items():
+			logging.info('layer_name {}, min {:.4f} max {:.4f}'.format(layer_name, torch.min(param), torch.max(param)) )

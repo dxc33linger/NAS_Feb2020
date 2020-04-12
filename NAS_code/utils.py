@@ -5,10 +5,14 @@ import math
 import numpy as np
 import torch.nn as nn
 import torch.nn.init as init
-
+import logging
 
 def count_parameters_in_MB(model):
-  return np.sum(np.prod(v.size()) for name, v in model.named_parameters() if "auxiliary" not in name)/1e6
+    # param = 0
+    # for name, v in model.named_parameters():
+    #     if "auxiliary" not in name:
+    #         logging.info('layer name {} param {:.3f}MB'.format(name, np.prod(v.size())/1e6))
+    return np.sum(np.prod(v.size()) for name, v in model.named_parameters() if "auxiliary" not in name)/1e6
 
 _, term_width = os.popen('stty size', 'r').read().split()
 term_width = int(term_width)
@@ -16,6 +20,7 @@ term_width = int(term_width)
 TOTAL_BAR_LENGTH = 18.
 last_time = time.time()
 begin_time = last_time
+
 def progress_bar(current, total, msg=None):
     global last_time, begin_time
     if current == 0:

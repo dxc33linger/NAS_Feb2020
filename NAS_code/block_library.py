@@ -8,6 +8,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 import logging
+import math
 # """
 # OPS = {
 #     'none': Zero(stride),
@@ -22,11 +23,19 @@ import logging
 #     'conv_7x1_1x7': FacConv(C, C, 7, stride, 3)
 # }
 # """
+
 def BlockFactory(number, downSample, **kwargs):
+	'''
+	Args:
+		number: ID of the block
+		downSample: whether this cell is reduction cell (downSample = true) or not
+		**kwargs: #input channels,  #output channels
+
+	Returns: cell
+
+	'''
 	in_planes = kwargs['in_planes']
 	out_planes = kwargs['out_planes']
-	# expansion = kwargs['expansion']
-
 	if downSample:
 		stride = 2
 	else:
@@ -39,10 +48,11 @@ def BlockFactory(number, downSample, **kwargs):
 			'3': DilConv(in_planes, out_planes, 5, stride, 4, 2),  # 9x9
 			'4': StdConv(in_planes, out_planes, 3, stride, 1),
 			'5': Block_resnet(in_planes, out_planes, stride),
+			'6': Block_DenseNet(in_planes, stride),
 
-			'6': Identity() if stride == 1 else FactorizedReduce(in_planes, out_planes),
-			'7': PoolBN('avg', out_planes, 3, stride, 1),
-			'8': PoolBN('max', out_planes, 3, stride, 1),
+			'7': Identity() if stride == 1 else FactorizedReduce(in_planes, out_planes),
+			'8': PoolBN('avg', out_planes, 3, stride, 1),
+			'9': PoolBN('max', out_planes, 3, stride, 1),
 
 			'head': StdConv(in_planes, out_planes, 3, stride, 1),
 			'fc':Block_fc(in_planes, out_planes)
@@ -53,6 +63,12 @@ def BlockFactory(number, downSample, **kwargs):
 	else:
 		return block_dict[str(number)]
 
+def number_of_blocks():
+	num_block = {'plain': 7,
+				 'all': 10}
+	pool_blocks = [7, 8, 9]
+	densenet_num = 6
+	return num_block, pool_blocks, densenet_num
 
 class Identity(nn.Module):
 	def __init__(self):
@@ -104,24 +120,6 @@ class StdConv(nn.Module):
 		out = self.net(x)
 		# logging.info('input.shape {}, output.shape {}'.format(x.shape, out.shape))
 		return out
-
-#
-# class FacConv(nn.Module):
-#     """ Factorized conv
-#     ReLU - Conv(Kx1) - Conv(1xK) - BN
-#     """
-#     def __init__(self, C_in, C_out, kernel_length, stride, padding):
-#         super().__init__()
-#         self.net = nn.Sequential(
-#             nn.ReLU(),
-#             nn.Conv2d(C_in, C_in, (kernel_length, 1), stride, padding, bias=False),
-#             nn.Conv2d(C_in, C_out, (1, kernel_length), stride, padding, bias=False),
-#             nn.BatchNorm2d(C_out)
-#         )
-#
-#     def forward(self, x):
-#         return self.net(x)
-#
 
 class DilConv(nn.Module):
 	""" (Dilated) depthwise separable conv
@@ -214,5 +212,66 @@ class Block_fc(nn.Module): # FC
 	def forward(self, x):
 		out = self.blocks(x)
 		# logging.info('input.shape {}, output.shape {}'.format(x.shape, out.shape))
+		return out
+
+
+
+
+
+class Bottleneck(nn.Module):
+	def __init__(self, in_planes, growth_rate):
+		super(Bottleneck, self).__init__()
+		self.bn1 = nn.BatchNorm2d(in_planes)
+		self.conv1 = nn.Conv2d(in_planes, 4*growth_rate, kernel_size=1, bias=False)
+		self.bn2 = nn.BatchNorm2d(4*growth_rate)
+		self.conv2 = nn.Conv2d(4*growth_rate, growth_rate, kernel_size=3, padding=1, bias=False)
+
+	def forward(self, x):
+		out = self.conv1(F.relu(self.bn1(x)))
+		out = self.conv2(F.relu(self.bn2(out)))
+		out = torch.cat([out,x], 1)
+		return out
+
+#
+class Transition(nn.Module):
+	def __init__(self, in_planes, out_planes, stride):
+		super(Transition, self).__init__()
+		self.bn = nn.BatchNorm2d(in_planes)
+		self.conv = nn.Conv2d(in_planes, out_planes, kernel_size=1, bias=False)
+		self.stride = stride
+	def forward(self, x):
+		out = self.conv(F.relu(self.bn(x)))
+		if self.stride == 2:
+			out = F.avg_pool2d(out, 2)
+		return out
+
+
+class Block_DenseNet(nn.Module):
+	def __init__(self, in_planes, stride, block = Bottleneck, nblocks = 2, growth_rate=12, reduction=0.5):
+		super(Block_DenseNet, self).__init__()
+		self.growth_rate = growth_rate
+
+		num_planes = 2*growth_rate
+		self.conv1 = nn.Conv2d(in_planes, num_planes, kernel_size=3, padding=1, bias=False)
+
+		self.dense1 = self._make_dense_layers(block, num_planes, nblocks)
+		num_planes += nblocks*growth_rate
+		out_planes = int(math.floor(num_planes*reduction))
+		self.trans1 = Transition(num_planes, out_planes, stride)
+		num_planes = out_planes
+		self.bn = nn.BatchNorm2d(num_planes)
+
+	def _make_dense_layers(self, block, in_planes, nblock):
+		layers = []
+		for i in range(nblock):
+			layers.append(block(in_planes, self.growth_rate))
+			in_planes += self.growth_rate
+		return nn.Sequential(*layers)
+
+	def forward(self, x):
+		out = self.conv1(x)
+		out = self.trans1(self.dense1(out))
+		# logging.info('input.shape {}, output.shape {}'.format(x.shape, out.shape))
+
 		return out
 

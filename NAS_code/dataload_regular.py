@@ -14,17 +14,18 @@ args = parser.parse_args()
 
 
 def num_classes_in_feature():
+	num_reduction = 2
 	if args.dataset in ['cifar10','SVHN', 'mnist']:
 		num_classes = 10
-		in_feature = int(pow(32/(2**(args.num_module-1)),2)	)
+		in_feature = int(pow(32/(2**(num_reduction)),2)	)
 		
 	elif args.dataset in ['cifar100']:
 		num_classes = 100
-		in_feature = int(pow(32/(2**(args.num_module-1)),2)	)
+		in_feature = int(pow(32/(2**(num_reduction)),2)	)
 	
 	elif args.dataset in ['imagenet-5k']:
 		num_classes = 5000
-		in_feature = int(pow(224/(2**(args.num_module-1)),2))
+		in_feature = int(pow(224/(2**(num_reduction)),2))
 
 	else:
 		raise ValueError('Dataset not found!')
