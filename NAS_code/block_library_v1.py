@@ -13,47 +13,59 @@ def BlockFactory(number, downSample, **kwargs):
 	in_planes = kwargs['in_planes']
 	out_planes = kwargs['out_planes']
 	# expansion = kwargs['expansion']
-	
-	
+
 	if downSample: 
 		stride = 2
 	else:
 		stride = 1
 
+	block_dict = {
+			'0': Block_mobilenet(in_planes, out_planes, stride),
+			'1': Block_mobilenetV2(in_planes, out_planes, stride),
+			'2': StdConv(in_planes, out_planes, 3, stride, 1),  # 5x5
+			'3': Block_resnetV2(in_planes, out_planes, stride),  # 9x9
+			'4': Block_conv(in_planes, out_planes, stride),
+			'5': Block_resnet(in_planes, out_planes, stride),
+			'6': Block_resnext(in_planes, out_planes, stride),
 
-	if number == 0:
-		return Block_mobilenet(in_planes, out_planes, stride)
+			'7': Identity() if stride == 1 else Block_reduction(in_planes, out_planes),
+			'8': PoolBN('avg', out_planes, 3, stride, 1),
+			'9': PoolBN('max', out_planes, 3, stride, 1),
 
-	elif number == 1:
-		# return Block_mobilenetV2(in_planes, out_planes, expansion, stride)
-		return Block_mobilenetV2(in_planes, out_planes, stride)
+			'head': StdConv(in_planes, out_planes, 3, stride, 1),
+			'fc':Block_fc(in_planes, out_planes)
+	}
 
-	elif number == 2:
-		return Block_resnet(in_planes, out_planes, stride)
-	
-	elif number == 3:
-		return Block_resnetV2(in_planes, out_planes, stride)
-
-	elif number == 4:
-		return Block_resnext(in_planes, out_planes, stride)
-	
-	elif number == 5:
-		return Block_conv(in_planes, out_planes, stride)
-
-	elif number == 6:
-		return Block_pool(stride)
-
-	elif number == 7:
-		return Block_pool(stride)
-	
-	elif number == 'fc':
-		return Block_fc(in_planes, out_planes) # out_planes=num_classes
-
+	if number == 'fc':
+		return block_dict[number]
 	else:
-		raise ValueError('Block indexc not found!')
+		return block_dict[str(number)]
 
 
 
+def number_of_blocks():
+	num_block = {'plain': 7,
+				 'all': 10}
+	pool_blocks = [7, 8, 9]
+	densenet_num = 6
+	return num_block, pool_blocks, densenet_num
+
+class StdConv(nn.Module):
+	""" Standard conv
+	ReLU - Conv - BN
+	"""
+	def __init__(self, C_in, C_out, kernel_size, stride, padding):
+		super().__init__()
+		self.net = nn.Sequential(
+			nn.Conv2d(C_in, C_out, kernel_size, stride, padding, bias=False),
+			nn.BatchNorm2d(C_out),
+			nn.ReLU(),
+		)
+
+	def forward(self, x):
+		out = self.net(x)
+		# logging.info('input.shape {}, output.shape {}'.format(x.shape, out.shape))
+		return out
 
 
 
@@ -205,6 +217,39 @@ class Block_conv(nn.Module): # plain conv network stride = 1
 		return out
 
 
+class Identity(nn.Module):
+	def __init__(self):
+		super().__init__()
+
+	def forward(self, x):
+		return x
+
+class PoolBN(nn.Module):
+	"""
+	AvgPool or MaxPool - BN
+	"""
+	def __init__(self, pool_type, C_out, kernel_size, stride, padding):
+		"""
+		Args:
+			pool_type: 'max' or 'avg'
+		"""
+		super().__init__()
+		if pool_type.lower() == 'max':
+			self.pool = nn.MaxPool2d(kernel_size, stride, padding)
+		elif pool_type.lower() == 'avg':
+			self.pool = nn.AvgPool2d(kernel_size, stride, padding, count_include_pad=False)
+		else:
+			raise ValueError()
+
+		self.bn = nn.BatchNorm2d(C_out)
+
+	def forward(self, x):
+		out = self.pool(x)
+		out = self.bn(out)
+		# logging.info('input.shape {}, output.shape {}'.format(x.shape, out.shape))
+		return out
+
+
 class Block_reduction(nn.Module):
     """
     Reduce feature map size by factorized pointwise(stride=2).
@@ -246,5 +291,6 @@ class Block_fc(nn.Module): # FC
 	def forward(self, x):
 		out = self.blocks(x) 
 		return out
+
 
 

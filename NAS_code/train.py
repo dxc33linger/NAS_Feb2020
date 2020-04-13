@@ -11,7 +11,6 @@ import utils
 import logging
 import functions
 import numpy as np
-from block_library import *
 from dataload_regular import *
 from dataload_continual import *
 from make_architecture import *
@@ -48,14 +47,28 @@ elif args.mode == 'continual':  ## continual learning
 		logging.info('CLOUD re-assigned label: %s\n', np.unique(target))
 		break
 
+#
+# param = 5.1
+# while param >= 5.0: # disgard network that larger than 5M
+# 	block_cfg, size_cfg, ds_cfg = make_cfg(args.DNA_SIZE)
+# 	model = nas.initial_network(block_cfg, size_cfg, ds_cfg)
+# 	param = utils.count_parameters_in_MB(nas.net)
+# 	logging.info('param size = {0:.2f}MB\n'.format(param))
+#
 
-param = 5.1
-while param >= 5.0: # disgard network that larger than 5M
-	block_cfg, size_cfg, ds_cfg = make_cfg(args.DNA_SIZE)
-	model = nas.initial_network(block_cfg, size_cfg, ds_cfg)
-	param = utils.count_parameters_in_MB(nas.net)
-	logging.info('param size = {0:.2f}MB'.format(param))
+block_cfg = [6, 5, 4, 7, 4, 1, 3, 5, 4, 7, 4, 1, 3, 5, 4, 7, 4]
+size_cfg = [16, 24, 32, 512, 512, 32, 128, 128, 32, 512, 512, 32, 128, 128, 32, 512, 512, 32]
+ds_cfg = [False, False, False, False, False, True, False, False, False, False, False, True, False, False, False, False, False]
+
+model = nas.initial_network(block_cfg, size_cfg, ds_cfg)
 nas.initialization()
+
+
+
+
+
+
+
 
 train_acc = np.zeros([1, args.num_epoch])
 test_acc = np.zeros([1, args.num_epoch])
@@ -67,10 +80,10 @@ for epoch in range(args.num_epoch):
 	logging.info('epoch {0} lr {1} ========== train_acc {2:.4f} test_acc {3:.4f}'.format(
 		epoch, nas.current_lr, train_acc[0, epoch], test_acc[0, epoch]))
 	# nas.check_weight()
-	if epoch % 5 == 0 or epoch % 3 == 0 or epoch == args.num_epoch - 1:
+	if epoch == 4  or epoch == args.num_epoch - 1:
 		# add noise and test
 		logging.info('Add Noise within range -{:.5f}, {:.5f}'.format(args.alpha, args.alpha))
-		model_wNoise = nas.add_noise(args.alpha)
+		nas.add_noise(args.alpha)
 		accuracy_wNoise = nas.test(testloader)
 
 		logging.info('Accuracy changes {:.4f} -> {:.4f} after adding Gaussian noise with alpha={}'.format(test_acc[0, epoch], accuracy_wNoise, args.alpha))
@@ -89,8 +102,7 @@ scio.savemat('../../results/mode_{}/test_acc{:.3f}_param{:.2f}MB.mat'.format(arg
 	{'block_cfg':block_cfg, 'ds_cfg':ds_cfg, 'size_cfg': size_cfg,
 	 'lr_step_size': args.lr_step_size,  'lr_gamma': args.gamma, 'seed': args.seed,
 	 'train_acc':train_acc, 'test_acc':test_acc, 'accu_wNoise':accu_wNoise,
-	 'param':param, 'num_epoch': args.num_epoch,
-	  'max_block': args.max_block})
+	 'param':param, 'num_epoch': args.num_epoch, 'DNA_SIZE': args.DNA_SIZE})
 logging.info('Results saved in ../../results/mode_{}/test_acc{:.3f}_param{:.1f}MB.mat'.format(args.mode, sum(test_acc[0,-5:])/5, param))
 
 x = np.linspace(0, args.num_epoch, args.num_epoch)

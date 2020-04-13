@@ -49,8 +49,8 @@ def BlockFactory(number, downSample, **kwargs):
 			'4': StdConv(in_planes, out_planes, 3, stride, 1),
 			'5': Block_resnet(in_planes, out_planes, stride),
 			'6': Block_DenseNet(in_planes, stride),
-
 			'7': Identity() if stride == 1 else FactorizedReduce(in_planes, out_planes),
+
 			'8': PoolBN('avg', out_planes, 3, stride, 1),
 			'9': PoolBN('max', out_planes, 3, stride, 1),
 
@@ -64,11 +64,12 @@ def BlockFactory(number, downSample, **kwargs):
 		return block_dict[str(number)]
 
 def number_of_blocks():
-	num_block = {'plain': 7,
+	num_block = {'plain': 8,
 				 'all': 10}
 	pool_blocks = [7, 8, 9]
 	densenet_num = 6
 	return num_block, pool_blocks, densenet_num
+
 
 class Identity(nn.Module):
 	def __init__(self):
@@ -104,6 +105,7 @@ class PoolBN(nn.Module):
 		return out
 
 
+
 class StdConv(nn.Module):
 	""" Standard conv
 	ReLU - Conv - BN
@@ -111,15 +113,17 @@ class StdConv(nn.Module):
 	def __init__(self, C_in, C_out, kernel_size, stride, padding):
 		super().__init__()
 		self.net = nn.Sequential(
-			nn.ReLU(),
 			nn.Conv2d(C_in, C_out, kernel_size, stride, padding, bias=False),
-			nn.BatchNorm2d(C_out)
+			nn.BatchNorm2d(C_out),
+			nn.ReLU(),
 		)
 
 	def forward(self, x):
 		out = self.net(x)
 		# logging.info('input.shape {}, output.shape {}'.format(x.shape, out.shape))
 		return out
+
+
 
 class DilConv(nn.Module):
 	""" (Dilated) depthwise separable conv

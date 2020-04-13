@@ -20,7 +20,7 @@ class NAS(object):
 	def initial_network(self, block_cfg, size_cfg, ds_cfg):
 		self.net = architecture(block_cfg, size_cfg, ds_cfg)
 		self.block_cfg = block_cfg
-		logging.info('network %s', self.net)
+		# logging.info('network %s', self.net)
 		return self.net
 
 	def initialization(self):
@@ -61,11 +61,10 @@ class NAS(object):
 			_, predicted = outputs.max(1)
 			total += targets.size(0)
 			correct += predicted.eq(targets).sum().item()
-		
 			progress_bar(batch_idx, len(trainloader), 'Loss:%.3f|Acc:%.3f%% (%d/%d)--Train' % (train_loss/(batch_idx+1), 100.*correct/total, correct, total))
-		if epoch % 10 == 0 or epoch == args.num_epoch - 1:
-			self.save_checkpoint_t7(epoch, correct/total, train_loss)
 
+		if epoch % 5 == 0 or epoch == args.num_epoch - 1:
+			self.save_checkpoint_t7(epoch, correct/total, train_loss)
 		return correct/total
 
 	def test(self, testloader):
@@ -127,7 +126,6 @@ class NAS(object):
 			param_clean[layer_name] = Variable(param.clone(), requires_grad=True)
 		self.net.load_state_dict(param_w_noise)
 		self.param_clean = param_clean
-		return self.net
 
 
 	def load_weight_back(self):

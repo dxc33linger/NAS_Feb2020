@@ -46,7 +46,7 @@ def make_cfg(DNA_SIZE, num_reduction = 3):
 
 	logging.info('block_cfg = {} length: {}'.format(block_cfg, len(block_cfg)))
 	logging.info(' size_cfg = {} length: {}'.format(size_cfg, len(size_cfg)))
-	logging.info('   ds_cfg = {} length: {}\n'.format(ds_cfg, len(ds_cfg)))
+	logging.info('   ds_cfg = {} length: {}'.format(ds_cfg, len(ds_cfg)))
 	return block_cfg, size_cfg, ds_cfg
 
 
