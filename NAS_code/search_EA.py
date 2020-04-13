@@ -82,7 +82,7 @@ def get_fitness(pop):
 			delta_accu = 1.0
 			logging.info('pop_id {} epoch {} lr {} ========== train_acc {:.3f} test_acc {:.3f}'.format(pop_id, epoch, nas.current_lr, train_acc[0, epoch], test_acc[0, epoch]))
 			if train_acc[0, epoch] <= 0.11:
-				fitness[0, pop_id] = 0.0001
+				fitness[0, pop_id] = 0.001
 				logging.info('Disgard this pop since the accuracy is too low')
 				break
 			if epoch == 4:	# add noise and test
@@ -97,10 +97,10 @@ def get_fitness(pop):
 				# load back previous weight without noise
 				logging.info('Loading back weights without noise.....')
 				nas.load_weight_back()
-				if train_acc[0, epoch] <= 0.20:
-					fitness[0, pop_id] = 0.0001
+				if train_acc[0, epoch] <= 0.25:
+					fitness[0, pop_id] = 0.001
 				else:
-					fitness[0, pop_id] = abs(1./ delta_accu) * pow(test_acc[0, epoch], 2)
+					fitness[0, pop_id] = abs(1./ (delta_accu+0.001)) * pow(test_acc[0, epoch], 2)
 
 				if fitness[0, pop_id] > max_fitness:
 					max_fitness = fitness[0, pop_id]
@@ -212,7 +212,7 @@ for _ in range(args.N_GENERATIONS):
 	logging.info(' size_pop {}'.format(pop['size_pop']))
 	logging.info('   ds_cfg {}'.format(pop['ds_cfg']))
 	torch.cuda.empty_cache()
-
+	scio.savemat('../../results/mode_{}/generation{}.mat'.format(args.mode, _ ), {'pop': pop})
 # Document
 time_end=time.time()
 logging.info('time cost {}'.format(time_end-time_start))
@@ -232,15 +232,15 @@ param = utils.count_parameters_in_MB(nas.net)
 logging.info('param size = {0:.2f}MB\n'.format(param))
 nas.initialization()
 
-train_acc = np.zeros([1, 7])
-test_acc = np.zeros([1, 7])
-accu_wNoise = np.zeros([1, 7])
-for epoch in range(7):
+train_acc = np.zeros([1, 70])
+test_acc = np.zeros([1, 70])
+accu_wNoise = np.zeros([1, 70])
+for epoch in range(70):
 	train_acc[0, epoch] = nas.train(epoch, trainloader)
 	test_acc[0, epoch] = nas.test(testloader)
 	logging.info('epoch {0} lr {1} ========== train_acc {2:.4f} test_acc {3:.4f}'.format(epoch, nas.current_lr, train_acc[0, epoch], test_acc[0, epoch]))
 	# nas.check_weight()
-	if epoch == 7 - 1:
+	if epoch == 70 - 1:
 		# add noise and test
 		logging.info('Add Noise within range -{:.5f}, {:.5f}'.format(args.alpha, args.alpha))
 		nas.add_noise(args.alpha)
@@ -255,13 +255,13 @@ for epoch in range(7):
 		print('Is accuracy the same?', nas.test(testloader))
 torch.save(nas.net,'../../results/mode_{}/final_model_cfg{}_acc{:.3f}'.format(args.mode, block_cfg, sum(test_acc[0,-5:])/5))
 
-x = np.linspace(0, args.num_epoch, args.num_epoch)
+x = np.linspace(0, 70, 70)
 plt.xlabel('Epoch')
 plt.ylabel('Testing Accuracy')
 plt.plot(x, train_acc[0, :] , 'g', alpha=0.5, label = 'Training accuracy')
 plt.plot(x, test_acc[0, :],   'b', alpha=1.0, label = 'Testing accuracy')
 plt.yticks(np.arange(0, 1.1, step=0.1))
-plt.xticks(np.arange(0, args.num_epoch+1, step=10))
+plt.xticks(np.arange(0, 70+1, step=10))
 plt.grid(color='k', linestyle='-', linewidth=0.05)
 plt.legend(loc='best')
 plt.title('Learning curve\ncfg{}\nds_cfg{}'.format(block_cfg, ds_cfg))

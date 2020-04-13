@@ -28,7 +28,7 @@ parser.add_argument('--alpha', type=float, default = 0.1, help='noise distributi
 # parser.add_argument("--max_block", type=int, default = 6, help='max number of blocks inside a module')
 parser.add_argument("--DNA_SIZE", type=int, default = 5, help='DNA size, i.e., number of layers within one module')  # #layers = DNA_SIZE * 3 + 2(reduction)+ 2(head-conv + FC)
 parser.add_argument("--POP_SIZE", type=int, default = 50, help='population size')
-parser.add_argument("--N_GENERATIONS", type=int, default = 2, help='number of generations')
+parser.add_argument("--N_GENERATIONS", type=int, default = 5, help='number of generations')
 parser.add_argument('--CROSS_RATE', type=float, default = 0.7, help='crossover rate')
 parser.add_argument('--MUTATION_RATE', type=float, default = 0.05, help='mutation rate')
 
