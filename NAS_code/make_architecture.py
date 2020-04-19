@@ -39,11 +39,8 @@ def make_cfg(DNA_SIZE, num_reduction = 3):
 	for idx, block in enumerate(block_cfg):
 		if block in pool_blocks:  ## if block is pooling layer, size is same with last layer
 			size_cfg[idx + 1] = size_cfg[idx]
-		elif block == densenet_num and block_cfg[idx - 1] != densenet_num:  # non-DB - DB
+		elif block in densenet_num:  # non-DB - DB
 			size_cfg[idx + 1] = 24
-		elif block == densenet_num and block_cfg[idx - 1] == densenet_num:  # DB - DB
-			size_cfg[idx + 1] = 24
-
 	logging.info('block_cfg = {} length: {}'.format(block_cfg, len(block_cfg)))
 	logging.info(' size_cfg = {} length: {}'.format(size_cfg, len(size_cfg)))
 	logging.info('   ds_cfg = {} length: {}'.format(ds_cfg, len(ds_cfg)))

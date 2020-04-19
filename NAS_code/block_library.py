@@ -9,31 +9,8 @@ import torch.nn as nn
 import torch.nn.functional as F
 import logging
 import math
-# """
-# OPS = {
-#     'none': Zero(stride),
-#     'avg_pool_3x3': PoolBN('avg', C, 3, stride, 1),
-#     'max_pool_3x3': PoolBN('max', C, 3, stride, 1),
-#     'skip_connect': Identity() if stride == 1 else FactorizedReduce(C, C),
-#     'sep_conv_3x3': SepConv(C, C, 3, stride, 1),
-#     'sep_conv_5x5': SepConv(C, C, 5, stride, 2),
-#     'sep_conv_7x7': SepConv(C, C, 7, stride, 3),
-#     'dil_conv_3x3': DilConv(C, C, 3, stride, 2, 2), # 5x5
-#     'dil_conv_5x5': DilConv(C, C, 5, stride, 4, 2), # 9x9
-#     'conv_7x1_1x7': FacConv(C, C, 7, stride, 3)
-# }
-# """
 
 def BlockFactory(number, downSample, **kwargs):
-	'''
-	Args:
-		number: ID of the block
-		downSample: whether this cell is reduction cell (downSample = true) or not
-		**kwargs: #input channels,  #output channels
-
-	Returns: cell
-
-	'''
 	in_planes = kwargs['in_planes']
 	out_planes = kwargs['out_planes']
 	if downSample:
@@ -41,21 +18,35 @@ def BlockFactory(number, downSample, **kwargs):
 	else:
 		stride = 1
 
-	block_dict = {
-			'0': SepConv(in_planes, out_planes, 3, stride, 1),
-			'1': SepConv(in_planes, out_planes, 5, stride, 2),
-			'2': DilConv(in_planes, out_planes, 3, stride, 2, 2),  # 5x5
-			'3': DilConv(in_planes, out_planes, 5, stride, 4, 2),  # 9x9
-			'4': StdConv(in_planes, out_planes, 3, stride, 1),
-			'5': Block_resnet(in_planes, out_planes, stride),
-			'6': Block_DenseNet(in_planes, stride),
-			'7': Identity() if stride == 1 else FactorizedReduce(in_planes, out_planes),
+	block_dict = { # not dense, not identity
+		'0': SepConv(in_planes, out_planes, 3, stride, 1),   # 4 conv
+		'1': DilConv(in_planes, out_planes, 3, stride, 2, 2), # 2conv
+		'2': StdConv(in_planes, out_planes, 3, stride, 1),  # 1 conv
+		'3': Block_resnet(in_planes, out_planes, stride),   # 2 conv
+		'4': Block_resnet(in_planes, out_planes, stride),  #  2conv
+		'5': Block_mobilenet(in_planes, out_planes, stride), # 2conv
+		'6': Block_DenseNet(in_planes, stride), # 4 conv
+		'7': Identity() if stride == 1 else FactorizedReduce(in_planes, out_planes),
 
-			'8': PoolBN('avg', out_planes, 3, stride, 1),
-			'9': PoolBN('max', out_planes, 3, stride, 1),
+		'8': PoolBN('avg', out_planes, 3, stride, 1),
+		'9': PoolBN('max', out_planes, 3, stride, 1),
 
-			'head': StdConv(in_planes, out_planes, 3, stride, 1),
-			'fc':Block_fc(in_planes, out_planes)
+		'head': StdConv(in_planes, out_planes, 3, stride, 1),
+		'fc': Block_fc(in_planes, out_planes)
+			# '0': SepConv(in_planes, out_planes, 3, stride, 1),
+			# '1': SepConv(in_planes, out_planes, 5, stride, 2),
+			# '2': DilConv(in_planes, out_planes, 3, stride, 2, 2),  # 5x5
+			# '3': DilConv(in_planes, out_planes, 5, stride, 4, 2),  # 9x9
+			# '4': StdConv(in_planes, out_planes, 3, stride, 1),
+			# '5': Block_resnet(in_planes, out_planes, stride),
+			# '6': Block_DenseNet(in_planes, stride),
+			# '7': Identity() if stride == 1 else FactorizedReduce(in_planes, out_planes),
+			#
+			# '8': PoolBN('avg', out_planes, 3, stride, 1),
+			# '9': PoolBN('max', out_planes, 3, stride, 1),
+			#
+			# 'head': StdConv(in_planes, out_planes, 3, stride, 1),
+			# 'fc':Block_fc(in_planes, out_planes)
 	}
 
 	if number == 'fc':
@@ -67,7 +58,7 @@ def number_of_blocks():
 	num_block = {'plain': 8,
 				 'all': 10}
 	pool_blocks = [7, 8, 9]
-	densenet_num = 6
+	densenet_num = [6]
 	return num_block, pool_blocks, densenet_num
 
 
@@ -76,6 +67,7 @@ class Identity(nn.Module):
 		super().__init__()
 
 	def forward(self, x):
+		# logging.info('input.shape {}, output.shape {}'.format(x.shape, x.shape))
 		return x
 
 
@@ -103,6 +95,22 @@ class PoolBN(nn.Module):
 		out = self.bn(out)
 		# logging.info('input.shape {}, output.shape {}'.format(x.shape, out.shape))
 		return out
+
+
+class Block_mobilenet(nn.Module): #Block_MobileNet
+	'''Depthwise conv + Pointwise conv'''
+	def __init__(self, in_planes, out_planes, stride=1):
+		super(Block_mobilenet, self).__init__()
+		self.conv1 = nn.Conv2d(in_planes, in_planes, kernel_size=3, stride=stride, padding=1, groups=in_planes, bias=False)
+		self.bn1 = nn.BatchNorm2d(in_planes)
+		self.conv2 = nn.Conv2d(in_planes, out_planes, kernel_size=1, stride=1, padding=0, bias=False)
+		self.bn2 = nn.BatchNorm2d(out_planes)
+
+	def forward(self, x):
+		out = F.relu(self.bn1(self.conv1(x)))
+		out = F.relu(self.bn2(self.conv2(out)))
+		return out
+
 
 
 
@@ -162,6 +170,9 @@ class SepConv(nn.Module):
 		out = self.net(x)
 		# logging.info('input.shape {}, output.shape {}'.format(x.shape, out.shape))
 		return out
+
+
+
 
 
 class Block_resnet(nn.Module):
@@ -276,6 +287,5 @@ class Block_DenseNet(nn.Module):
 		out = self.conv1(x)
 		out = self.trans1(self.dense1(out))
 		# logging.info('input.shape {}, output.shape {}'.format(x.shape, out.shape))
-
 		return out
 

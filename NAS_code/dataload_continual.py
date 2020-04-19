@@ -9,7 +9,7 @@ from torch.utils.data import Dataset, DataLoader
 import numpy as np
 from args import parser
 from torch.utils.data import DataLoader, sampler
-
+import logging
 import random
 # torch.backends.cudnn.deterministic = True
 
@@ -166,3 +166,29 @@ def dataload_partial(label_list, start_idx, batch_size_=args.batch_size, shuffle
 	partial_testsetLoader   = DataLoader(partial_testset , batch_size = batch_size_, shuffle = False, drop_last=False, num_workers=1)#, worker_init_fn=_init_fn)
 
 	return partial_trainsetLoader, partial_testsetLoader
+
+
+### different memory size for each class
+def get_partial_dataset_cifar(start_idx, label_list, num_images):
+	train_list = []
+	test_list = []
+	all_lable_list = []
+	# logging.info('label_list {}'.format(label_list))
+	for t in range(len(label_list)):
+		all_lable_list += label_list[t]
+		# logging.info('t {} label_list[t]'.format(t, label_list[t]))
+		for i in label_list[t]:
+			num_images_per_classes = int(num_images[t] / len(label_list[t]))
+			# logging.info(' class {}, num_image/class={} '.format(i, num_images_per_classes))
+			train_list.append(get_class_i(x_train, y_train, i)[0 : num_images_per_classes])  #num_image_class
+			test_list.append(get_class_i(x_test , y_test , i))
+
+	partial_trainset = DatasetMaker(train_list, all_lable_list, start_idx, transform_with_aug)
+	partial_testset  = DatasetMaker(test_list,	all_lable_list, start_idx, transform_no_aug)
+
+	# Create datasetLoaders from trainset and testset
+	partial_trainsetLoader  = DataLoader(partial_trainset, batch_size=args.batch_size, shuffle=True, drop_last=False, num_workers=1)#, worker_init_fn=_init_fn)
+	partial_testsetLoader   = DataLoader(partial_testset , batch_size=args.batch_size, shuffle=True, drop_last=False, num_workers=1)#, worker_init_fn=_init_fn)
+
+	return partial_trainsetLoader, partial_testsetLoader
+

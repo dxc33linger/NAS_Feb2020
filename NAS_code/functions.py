@@ -1,17 +1,12 @@
-import os
-import pickle
-import torch as torch
-
-from utils import progress_bar
-from make_architecture import *
 import random
 from collections import OrderedDict
-from dataload_regular import *
-import torch.backends.cudnn as cudnn
+
 from torch.autograd import Variable
-import torch.optim as optim
-import utils
-import logging
+
+from dataload_regular import *
+from make_architecture import *
+from utils import progress_bar
+
 
 class NAS(object):
 	def __init__(self):
@@ -63,8 +58,8 @@ class NAS(object):
 			correct += predicted.eq(targets).sum().item()
 			progress_bar(batch_idx, len(trainloader), 'Loss:%.3f|Acc:%.3f%% (%d/%d)--Train' % (train_loss/(batch_idx+1), 100.*correct/total, correct, total))
 
-		if epoch % 5 == 0 or epoch == args.num_epoch - 1:
-			self.save_checkpoint_t7(epoch, correct/total, train_loss)
+		# if epoch % 5 == 0 or epoch == args.num_epoch - 1:
+		# 	self.save_checkpoint_t7(epoch, correct/total, train_loss)
 		return correct/total
 
 	def test(self, testloader):
@@ -98,10 +93,10 @@ class NAS(object):
 		else:
 			a = a
 		task_list = []
-		for i in range(0, len(a), args.classes_per_task):
-			task_list.append(a[i:i + args.classes_per_task])
+		for i in range(0, len(a), 1):
+			task_list.append(a[i:i + 1])
 		self.task_list = task_list
-		self.total_num_task = int(num_classes / args.classes_per_task)
+		self.total_num_task = int(num_classes / 1)
 		return self.task_list, self.total_num_task
 
 
@@ -145,7 +140,7 @@ class NAS(object):
 			'epoch': epoch,
 			'state_dict': self.net.state_dict(),
 			'optimizer_state_dict': self.optimizer.state_dict(),}
-		# self.model_file = '../../loss-landscape/cifar10/trained_nets/' + self.save_folder + '_epoch' + str(epoch)  + '.t7'
+		self.model_file = '../../loss-landscape/cifar10/trained_nets/' + self.save_folder + '_epoch' + str(epoch)  + '.t7'
 		logging.info('Saving checkpiont to ' + self.model_file)
 		torch.save(state, self.model_file)
 

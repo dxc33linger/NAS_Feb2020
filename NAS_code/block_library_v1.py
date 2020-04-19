@@ -8,7 +8,7 @@ import abc
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-
+import math
 def BlockFactory(number, downSample, **kwargs):
 	in_planes = kwargs['in_planes']
 	out_planes = kwargs['out_planes']
@@ -22,13 +22,13 @@ def BlockFactory(number, downSample, **kwargs):
 	block_dict = {
 			'0': Block_mobilenet(in_planes, out_planes, stride),
 			'1': Block_mobilenetV2(in_planes, out_planes, stride),
-			'2': StdConv(in_planes, out_planes, 3, stride, 1),  # 5x5
-			'3': Block_resnetV2(in_planes, out_planes, stride),  # 9x9
-			'4': Block_conv(in_planes, out_planes, stride),
-			'5': Block_resnet(in_planes, out_planes, stride),
-			'6': Block_resnext(in_planes, out_planes, stride),
-
+			'2': Block_resnetV2(in_planes, out_planes, stride),  # 9x9
+			'3': Block_conv(in_planes, out_planes, stride),
+			'4': Block_resnet(in_planes, out_planes, stride),
+			'5': Block_resnext(in_planes, out_planes, stride),
+			'6': Block_DenseNet(in_planes, stride),
 			'7': Identity() if stride == 1 else Block_reduction(in_planes, out_planes),
+
 			'8': PoolBN('avg', out_planes, 3, stride, 1),
 			'9': PoolBN('max', out_planes, 3, stride, 1),
 
@@ -44,7 +44,7 @@ def BlockFactory(number, downSample, **kwargs):
 
 
 def number_of_blocks():
-	num_block = {'plain': 7,
+	num_block = {'plain': 8,
 				 'all': 10}
 	pool_blocks = [7, 8, 9]
 	densenet_num = 6
@@ -294,3 +294,60 @@ class Block_fc(nn.Module): # FC
 
 
 
+
+
+
+class Bottleneck(nn.Module):
+	def __init__(self, in_planes, growth_rate):
+		super(Bottleneck, self).__init__()
+		self.bn1 = nn.BatchNorm2d(in_planes)
+		self.conv1 = nn.Conv2d(in_planes, 4*growth_rate, kernel_size=1, bias=False)
+		self.bn2 = nn.BatchNorm2d(4*growth_rate)
+		self.conv2 = nn.Conv2d(4*growth_rate, growth_rate, kernel_size=3, padding=1, bias=False)
+
+	def forward(self, x):
+		out = self.conv1(F.relu(self.bn1(x)))
+		out = self.conv2(F.relu(self.bn2(out)))
+		out = torch.cat([out,x], 1)
+		return out
+
+#
+class Transition(nn.Module):
+	def __init__(self, in_planes, out_planes, stride):
+		super(Transition, self).__init__()
+		self.bn = nn.BatchNorm2d(in_planes)
+		self.conv = nn.Conv2d(in_planes, out_planes, kernel_size=1, bias=False)
+		self.stride = stride
+	def forward(self, x):
+		out = self.conv(F.relu(self.bn(x)))
+		if self.stride == 2:
+			out = F.avg_pool2d(out, 2)
+		return out
+class Block_DenseNet(nn.Module):
+	def __init__(self, in_planes, stride, block = Bottleneck, nblocks = 2, growth_rate=12, reduction=0.5):
+		super(Block_DenseNet, self).__init__()
+		self.growth_rate = growth_rate
+
+		num_planes = 2*growth_rate
+		self.conv1 = nn.Conv2d(in_planes, num_planes, kernel_size=3, padding=1, bias=False)
+
+		self.dense1 = self._make_dense_layers(block, num_planes, nblocks)
+		num_planes += nblocks*growth_rate
+		out_planes = int(math.floor(num_planes*reduction))
+		self.trans1 = Transition(num_planes, out_planes, stride)
+		num_planes = out_planes
+		self.bn = nn.BatchNorm2d(num_planes)
+
+	def _make_dense_layers(self, block, in_planes, nblock):
+		layers = []
+		for i in range(nblock):
+			layers.append(block(in_planes, self.growth_rate))
+			in_planes += self.growth_rate
+		return nn.Sequential(*layers)
+
+	def forward(self, x):
+		out = self.conv1(x)
+		out = self.trans1(self.dense1(out))
+		# logging.info('input.shape {}, output.shape {}'.format(x.shape, out.shape))
+
+		return out
