@@ -12,19 +12,19 @@ os.mkdir('../../results')
 # os.mkdir('../../loss-landscape/cifar10/trained_nets')
 i=0
 
-for POP_SIZE in [50]:
+for POP_SIZE in [4]:
     for alpha in [0.2]:
-        for mode in ['continual']:
-            for DNA_SIZE in [5]:
-                for N_GENERATIONS in [6]:
+        for DNA_SIZE in [7]:
+                for N_GENERATIONS in [2]:
                     for CROSS_RATE in [0.6]:
 
+
+                        evaluation = 'accuracy'  # robustness
+                        mode = 'regular'
                         if not os.path.exists('../../results/mode_{}'.format(mode)):
                             os.mkdir('../../results/mode_{}'.format(mode))
 
-                        evaluation = 'robustness'  # robustness
-
-                        command_tmp = 'python search_EA.py  --dataset cifar100 --num_epoch 5 --task_division 10,10 --mode ' + str(mode) + \
+                        command_tmp = 'python search_EA.py  --dataset cifar10 --num_epoch 1 --task_division 10,10 --mode ' + str(mode) + \
                                       ' --DNA_SIZE '+str(DNA_SIZE) + ' --alpha '+str(alpha) + ' --POP_SIZE ' +str(POP_SIZE) +' --N_GENERATIONS ' +str(N_GENERATIONS) + ' --CROSS_RATE ' + str(CROSS_RATE)\
                                       + ' --evaluation ' + evaluation
 
