@@ -18,17 +18,14 @@ class NAS(object):
 		# logging.info('network %s', self.net)
 		return self.net
 
-	def initialization(self):
+	def initialization(self, lr = args.lr, lr_step_size = args.lr_step_size):
 		self.device = 'cuda' if torch.cuda.is_available() else 'cpu'
 		self.net = self.net.to(self.device)
-		if self.device == 'cuda':
-			self.net = nn.DataParallel(self.net)
-			cudnn.benchmark = True
-		
 		self.criterion = nn.CrossEntropyLoss()
-		self.optimizer = optim.SGD(self.net.parameters(), lr = args.lr, momentum=0.9, weight_decay=5e-4) 
-		# self.scheduler = optim.lr_scheduler.CosineAnnealingLR(self.optimizer, float(args.num_epoch), eta_min=args.learning_rate_min)
-		self.scheduler = optim.lr_scheduler.StepLR(self.optimizer, args.lr_step_size, gamma=args.gamma)
+		self.optimizer = optim.SGD(self.net.parameters(), lr=lr, momentum=0.9, weight_decay=5e-4)
+		self.scheduler = optim.lr_scheduler.StepLR(self.optimizer, step_size=lr_step_size, gamma=args.gamma)
+
+
 
 	def train(self, epoch, trainloader):
 		self.scheduler.step()

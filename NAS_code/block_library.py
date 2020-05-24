@@ -33,20 +33,6 @@ def BlockFactory(number, downSample, **kwargs):
 
 		'head': StdConv(in_planes, out_planes, 3, stride, 1),
 		'fc': Block_fc(in_planes, out_planes)
-			# '0': SepConv(in_planes, out_planes, 3, stride, 1),
-			# '1': SepConv(in_planes, out_planes, 5, stride, 2),
-			# '2': DilConv(in_planes, out_planes, 3, stride, 2, 2),  # 5x5
-			# '3': DilConv(in_planes, out_planes, 5, stride, 4, 2),  # 9x9
-			# '4': StdConv(in_planes, out_planes, 3, stride, 1),
-			# '5': Block_resnet(in_planes, out_planes, stride),
-			# '6': Block_DenseNet(in_planes, stride),
-			# '7': Identity() if stride == 1 else FactorizedReduce(in_planes, out_planes),
-			#
-			# '8': PoolBN('avg', out_planes, 3, stride, 1),
-			# '9': PoolBN('max', out_planes, 3, stride, 1),
-			#
-			# 'head': StdConv(in_planes, out_planes, 3, stride, 1),
-			# 'fc':Block_fc(in_planes, out_planes)
 	}
 
 	if number == 'fc':
