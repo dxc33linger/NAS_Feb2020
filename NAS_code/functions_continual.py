@@ -32,6 +32,7 @@ class ContinualNN(object):
         os.mkdir('../../mask_library')
     if not os.path.exists('../../results/'):
         os.mkdir('../../results')
+
     def sensitivity_rank_taylor_filter(self, threshold):
         self.net.eval()
         mask_list_4d = []

@@ -26,11 +26,11 @@ def make_cfg(DNA_SIZE, num_reduction = 3):
 	# module1
 	block_cfg_module += np.random.randint(0, num_block['plain'], size=DNA_SIZE).tolist()  # random index from block library
 	ds_cfg_module += [False] * DNA_SIZE  # False means
-	size_cfg_module += (2 ** np.random.randint(4, 10, size=DNA_SIZE)).tolist()
+	size_cfg_module += (2 ** np.random.randint(5, 10, size=DNA_SIZE)).tolist()
 	## reduction cell
 	block_cfg_reduction += [np.random.randint(0, num_block['all'])]  # ds_cfg
 	ds_cfg_reduction += [True]
-	size_cfg_reduction += (2 ** np.random.randint(4, 10, size=1)).tolist()
+	size_cfg_reduction += (2 ** np.random.randint(5, 10, size=1)).tolist()
 
 	block_cfg = (block_cfg_module + block_cfg_reduction) * 2 + block_cfg_module
 	size_cfg = [16] + (size_cfg_module + size_cfg_reduction) * 2 + size_cfg_module

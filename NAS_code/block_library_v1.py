@@ -9,6 +9,10 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 import math
+import logging
+import scipy.io as scio
+
+
 def BlockFactory(number, downSample, **kwargs):
 	in_planes = kwargs['in_planes']
 	out_planes = kwargs['out_planes']
@@ -20,34 +24,43 @@ def BlockFactory(number, downSample, **kwargs):
 		stride = 1
 
 	block_dict = {
-			'0': Block_mobilenet(in_planes, out_planes, stride),
-			'1': Block_mobilenetV2(in_planes, out_planes, stride),
-			'2': Block_resnetV2(in_planes, out_planes, stride),  # 9x9
-			'3': Block_conv(in_planes, out_planes, stride),
-			'4': Block_resnet(in_planes, out_planes, stride),
-			'5': Block_resnext(in_planes, out_planes, stride),
-			'6': Block_DenseNet(in_planes, stride),
-			'7': Identity() if stride == 1 else Block_reduction(in_planes, out_planes),
+			'0': Block_mobilenetV2(in_planes, out_planes, stride),
+			# '2': StdConv(in_planes, out_planes, 3, stride, 1),  # 9x9
+			'1': Block_resnet(in_planes, out_planes, stride),
+			'2': Block_DenseNet(in_planes, stride),
+			'3': Identity() if stride == 1 else Block_reduction(in_planes, out_planes),
 
-			'8': PoolBN('avg', out_planes, 3, stride, 1),
-			'9': PoolBN('max', out_planes, 3, stride, 1),
+			'4': PoolBN('avg', out_planes, 3, stride, 1),
+			'5': PoolBN('max', out_planes, 3, stride, 1),
 
 			'head': StdConv(in_planes, out_planes, 3, stride, 1),
 			'fc':Block_fc(in_planes, out_planes)
 	}
 
+	# block_dict = {
+	# 		'0': Block_resnet(in_planes, out_planes, stride),
+	# 		'1': Block_DenseNet(in_planes, stride),
+	# 		'2': StdConv(in_planes, out_planes, 3, stride, 1),  # 9x9
+	# 		'3': Identity() if stride == 1 else Block_reduction(in_planes, out_planes),
+	# 		'4': PoolBN('avg', out_planes, 3, stride, 1),
+	# 		'5': PoolBN('max', out_planes, 3, stride, 1),
+	#
+	# 		'head': StdConv(in_planes, out_planes, 3, stride, 1),
+	# 		'fc':Block_fc(in_planes, out_planes)
+	# }
+	# print('block_dict',  block_dict)
 	if number == 'fc':
 		return block_dict[number]
 	else:
 		return block_dict[str(number)]
 
-
+	scio.savemat('../../results/block_dict.mat', block_dict)
 
 def number_of_blocks():
-	num_block = {'plain': 8,
-				 'all': 10}
-	pool_blocks = [7, 8, 9]
-	densenet_num = 6
+	num_block = {'plain': 4,
+				 'all': 6}
+	pool_blocks = [3,4,5]
+	densenet_num = [2]
 	return num_block, pool_blocks, densenet_num
 
 class StdConv(nn.Module):
@@ -64,7 +77,7 @@ class StdConv(nn.Module):
 
 	def forward(self, x):
 		out = self.net(x)
-		# logging.info('input.shape {}, output.shape {}'.format(x.shape, out.shape))
+		# logging.info('conv input.shape {}, output.shape {}'.format(x.shape, out.shape))
 		return out
 
 
@@ -81,6 +94,7 @@ class Block_mobilenet(nn.Module): #Block_MobileNet
 	def forward(self, x):
 		out = F.relu(self.bn1(self.conv1(x)))
 		out = F.relu(self.bn2(self.conv2(out)))
+		# logging.info('input.shape {}, output.shape {}'.format(x.shape, out.shape))
 		return out
 
 
@@ -113,36 +127,36 @@ class Block_mobilenetV2(nn.Module): #Block_MobileNet_v2
 		out = F.relu(self.bn2(self.conv2(out)))
 		out = self.bn3(self.conv3(out))
 		out = out + self.shortcut(x) if self.stride==1 else out
+		# logging.info('input.shape {}, output.shape {}'.format(x.shape, out.shape))
 		return out
 
 
 
 
 # When stride = 2, dimention decreases
-class Block_resnet(nn.Module): #ResNetv1
+class Block_resnet(nn.Module):
 	expansion = 1
-	def __init__(self, in_planes, planes, stride):
+	def __init__(self, in_planes, planes, stride=1):
 		super(Block_resnet, self).__init__()
-		self.blocks = nn.Sequential(
-		 nn.Conv2d(in_planes, planes, kernel_size=3, stride=stride, padding=1, bias=False),
-		 nn.BatchNorm2d(planes),
-		 nn.ReLU(inplace=True),
-		 nn.Conv2d(planes, planes, kernel_size=3, stride=1, padding=1, bias=False),
-		 nn.BatchNorm2d(planes),
-		)
+		self.conv1 = nn.Conv2d(in_planes, planes, kernel_size=3, stride=stride, padding=1, bias=False)
+		self.bn1   = nn.BatchNorm2d(planes)
+		self.conv2 = nn.Conv2d(planes, planes, kernel_size=3, stride=1, padding=1, bias=False)
+		self.bn2   = nn.BatchNorm2d(planes)
 
 		self.shortcut = nn.Sequential()
-		if  in_planes != self.expansion*planes:
+		if stride != 1 or in_planes != self.expansion*planes:
 			self.shortcut = nn.Sequential(
 				nn.Conv2d(in_planes, self.expansion*planes, kernel_size=1, stride=stride, bias=False),
 				nn.BatchNorm2d(self.expansion*planes)
 			)
+
 	def forward(self, x):
-		out = self.blocks(x) 
+		out = F.relu(self.bn1(self.conv1(x)))
+		out = self.bn2(self.conv2(out))
 		out += self.shortcut(x)
 		out = F.relu(out)
+		# # logging.info('input.shape {}, output.shape {}'.format(x.shape, out.shape))
 		return out
-
 
 
 # When stride = 2, dimention decreases
@@ -168,6 +182,7 @@ class Block_resnetV2(nn.Module): #ResNetv2
 	def forward(self, x):
 		out = self.blocks(x) 
 		out += self.shortcut(x)
+		# logging.info('input.shape {}, output.shape {}'.format(x.shape, out.shape))
 		return out
 
 
@@ -200,6 +215,7 @@ class Block_resnext(nn.Module): # ResNext
 		out = self.bn3(self.conv3(out))
 		out += self.shortcut(x)
 		out = F.relu(out)
+		# logging.info('input.shape {}, output.shape {}'.format(x.shape, out.shape))
 		return out
 
 
@@ -214,6 +230,7 @@ class Block_conv(nn.Module): # plain conv network stride = 1
 			)
 	def forward(self, x):
 		out = self.blocks(x) 
+		# logging.info('conv input.shape {}, output.shape {}'.format(x.shape, out.shape))
 		return out
 
 
@@ -222,6 +239,7 @@ class Identity(nn.Module):
 		super().__init__()
 
 	def forward(self, x):
+		# logging.info('Identity input.shape {}, output.shape {}'.format(x.shape, x.shape))
 		return x
 
 class PoolBN(nn.Module):
@@ -251,22 +269,23 @@ class PoolBN(nn.Module):
 
 
 class Block_reduction(nn.Module):
-    """
-    Reduce feature map size by factorized pointwise(stride=2).
-    ref: https://github.com/khanrc/pt.darts/blob/48e71375c88772daac376829fb4bfebc4fb78144/models/ops.py#L165
-    """
-    def __init__(self, in_planes, planes, affine=True):
-        super().__init__()
-        self.relu = nn.ReLU()
-        self.conv1 = nn.Conv2d(in_planes, planes // 2, 1, stride=2, padding=0, bias=False)
-        self.conv2 = nn.Conv2d(in_planes, planes // 2, 1, stride=2, padding=0, bias=False)
-        self.bn = nn.BatchNorm2d(planes, affine=affine)
+	"""
+	Reduce feature map size by factorized pointwise(stride=2).
+	ref: https://github.com/khanrc/pt.darts/blob/48e71375c88772daac376829fb4bfebc4fb78144/models/ops.py#L165
+	"""
+	def __init__(self, in_planes, planes, affine=True):
+		super().__init__()
+		self.relu = nn.ReLU()
+		self.conv1 = nn.Conv2d(in_planes, planes // 2, 1, stride=2, padding=0, bias=False)
+		self.conv2 = nn.Conv2d(in_planes, planes // 2, 1, stride=2, padding=0, bias=False)
+		self.bn = nn.BatchNorm2d(planes, affine=affine)
 
-    def forward(self, x):
-        x = self.relu(x)
-        out = torch.cat([self.conv1(x), self.conv2(x[:, :, 1:, 1:])], dim=1)
-        out = self.bn(out)
-        return out
+	def forward(self, x):
+		x = self.relu(x)
+		out = torch.cat([self.conv1(x), self.conv2(x[:, :, 1:, 1:])], dim=1)
+		out = self.bn(out)
+		# logging.info('Block_reduction input.shape {}, output.shape {}'.format(x.shape, out.shape))
+		return out
 
 
 
@@ -290,6 +309,7 @@ class Block_fc(nn.Module): # FC
 		)
 	def forward(self, x):
 		out = self.blocks(x) 
+		# logging.info('pool input.shape {}, output.shape {}'.format(x.shape, out.shape))
 		return out
 
 
@@ -309,6 +329,7 @@ class Bottleneck(nn.Module):
 		out = self.conv1(F.relu(self.bn1(x)))
 		out = self.conv2(F.relu(self.bn2(out)))
 		out = torch.cat([out,x], 1)
+		# logging.info('input.shape {}, output.shape {}'.format(x.shape, out.shape))
 		return out
 
 #
@@ -322,7 +343,11 @@ class Transition(nn.Module):
 		out = self.conv(F.relu(self.bn(x)))
 		if self.stride == 2:
 			out = F.avg_pool2d(out, 2)
+		# logging.info('input.shape {}, output.shape {}'.format(x.shape, out.shape))
 		return out
+
+
+
 class Block_DenseNet(nn.Module):
 	def __init__(self, in_planes, stride, block = Bottleneck, nblocks = 2, growth_rate=12, reduction=0.5):
 		super(Block_DenseNet, self).__init__()
@@ -348,6 +373,5 @@ class Block_DenseNet(nn.Module):
 	def forward(self, x):
 		out = self.conv1(x)
 		out = self.trans1(self.dense1(out))
-		# logging.info('input.shape {}, output.shape {}'.format(x.shape, out.shape))
-
+		# logging.info('dense input.shape {}, output.shape {}'.format(x.shape, out.shape))
 		return out

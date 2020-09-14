@@ -7,7 +7,7 @@ import scipy.io as scio
 from args import parser
 args = parser.parse_args()
 
-file_name = 'POPsize50_DNA5_maxAccu0.529_minDeltaAccu-0.021.mat'
+file_name = 'POPsize50_DNA5_maxAccu0.684_minDeltaAccu-0.036.mat'
 content = scio.loadmat('../../results/mode_continual/'+file_name)
 
 record_generation = content['record_generation']
