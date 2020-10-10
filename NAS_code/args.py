@@ -38,5 +38,7 @@ parser.add_argument('--task_division', type=str, default = '9,1')
 parser.add_argument('--score', type=str, default = 'abs_w', choices=['abs_w','abs_grad', 'grad_w'], help='importance score')
 parser.add_argument('--epoch_edge', type=int, default = 30, help='training epochs')
 parser.add_argument('--total_memory_size', type=int, default = 2000, help='each class need 2000/10 images')
+parser.add_argument('--default_model', default=None, help='model name')
+parser.add_argument('--NA_C0', type=int, default = 32, help='size of first channel in resnet')
 
 # parser.add_argument("--cfg", type=int, default = 55)

@@ -25,7 +25,6 @@ def BlockFactory(number, downSample, **kwargs):
 
 	block_dict = {
 			'0': Block_mobilenetV2(in_planes, out_planes, stride),
-			# '2': StdConv(in_planes, out_planes, 3, stride, 1),  # 9x9
 			'1': Block_resnet(in_planes, out_planes, stride),
 			'2': Block_DenseNet(in_planes, stride),
 			'3': Identity() if stride == 1 else Block_reduction(in_planes, out_planes),
@@ -36,6 +35,7 @@ def BlockFactory(number, downSample, **kwargs):
 			'head': StdConv(in_planes, out_planes, 3, stride, 1),
 			'fc':Block_fc(in_planes, out_planes)
 	}
+	logging.info('block_dict: {}'.format(block_dict))
 
 	# block_dict = {
 	# 		'0': Block_resnet(in_planes, out_planes, stride),

@@ -8,7 +8,7 @@ import functions
 import utils
 from args import parser
 from make_architecture import *
-from block_library import *
+from block_library_v1 import *
 from dataload_regular import *
 from dataload_continual import *
 args = parser.parse_args()
@@ -17,7 +17,7 @@ os.environ["CUDA_VISIBLE_DEVICES"]= args.gpu
 log_format = '%(asctime)s   %(message)s'
 logging.basicConfig(stream=sys.stdout, level=logging.INFO,
 									  format=log_format, datefmt='%m/%d %I:%M%p')
-fh = logging.FileHandler(os.path.join('../../results', 'log_search.txt'))
+fh = logging.FileHandler(os.path.join('../../results', 'log_search_[{}].txt'.format(args.task_division)))
 fh.setFormatter(logging.Formatter(log_format))
 logging.getLogger().addHandler(fh)
 logging.info("******************************************************")
@@ -60,6 +60,7 @@ def get_fitness(pop):
 	size_pop = list(pop['size_pop'])
 	ds_cfg = list(pop['ds_cfg'])
 	max_fitness = 0
+	max_accu = 0
 	fitness = np.zeros((1, args.POP_SIZE))
 	pop_accu = []
 	pop_delta_accu = []
@@ -79,7 +80,7 @@ def get_fitness(pop):
 			test_acc[0, epoch] = nas.test(testloader)
 			delta_accu = 1.0
 			logging.info('pop_id {} epoch {} lr {} ========== train_acc {:.3f} test_acc {:.3f}'.format(pop_id, epoch, nas.current_lr, train_acc[0, epoch], test_acc[0, epoch]))
-			if train_acc[0, epoch] <= 0.12:
+			if train_acc[0, epoch] <= (1.0 / task_division[0]+0.01):
 				fitness[0, pop_id] = 0.0001
 				logging.info('Discard this pop since the accuracy is too low')
 				break
@@ -89,24 +90,24 @@ def get_fitness(pop):
 				accuracy_wNoise = nas.test(testloader)
 				accu_wNoise[0, epoch] = accuracy_wNoise
 				delta_accu = test_acc[0, epoch] - accuracy_wNoise
-				scio.savemat('../../results/mode_{}/pop{}_epoch{}_alpha{}_Acc{:.3f}to{:.3f}_param{:.2f}MB.mat'.
-							 format(args.mode, pop_id, epoch, args.alpha, test_acc[0, epoch], accuracy_wNoise, param),
+				scio.savemat('../../results/mode_{}/pop{}_epoch{}_alpha{}_task{}_Acc{:.3f}to{:.3f}_param{:.2f}MB.mat'.
+							 format(args.mode, pop_id, epoch, args.alpha, args.task_division, test_acc[0, epoch], accuracy_wNoise, param),
 							 {'alpha': args.alpha, 'test_acc': test_acc[0, epoch],
-							  'accu_wNoise': accu_wNoise, 'train_acc':train_acc, 'test_acc':test_acc,
+							  'accu_wNoise': accu_wNoise, 'train_acc':train_acc, 'test_acc_all':test_acc,
 							  'block_cfg': block_cfg, 'size_cfg': size_cfg, 'ds_cfg':ds_cfg})
-				if test_acc[0, epoch] > 0.85:
+				if test_acc[0, epoch] > 0.65:
 					torch.save(nas.net, '../../results/mode_{}/pop{}_epoch{}_alpha{}_Acc{:.3f}to{:.3f}_param{:.2f}MB'.
 							 format(args.mode, pop_id, epoch, args.alpha, test_acc[0, epoch], accuracy_wNoise, param))
 				logging.info('Accuracy changes {:.3f} -> {:.3f} after adding Gaussian noise with alpha={}'.format(test_acc[0, epoch], accuracy_wNoise, args.alpha))
 				# load back previous weight without noise
 				logging.info('Loading back weights without noise.....')
 				nas.load_weight_back()
-				if train_acc[0, epoch] <= 0.5 or param > 6.0:
+				if train_acc[0, epoch] <= 0.3 or param > 6.0:
 					fitness[0, pop_id] = 0.0001
 				else:
 					if args.mode == 'continual':
 						# fitness[0, pop_id] = abs(math.log(abs(delta_accu + 0.00001)))* pow(test_acc[0, epoch], 1)
-						fitness[0, pop_id] = abs(1.0/(abs(delta_accu + 0.00001)))* pow(test_acc[0, epoch], 1)
+						fitness[0, pop_id] = abs(1.0/(abs(delta_accu + 0.00001)))* pow(test_acc[0, epoch],2)
 					#
 					elif args.mode == 'regular':
 						fitness[0, pop_id] = test_acc[0, epoch]
@@ -116,11 +117,17 @@ def get_fitness(pop):
 					max_fitness = fitness[0, pop_id]
 					maxfit_accu = test_acc[0, epoch]
 					maxfit_deltaAcc = delta_accu
-					torch.save(nas.net, '../../results/model_with_best_fitness')
-					scio.savemat('../../results/best_model_cfg.mat', {'block_cfg': block_cfg, 'size_cfg': size_cfg, 'ds_cfg': ds_cfg,
+					torch.save(nas.net, '../../results/{}_model_with_best_fitness'.format(args.task_division))
+					scio.savemat('../../results/{}_best_model_cfg.mat'.format(args.task_division), {'block_cfg': block_cfg, 'size_cfg': size_cfg, 'ds_cfg': ds_cfg,
 																	  'test_accu': test_acc[0, epoch], 'train_acc': train_acc[0, epoch],
 																	  'delta_acc':delta_accu, 'accuracy_wNoise':accuracy_wNoise, 'param': param})
-
+				if  test_acc[0, epoch] > max_accu:
+					max_accu =  test_acc[0, epoch]
+					torch.save(nas.net, '../../results/{}_model_with_best_accuracy'.format(args.task_division))
+					scio.savemat('../../results/{}_best_accuracy_model_cfg.mat'.format(args.task_division),
+								 {'block_cfg': block_cfg, 'size_cfg': size_cfg, 'ds_cfg': ds_cfg,
+								  'test_accu': test_acc[0, epoch], 'train_acc': train_acc[0, epoch],
+								  'delta_acc': delta_accu, 'accuracy_wNoise': accuracy_wNoise, 'param': param})
 
 		logging.info('Pop idx {} delta_accu {:.3f} fitness {:.3f} Param {:.2f}MB'.format(pop_id, delta_accu, fitness[0, pop_id], param))
 		torch.cuda.empty_cache()
@@ -224,7 +231,8 @@ for gen in range(args.N_GENERATIONS):
 	logging.info(' size_pop {}'.format(pop['size_pop']))
 	logging.info('   ds_cfg {}'.format(pop['ds_cfg']))
 	torch.cuda.empty_cache()
-	scio.savemat('../../results/mode_{}/generation{}.mat'.format(args.mode, gen ), {'pop': pop})
+	scio.savemat('../../results/mode_{}/generation{}_finish.mat'.format(args.mode, gen), {'pop': pop})
+
 
 
 # Document
@@ -232,10 +240,9 @@ time_end=time.time()
 hour = int(time_end - time_start) / 3600
 logging.info('time cost {:.2f} second'.format(time_end - time_start))
 logging.info('time cost {:.2f} hour'.format(hour))
-
-scio.savemat('../../results/mode_{}/POPsize{}_DNA{}_maxfit_Accu{:.3f}_DeltaAccu{:.3f}.mat'.format(args.mode, args.POP_SIZE, args.DNA_SIZE, maxfit_accu, maxfit_deltaAcc),
-	{'pop': pop, 'block_pop':pop['block_pop'],  'size_pop': pop['size_pop'], 'ds_cfg': pop['ds_cfg'],
-	 'pop_fitness':pop_fitness, 'pop_accuracy': pop_accuracy, 'record_generation': record_generation,
-	 'time_start':time_start, 'time_end':time_end, 'alpha':args.alpha,
-	 'dataset':args.dataset, 'task_division': args.task_division, 'mode': args.mode})
-
+scio.savemat(	'../../results/mode_{}/POPsize{}_DNA{}_maxfit_Accu{:.3f}_DeltaAccu{:.3f}.mat'.format(
+	args.mode, args.POP_SIZE, args.DNA_SIZE, maxfit_accu, maxfit_deltaAcc),
+	{'pop': pop, 'block_pop': pop['block_pop'], 'size_pop': pop['size_pop'], 'ds_cfg': pop['ds_cfg'],
+	 'pop_fitness': pop_fitness, 'pop_accuracy': pop_accuracy, 'record_generation': record_generation,
+	 'time_start': time_start, 'time_end': time_end, 'alpha': args.alpha,
+	 'dataset': args.dataset, 'task_division': args.task_division, 'mode': args.mode})

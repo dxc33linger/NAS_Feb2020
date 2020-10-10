@@ -28,13 +28,14 @@ class NAS(object):
 
 
 	def train(self, epoch, trainloader):
-		self.scheduler.step()
-		self.current_lr = self.scheduler.get_lr()[0]
-		print('\nEpoch: %d lr: %s' % (epoch, self.current_lr))
 		self.net.train()
 		train_loss = 0.0
 		correct = 0
 		total = 0
+		self.scheduler.step()
+		self.current_lr = self.scheduler.get_lr()
+		logging.info('\nEpoch: %d lr: %s' % (epoch, self.scheduler.get_lr()))
+
 		for batch_idx, (inputs, targets) in enumerate(trainloader):
 			inputs, targets = inputs.to(self.device), targets.to(self.device)
 
@@ -55,9 +56,25 @@ class NAS(object):
 			correct += predicted.eq(targets).sum().item()
 			progress_bar(batch_idx, len(trainloader), 'Loss:%.3f|Acc:%.3f%% (%d/%d)--Train' % (train_loss/(batch_idx+1), 100.*correct/total, correct, total))
 
-		# if epoch % 5 == 0 or epoch == args.num_epoch - 1:
-		# 	self.save_checkpoint_t7(epoch, correct/total, train_loss)
+		if not args.default_model and epoch == 89 or epoch == 59:
+			self.save_checkpoint_t7(epoch,  correct/total, train_loss)
 		return correct/total
+
+	def save_checkpoint_t7(self, epoch, acc, loss, postfix = ''):
+		self.save_folder = self.name_save_folder(args)
+		state = {
+			'acc': acc,
+			'loss': loss,
+			'epoch': epoch,
+			'state_dict': self.net.state_dict(),
+			'optimizer_state_dict': self.optimizer.state_dict(),
+		}
+		opt_state = {
+			'optimizer': self.optimizer.state_dict()
+		}
+		self.model_file = '../../results/NAS_'+self.save_folder+'_model_epoch'+ str(epoch) + postfix + str(acc)+'.t7'
+		logging.info('Saving checkpiont to ' + self.model_file)
+		torch.save(state, self.model_file)
 
 	def test(self, testloader):
 		self.net.eval()				
@@ -106,13 +123,12 @@ class NAS(object):
 
 		for layer_name, param in self.net.state_dict().items():
 			param = param.type(torch.cuda.FloatTensor)
-			# print(layer_name, param.shape)
-			if len(param.shape) == 4:
+			print(layer_name, param.shape)
+			if len(param.shape) == 4 or len(param.shape) == 2:
 				std = param.std().item()
 				noise = self.alpha * param.clone().normal_(0, std)
 				param_w_noise[layer_name] = Variable(param.clone() + noise.type(torch.cuda.FloatTensor), requires_grad=False)
 				assert param_w_noise[layer_name].get_device() == self.net.state_dict()[layer_name].get_device(), "parameter and net are not in same device"
-				# assert noise[0, 0, :, :] + param[0, 0, :, :] == param_w_noise[layer_name][0, 0, :, :], 'Noise injection is wrong'
 			else:
 				param_w_noise[layer_name] = Variable(param.clone(), requires_grad=False)
 			param_clean[layer_name] = Variable(param.clone(), requires_grad=True)
@@ -125,21 +141,12 @@ class NAS(object):
 
 
 	def name_save_folder(self, args):
-		save_folder = 'cfg_' + str(self.block_cfg) + '_lr=' + str(args.lr)
-		save_folder += '_bs=' + str(args.batch_size)
+		if args.default_model:
+			save_folder = args.default_model
+		else:
+			save_folder = 'cfg_' + str(self.block_cfg)
+		save_folder += '_lr=' + str(args.lr) + '_bs=' + str(args.batch_size)
 		return save_folder
-
-	def save_checkpoint_t7(self, epoch, acc, loss):
-		self.save_folder = self.name_save_folder(args)
-		state = {
-			'acc': acc,
-			'loss': loss,
-			'epoch': epoch,
-			'state_dict': self.net.state_dict(),
-			'optimizer_state_dict': self.optimizer.state_dict(),}
-		self.model_file = '../../loss-landscape/cifar10/trained_nets/' + self.save_folder + '_epoch' + str(epoch)  + '.t7'
-		logging.info('Saving checkpiont to ' + self.model_file)
-		torch.save(state, self.model_file)
 
 
 

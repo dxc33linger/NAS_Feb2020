@@ -1,4 +1,4 @@
-from block_library import *
+from block_library_v1 import *
 from dataload_regular import *
 from dataload_continual import *
 import logging

@@ -9,6 +9,7 @@ from dataload_continual import *
 from dataload_regular import *
 from utils import *
 import matplotlib.pyplot as plt
+from cifar10 import model_loader
 
 from args import parser
 args = parser.parse_args()
@@ -16,7 +17,7 @@ os.environ["CUDA_VISIBLE_DEVICES"]= args.gpu
 
 
 
-log_path = 'log_main_edge.txt'.format()
+log_path = 'log_main_edge_[{}]_{}.txt'.format(args.task_division, args.default_model)
 log_format = '%(asctime)s   %(message)s'
 logging.basicConfig(stream=sys.stdout, level=logging.INFO,
 	format=log_format, datefmt='%m/%d %I:%M%p')
@@ -27,8 +28,9 @@ logging.info("******************************************************************
 logging.info("                                        continual_learning.py                                             ")
 logging.info("args = %s", args)
 
-
-
+block_cfg = None
+size_cfg = None
+ds_cfg = None
 random.seed(args.seed)
 nas = functions.NAS()
 logging.info('Current dataset mode: %s', args.mode)
@@ -48,24 +50,27 @@ elif args.mode == 'continual':  ## continual learning
 	all_data_list.append(cloud_list)
 
 for batch_idx, (data, target) in enumerate(train_cloud):
-	logging.info('CLOUD re-assigned label: %s\n', np.unique(target))
+	logging.info('CLOUD re-assigned label: %s', np.unique(target))
 	break
 for batch_idx, (data, target) in enumerate(test_cloud):
 	logging.info('Batch: {} CLOUD re-assigned test label: {}\n'.format(batch_idx, np.unique(target)))
 	break
 
-# if args.default_model:
-#
-#
-# else:
-file_name = '../../results/best_model_cfg.mat'
-content = scio.loadmat(file_name)
-block_cfg = content['block_cfg'][0].tolist()
-size_cfg = content['size_cfg'][0].tolist()
-ds_cfg = content['ds_cfg'][0].tolist()
-nas.net = torch.load('../../results/model_with_best_fitness')
-model = nas.net
+if args.default_model:
+	nas.net = model_loader.load(args.default_model)
+	logging.info('current model is {}'.format(args.default_model))
+else:
+	# file_name = '../../results/{}_best_model_cfg.mat'.format(args.task_division)
+	file_name = '../../results/mode_continual/pop53_epoch24_alpha0.8_task90,10_Acc0.371to0.194_param5.50MB.mat'
+	content = scio.loadmat(file_name)
+	block_cfg = content['block_cfg'][0].tolist()
+	size_cfg = content['size_cfg'][0].tolist()
+	ds_cfg = content['ds_cfg'][0].tolist()
+	# nas.net = torch.load('../../results/8,1_model_with_best_fitness')
+	nas.net = nas.initial_network(block_cfg, size_cfg, ds_cfg)
+	logging.info('current model is NAS {}'.format(block_cfg))
 
+model = nas.net
 logging.info('net', model)
 param = count_parameters_in_MB(model)
 logging.info('param size = {0:.2f}MB'.format(param))
@@ -84,7 +89,7 @@ test_acc_0_end = []  # At the end of each task, the accuracy of task 0. Length =
 
 best_acc_0 = 0.0
 
-nas.initialization(args.lr, args.num_epoch * 0.4)
+nas.initialization(args.lr, args.num_epoch * 0.3)
 for epoch in range(args.num_epoch):
 	train_acc.append(nas.train(epoch, train_cloud))
 	test_acc_0.append(nas.test(test_cloud))
@@ -105,7 +110,7 @@ with open('../../mask_library/mask_task{}_threshold{}_acc{:.4f}.pickle'.format(0
 
 test_task_accu.append(best_acc_0)
 test_acc_0_end.append(best_acc_0)
-torch.save(nas.net.state_dict(), '../../results/model_afterT{}_Accu{:.4f}_param{:.2f}M.pt'.format(0, best_acc_0, param))
+torch.save(nas.net.state_dict(), '../../results/{}model_afterT{}_Accu{:.4f}_param{:.2f}M.pt'.format(args.default_model, 0, best_acc_0, param))
 
 
 for task_id in range(1, total_task):
@@ -157,21 +162,20 @@ for task_id in range(1, total_task):
 	for batch_idx, (data, target) in enumerate(test_edge):
 		logging.info('Batch: {} EDGE re-assigned test label: {}\n'.format(batch_idx, np.unique(target)))
 		break
-
-
 	_, test_mix_full = dataload_partial(all_list, 0)
-	for batch_idx, (data, target) in enumerate(test_mix_full):
+	for batch_idx, (data, target) in enumerate(_):
 		logging.info('Batch: {} ALL re-assigned testing label: {}\n'.format(batch_idx, np.unique(target)))
 		break
 
 	logging.info("=============================== 2. Current Task is {} : Memory-assisted balancing ==================================".format(task_id))
-	nas.initialization(args.lr*args.times, int(0.4*args.epoch_edge))
+	nas.initialization(args.lr*args.times, int(0.3*args.epoch_edge))
 	best_acc_mix = 0.0
+	best_acc_edge = 0.0
 	for epoch in range(args.epoch_edge):
 		train_acc.append(method.train_with_frozen_filter(epoch, train_bm, mask_dict_pre, maskR_dict_pre))
 
-		if epoch<0.5*args.epoch_edge and epoch % 3 == 0:
-			train_acc[-1] = method.train_with_frozen_filter(epoch, train_edge, mask_dict_pre, maskR_dict_pre)
+		# if epoch<0.5*args.epoch_edge and epoch % 3 == 0:
+		# 	train_acc[-1] = method.train_with_frozen_filter(epoch, train_edge, mask_dict_pre, maskR_dict_pre)
 
 		test_acc_0.append(nas.test(test_cloud))
 		test_acc_current.append(nas.test(test_edge))
@@ -180,15 +184,18 @@ for task_id in range(1, total_task):
 		logging.info('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Single-head current testing accu is : {:.4f}'.format( test_acc_current[-1]))
 		logging.info('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Single-head mixed all tasks testing accu is : {:.4f}'.format( test_acc_mix[-1]))
 		logging.info('train_acc {0:.4f} \n\n\n'.format(train_acc[-1]))
-		if epoch >= int(0.9*args.epoch_edge) and test_acc_mix[-1] > best_acc_mix:
-			best_acc_mix = test_acc_mix[-1]
+		if epoch >= int(0.7*args.epoch_edge):
+			if test_acc_mix[-1] > best_acc_mix:
+				best_acc_mix = test_acc_mix[-1]
+			if test_acc_current[-1] > best_acc_edge:
+				best_acc_edge = test_acc_current[-1]
 
 
 	test_task_accu.append(best_acc_mix)
 	test_acc_0_end.append(test_acc_0[-1])
 
 	logging.info('>>>>>>>>>> At the end of task {}, T0 accu is {:.4f}'.format(task_id, test_acc_0[-1]))
-	torch.save(nas.net.state_dict(), '../../results/model_afterT{}_Accu{:.4f}_param{:.2f}M.pt'.format(task_id, best_acc_mix, param))
+	torch.save(nas.net.state_dict(), '../../results/{}model_afterT{}_Accu{:.4f}_param{:.2f}M.pt'.format(args.default_model, task_id, best_acc_mix, param))
 	#
 	ratio = task_division[task_id] / sum(task_division)
 	logging.info('ratio: {}'.format(ratio))
@@ -221,7 +228,7 @@ plt.plot(x, test_task_accu , 'g-o', alpha=1.0, label = 'our method')
 plt.yticks(np.arange(0, 1.0, step=0.1))
 plt.xticks(np.arange(0, num_classes+1, step= 10))
 plt.legend(loc='best')
-plt.savefig('../../results/cfg_{}_incremental_curve_T{}_{:.4f}.png'.format(block_cfg, task_id, best_acc_mix))
+plt.savefig('../../results/PSTincremental_curve_[{}]_{:.4f}_{:.4f}.png'.format(args.task_division, best_acc_mix, best_acc_edge))
 plt.title('Task: {} \n Memory: {}\n Epoch_edge: {} ModelSize: {}MB'.format(task_division, alltask_memory, args.epoch_edge, param), **title_font)
 
 x = np.linspace(0, len(test_acc_mix), len(test_acc_mix))
@@ -234,13 +241,13 @@ plt.plot(x, test_acc_current, 'g',  alpha=0.5, label = 'Testing accuracy - edge'
 plt.plot(x, test_acc_mix, 'b',  alpha=0.5, label = 'Testing accuracy - mix')
 plt.yticks(np.arange(0, 1.0, step=0.1))
 plt.xticks(np.arange(0, len(test_acc_mix), step=10))
-plt.grid(color='b', linestyle='-', linewidth=0.1)
+plt.grid(color='b', linestyle='-', linewidth=0.05)
 plt.legend(loc='best')
 plt.title('Learning curve')
-plt.savefig('../../results/PSTmain_learning_curve_cfg_{}_acc{:.4f}.png'.format(block_cfg, best_acc_mix))
+plt.savefig('../../results/PSTmain_learning_curve_{}_acc{:.4f}.png'.format(args.task_division, best_acc_mix))
 
 logging.info('param size = {0:.2f}MB'.format(param))
-scio.savemat('../../results/PSTmain_cfg_{}_acc{:.4f}.mat'.format(block_cfg, best_acc_mix),
+scio.savemat('../../results/PSTmain_{}_{}_acc{:.4f}.mat'.format(args.default_model, block_cfg, best_acc_mix),
 			 {'train_acc':train_acc, 'test_acc_0':test_acc_0,'test_acc_current':test_acc_current,
 			  'test_acc_mix':test_acc_mix, 'best_acc_mix':best_acc_mix, 'best_acc_0': best_acc_0,
 			  'block_cfg':block_cfg, 'size_cfg':size_cfg,'param':param,

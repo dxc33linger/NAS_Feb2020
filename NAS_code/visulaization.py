@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 from torchvision.models import AlexNet
 
 
-model = torch.load('../../results/sigma0.01/final_model_cfg[0, 5]_acc0.036')
+model = torch.load('../../results/50,10,10,10,10,10_model_with_best_fitness')
 
 
 x = torch.randn(1, 3, 32, 32).requires_grad_(False)
@@ -25,4 +25,5 @@ print("Total #Param：" + str(k)+ ' B')
 
 vis_graph = make_dot(y, params=dict(list(model.named_parameters()) + [('x', x)]))
 vis_graph.view()
+
 

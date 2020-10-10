@@ -34,7 +34,7 @@ def BlockFactory(number, downSample, **kwargs):
 		'head': StdConv(in_planes, out_planes, 3, stride, 1),
 		'fc': Block_fc(in_planes, out_planes)
 	}
-
+	logging.info('block_dict: {}'.format(block_dict))
 	if number == 'fc':
 		return block_dict[number]
 	else:

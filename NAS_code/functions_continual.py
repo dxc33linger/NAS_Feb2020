@@ -287,7 +287,7 @@ class ContinualNN(object):
         train_loss = 0.0
         correct = 0
         total = 0
-        self.optimizer.step()
+        # self.optimizer.step()
         self.scheduler.step()
 
         for batch_idx, (inputs, targets) in enumerate(trainloader):
@@ -298,9 +298,9 @@ class ContinualNN(object):
             self.optimizer.zero_grad()
             outputs = self.net(inputs_var)
             loss = self.criterion(outputs, targets)
-
             loss.backward()
             self.optimizer.step()
+
 
             train_loss += loss.item()
             _, predicted = outputs.max(1)
@@ -339,9 +339,33 @@ class ContinualNN(object):
             self.net.load_state_dict(param_processed)
             progress_bar(batch_idx, len(trainloader), 'Loss:%.3f|Acc:%.3f%% (%d/%d)--Train' % (
                 train_loss / (batch_idx + 1), acc, correct, total))
-
+        if not args.default_model and epoch == args.num_epoch - 1 or epoch == args.epoch_edge -1:
+            self.save_checkpoint_t7(epoch, correct / total, train_loss)
         return correct / total
 
+    def save_checkpoint_t7(self, epoch, acc, loss, postfix=''):
+        self.save_folder = self.name_save_folder(args)
+        state = {
+            'acc': acc,
+            'loss': loss,
+            'epoch': epoch,
+            'state_dict': self.net.state_dict(),
+            'optimizer_state_dict': self.optimizer.state_dict(),
+        }
+        opt_state = {
+            'optimizer': self.optimizer.state_dict()
+        }
+        self.model_file = '../../results/NAS_' + self.save_folder + '_model_epoch' + str(epoch) + postfix + '_' +str(acc) + '.t7'
+        logging.info('Saving checkpiont to ' + self.model_file)
+        torch.save(state, self.model_file)
+
+    def name_save_folder(self, args):
+        if args.default_model:
+            save_folder = args.default_model
+        else:
+            save_folder = 'search_model'
+        save_folder += '_lr=' + str(args.lr) + '_bs=' + str(args.batch_size)
+        return save_folder
 
     def mask_frozen_weight(self, maskR):
         param_processed = OrderedDict([(k, None) for k in self.net.state_dict().keys()])
