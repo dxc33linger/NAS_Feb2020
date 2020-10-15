@@ -56,7 +56,7 @@ class NAS(object):
 			correct += predicted.eq(targets).sum().item()
 			progress_bar(batch_idx, len(trainloader), 'Loss:%.3f|Acc:%.3f%% (%d/%d)--Train' % (train_loss/(batch_idx+1), 100.*correct/total, correct, total))
 
-		if not args.default_model and epoch == 89 or epoch == 59:
+		if not args.default_model and epoch == 89 or epoch == 49:
 			self.save_checkpoint_t7(epoch,  correct/total, train_loss)
 		return correct/total
 

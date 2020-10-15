@@ -361,7 +361,7 @@ class Block_DenseNet(nn.Module):
 		out_planes = int(math.floor(num_planes*reduction))
 		self.trans1 = Transition(num_planes, out_planes, stride)
 		num_planes = out_planes
-		self.bn = nn.BatchNorm2d(num_planes)
+		# self.bn = nn.BatchNorm2d(num_planes)
 
 	def _make_dense_layers(self, block, in_planes, nblock):
 		layers = []

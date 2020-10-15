@@ -1,0 +1,17 @@
+pip install h5py
+
+copy "plot_landscape.py" to your local dir
+copy "h5_util.py"        to your local dir
+copy "h52vtp.py"         to your local dir
+
+add  "from  plot_landscape import *" to the file in which you want to call the API
+add these two lines to generate the landscape
+
+	ls= landscape(net)   		#net is the trained model
+	ls.generate_h5(trainloader=train_10,testloader=test_10, useTraindata= False )
+
+	#useTraindata = True   -----slower
+	#useTraindata = False  -----faster
+
+result will be saved as "current.vtp" in  ./landscape/ dir
+using "paraview" to load this vtp and view landscape

@@ -78,6 +78,7 @@ class ContinualNN(object):
 
                 elif isinstance(m, nn.BatchNorm2d):
                     # bn weight
+                    # print( m.weight.grad.data.abs().clone().cpu().numpy())
                     total_param = m.weight.data.shape[0]
                     weight_copy = m.weight.data.abs().clone().cpu().numpy()
                     if args.score == 'abs_w':
